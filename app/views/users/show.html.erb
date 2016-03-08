@@ -1,6 +1,9 @@
 <div class='wrap-profile'>
   <div class='avatar'>
     <img src = 'http://studpad.ru/uploads/teacher/avatar/1447/34873bdbcd.jpg' />
+    <% if current_user %>
+      <button class='get-publication'>Опубликовать</button>
+    <% end %>
   </div>
   <div class='name'>
     Максим Грешник
