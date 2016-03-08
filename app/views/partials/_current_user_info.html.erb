@@ -1,0 +1,17 @@
+<!-- #Current User Store unsensetive data -->
+  <%= javascript_tag do %>
+    window.currentUser = {};
+    window.currentUser.admin = <%= j current_user.admin?.to_s %>;
+    window.currentUser.name = '<%= j current_user.name %>';
+    window.currentUser.avatar = '<%= j current_user.avatar.thumb.to_s %>';
+    window.currentUser.url = '<%= j user_path(current_user) %>';
+    window.currentUser.city_id =  '<%= j current_user.city_id.to_s %>';
+    window.currentUser.city_name =  '<%= j current_user.city.try(:name).to_s %>';
+    window.categories = [
+      <% Category.all.each do |c| %>
+        { value: <%= c.id %>,
+          text: '<%= j c.name %>',
+        },
+      <% end %>
+    ]
+  <% end if current_user %>

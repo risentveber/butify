@@ -1,0 +1,27 @@
+<div class = 'card-sp first-left-block'>
+  <div class = 'block-title'>
+    <%= link_to 'Актуальные сообщества', communities_path %>
+    <a></a>
+  </div>
+  <div class = 'block-objects'>
+
+
+    <% Community.all.each do |c| %>
+    <div class = 'preview-object'>
+        <div class = "preview-object-avatar" style="background: url(
+        <%= c.avatar %>
+        ) no-repeat; background-size: cover;">
+        </div>
+        <div class="preview-object-info">
+          <div class = 'object-name'>
+            <%= link_to c.name, community_path(c)%>
+          </div>
+          <div class = 'object-text'><%= t c.status %></div>
+        </div>
+    </div>
+    <div class = 'clearboth'>
+    </div>
+    <% end %>
+
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class = 'card-sp first-left-block'>
+  <div class = 'block-title'>
+    <a>Рекомендуем</a>
+  </div>
+  <% User.recommended_for(current_user).each do |u| %>
+  <div class = 'block-objects'>
+      <div class = 'preview-object'>
+          <div class = "preview-object-avatar-mini" style="background: url(
+          <%= u.avatar.thumb %>
+          ) no-repeat; background-size: cover;">
+          </div>
+          <div class="preview-object-info-mini">
+            <div class = 'object-text'>
+              <div class = 'object-maintext'><%= link_to u.name, user_path(u) %></div>
+              <div class = 'object-subtext'>
+                <%= link_to 'Читать', follow_user_path(u),
+                  method: :post, class: 'btn btn-default btn-st-sm',
+                  data: { toggle: 'tooltip', placement: 'bottom' } if current_user%>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class = 'clearboth'>
+      </div>
+  </div>
+  <% end %>
+</div>

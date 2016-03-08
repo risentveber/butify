@@ -1,0 +1,41 @@
+.wrap-profile{
+	text-align: center;
+	.avatar{
+		margin-top: 60px;
+		img{
+			width: 120px;
+			height: 120px;
+			border-radius: 200px;
+		}
+	}
+	.name{
+		font-size: 22px;
+		margin-top: 5px;
+		font-weight: 500;
+	}
+	.aboutme{
+		font-size: 15px;
+	}
+	.city{
+		font-size: 18px;
+		margin-top: 5px;
+		font-weight: 500;
+		color: #777777;
+	}
+	.menu{
+		margin-top: 12px;
+		font-size: 15px;
+		border-bottom: 1px solid #D2D2D2;
+		padding-bottom: 12px;
+		ul{
+			li{
+				display: inline-block;
+				margin: 0 8px;
+				color: #3F4E58;
+				span{
+					font-weight: bold;
+				}
+			}
+		}
+	}
+}

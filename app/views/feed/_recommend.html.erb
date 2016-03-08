@@ -1,0 +1,46 @@
+<div class = 'row' style = 'margin-top: 80px; z-index: 150; display: none;'>
+  <div class = 'col-xs-12 wrap-follow-offer'>
+    <% if current_user %>
+      <div class = 'card-sp follow-offer'>
+        <div class = 'title-that-left'>
+          Читайте больше людей
+        </div>
+        <div class = 'list-persons-follow'>
+          <% User.recommended_for(current_user).each do |u| %>
+          <div class = 'person-follow'>
+            <div class = 'person-follow-stat'>
+              <%= link_to user_path(u) do %>
+                <div class = 'person-follow-photo'
+                  style = 'background: url(<%= u.avatar %>)
+                    no-repeat; background-size: cover;'>
+                </div>
+              <% end %>
+              <div class = 'person-follow-name'>
+                <%= link_to user_path(u) do %>
+                <div class="post-autor-name">
+                  <span><%= u.name %></span>
+                </div>
+                <% end %>
+                <div class = 'clearboth'>
+                </div>
+                <div class = 'person-follow-wrap-btn-read'>
+                  <%= link_to 'Читать', follow_user_path(u),
+                  method: :post,
+                  class: 'btn btn-primary btn-st btn-sm',
+                  title: 'Хочу получать новости от этого человека',
+                  data: { :toggle => 'tooltip', :placement => 'bottom' } %>
+                </div>
+              </div>
+              <div class = 'clearboth'>
+              </div>
+            </div>
+          </div>
+          <% end %>
+
+          <div class = 'clearboth'>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

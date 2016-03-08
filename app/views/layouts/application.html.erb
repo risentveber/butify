@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Studpad | Медиаблоги</title>
+  <%= render "partials/meta" %>
+  <%= render "partials/metrika" unless current_user.try(:admin?) %>
+
+  <script type="text/javascript" src="http://vk.com/js/api/share.js?90" charset="windows-1251"></script>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.2/css/select2.min.css" rel="stylesheet" />
+  <link href="http://allfont.ru/css/?fonts=open-sans" rel="stylesheet" type="text/css" />
+  <link href="http://allfont.ru/css/?fonts=pt-sans" rel="stylesheet" type="text/css" />
+  <link href="http://webfonts.ru/import/barkentina.css" rel="stylesheet" type="text/css" />
+  <link href="http://webfonts.ru/import/arnamuserif.css" rel="stylesheet" type="text/css" />
+  <link href="http://webfonts.ru/import/gentium.css" rel="stylesheet" type="text/css" />
+  <link href="http://webfonts.ru/import/linlibslanted.css" rel="stylesheet" type="text/css" />
+  <link href="http://webfonts.ru/import/merriweather.css" rel="stylesheet" type="text/css" />
+  <link href="http://webfonts.ru/import/notoserif.css" rel="stylesheet" type="text/css" />
+  <%= csrf_meta_tags %>
+  <%= render "partials/current_user_info" %>
+</head>
+<body class = 'night'>
+  <div class = 'clouds'>
+    <%= render "partials/clouds" %>
+  </div>
+  <%= render "partials/hat" %>
+    <div class = 'notice'>
+      <button type="button" id = 'close-notice' class="close" aria-hidden="true">&times;</button>
+      <div class = 'title-underline notice-content'>
+
+      </div>
+    </div>
+
+<%= yield %>
+
+</body>
+</html>

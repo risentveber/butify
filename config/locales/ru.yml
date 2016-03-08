@@ -1,0 +1,6 @@
+ru:
+  Student: 'Ученик'
+  Teacher: 'Преподаватель'
+  time:
+    formats:
+      default: '%e %b'
