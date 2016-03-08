@@ -14,6 +14,7 @@ json.array! @posts do |p|
   json.city_id p.city_id
   json.city_name p.city.try(:name)
   json.linkdata p.linkdata
+  json.sitelink p.sitelink
   json.title p.title
   json.time l(p.created_at)
   json.can_edit policy(p).update?
