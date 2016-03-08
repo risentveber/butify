@@ -53,6 +53,7 @@ const PostModalContent = React.createClass({
   },
   render: function() {
     var main_part;
+    var textPlaceholder = 'Ссылка на сайт';
     files = this.props.post.files.map(function (f, index) {
       return (
         <ModalContentFile
@@ -224,6 +225,10 @@ const PostModalContent = React.createClass({
             addDivider={this.props.addDivider}
             text_elements={this.props.post.text_elements}
             typePost={this.props.post.type}/>
+            <ContentEditableDiv
+            onChange={this.handleChange}
+            placeholder={textPlaceholder}
+            cssClass='text-new-post site-link'/>
           <TagSelect
             setTags={this.props.setTags}
             values={this.props.post.tags}/>

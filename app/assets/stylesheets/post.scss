@@ -322,6 +322,7 @@
 	border-radius: 3px;
 	font-family: FontAwesome;
 	font-size: 20px;
+	display: none;
 }
 .attached-files{
 	position: absolute;
@@ -875,5 +876,9 @@
 			color: #3680be;
 		}
 	}
+}
+.site-link{
+	padding: 0 15px;
+	font-weight: 500;
 }
     
