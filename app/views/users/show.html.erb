@@ -1,39 +1,50 @@
 <div class='wrap-profile'>
   <div class='avatar'>
-    <img src = 'http://studpad.ru/uploads/teacher/avatar/1447/34873bdbcd.jpg' />
+    <img src = '<%= @user.avatar %>' />
     <% if current_user %>
-      <button class='get-publication'>Опубликовать</button>
+      <%= link_to new_post_path do %>
+        <button class='get-publication'>Опубликовать</button>
+      <% end %>
     <% end %>
   </div>
   <div class='name'>
-    Максим Грешник
+    <%= @user.name %>
   </div>
-  <div class='aboutme'>
-    Актер, модель и блогер из Канады.
-  </div>
+  <% if @user.description.present? %>
+    <div class='aboutme'>
+      <%= @user.description %>
+    </div>
+  <% end %>
   <div class='city'>
-    Москва
+    <%= @user.city.try(:name) %>
   </div>
   <div class='menu'>
     <ul>
       <li>
-        <span>0</span> Публикации
+        <span><%= @user.posts.count %></span> Публикации
       </li>
       <li>
-        <span>4</span> Нравится
+        <span><%= @user.get_voted(Post).count %></span> Нравится
       </li>
       <li>
-        <span>1</span> Хочу
+        <span><%= @user.followers_count %></span>
+        <% if @user != current_user %>
+          Читатели
+        <% else %>
+          Меня читают
+        <% end %>
       </li>
       <li>
-        <span>412</span> Читатели
-      </li>
-      <li>
-        <span>22</span> Я читаю
+        <span><%= @user.follow_count %></span>
+        <% if @user != current_user %>
+          Читает
+        <% else %>
+          Я читаю
+        <% end %>
       </li>
     </ul>
   </div>
-  <div id="grid-gallery" class="grid-gallery">
+</div>
+<div id="grid-gallery" class="grid-gallery">
   <%= react_component 'Gallery', posts_url: posts_path(@user) %>
-  </div>
 </div>
