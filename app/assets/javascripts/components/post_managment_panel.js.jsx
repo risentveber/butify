@@ -42,18 +42,18 @@ const PostManagementPanel = React.createClass({
             </div>
             <span className='new-post-label-name'>Фото</span>
           </div>
-          <div className='new-post-label' onClick={this.onClickVideo}>
-            <div className='icon-post-cite icon-post'>
-              <img src = '/images/video.png' />
-            </div>
-            <span className='new-post-label-name'>Видео</span>
-          </div>
-          <div className='new-post-label' onClick={this.onClickLink}>
-            <div className='icon-post-link icon-post'>
-              <img src = '/images/link.png' />
-            </div>
-            <span className='new-post-label-name'>Ссылка</span>
-          </div>
+          {/*<div className='new-post-label' onClick={this.onClickVideo}>
+                      <div className='icon-post-cite icon-post'>
+                        <img src = '/images/video.png' />
+                      </div>
+                      <span className='new-post-label-name'>Видео</span>
+                    </div>
+                    <div className='new-post-label' onClick={this.onClickLink}>
+                      <div className='icon-post-link icon-post'>
+                        <img src = '/images/link.png' />
+                      </div>
+                      <span className='new-post-label-name'>Ссылка</span>
+                    </div>*/}
         </div>
         <div className='clearboth'>
         </div>

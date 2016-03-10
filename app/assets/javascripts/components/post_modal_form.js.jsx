@@ -92,7 +92,7 @@ const PostModalForm = React.createClass({
   //BEGIN***************************************************HELPERS
   setTags(values){
     post = this.state.post;
-    post.tags= values;
+    post.tags = values;
     this.setState({
       post: post
     });
@@ -255,6 +255,15 @@ const PostModalForm = React.createClass({
       post: post
     });
   },
+  changeSitelink: function(event){
+    console.log('изменилась ссылка');
+    var post = this.state.post;
+    var value = event.target.value;
+    post.sitelink = value;
+    this.setState({
+      post: post
+    });
+  },
   onChangeLink: function(event) {
     url = event.target.value;
     console.log(url);
@@ -320,6 +329,7 @@ const PostModalForm = React.createClass({
           changeElementText={this.changeElementText}
           onChangeLink={this.onChangeLink}
           showTips={this.state.showTips}
+          changeSitelink={this.changeSitelink}
           addAttachment={this.addAttachment}
           addImage={this.addImage}
           addPhoto={this.addPhoto}

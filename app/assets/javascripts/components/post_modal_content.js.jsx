@@ -10,6 +10,7 @@ const PostModalContent = React.createClass({
     addPhoto: React.PropTypes.func.isRequired,
     removePhoto: React.PropTypes.func.isRequired,
     changeElementText: React.PropTypes.func.isRequired,
+    changeSitelink: React.PropTypes.func.isRequired,
     removeTextElement: React.PropTypes.func.isRequired,
     post: React.PropTypes.shape({
       text_elements: React.PropTypes.array.isRequired,
@@ -216,6 +217,11 @@ const PostModalContent = React.createClass({
       <div className = "modal-body my-setting-modal-body">
         <div className = 'container-fluid'>
           {main_part}
+          <input
+            onChange={this.props.changeSitelink}
+            placeholder={textPlaceholder}
+            value={this.props.post.sitelink}
+            className='text-new-post site-link'/>
           <PostText
             ref='post_text'
             showTips={this.props.showTips}
@@ -225,10 +231,7 @@ const PostModalContent = React.createClass({
             addDivider={this.props.addDivider}
             text_elements={this.props.post.text_elements}
             typePost={this.props.post.type}/>
-            <ContentEditableDiv
-            onChange={this.handleChange}
-            placeholder={textPlaceholder}
-            cssClass='text-new-post site-link'/>
+
           <TagSelect
             setTags={this.props.setTags}
             values={this.props.post.tags}/>

@@ -14,7 +14,6 @@ var ContentEditableDiv = React.createClass({
     //   $(node).focus();
   },
   emitChange: function(){
-    //CI("hheee", this.refs.textdiv)
     if(this.refs.textdiv)
       var html = this.refs.textdiv.innerHTML;
     // CW('ceditbale ',html);

@@ -84,6 +84,7 @@ const PostBox = React.createClass({
     var photo_ids = postData.photos.map(function(p){ return p.id })
     CI('Send post data to server', postData);
     post = {
+      sitelink: postData.sitelink,
       text: postData.text,
       tags: postData.tags,
       youtube_id: postData.youtube_id,
