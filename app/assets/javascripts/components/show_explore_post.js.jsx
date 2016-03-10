@@ -57,6 +57,22 @@ var ShowExplorePost = React.createClass({
                   <div>{post.city_name} {post.time}</div>
                 </div>
               </a>
+              <div className="action-angle post-action">
+                <div className="btn-group">
+                  <span className="sign-dots-menu" data-toggle="dropdown">•••</span>
+                  <ul className="dropdown-menu blue-background-dropdown-menu" role="menu">
+                    <li>
+                      <a>Редактировать</a>
+                    </li>
+                    <li>
+                      <a>Удалить</a>
+                    </li>
+                    <li>
+                      <a>Пожаловаться</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
           <div className="modal-body">

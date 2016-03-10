@@ -1,56 +1,85 @@
-<div class ='container' id = 'main-container'>
-  <div class = 'left-branch'>
-    <%= render '/partials/profile' %>
-    <%= render 'left_branch_profile' %>
-  </div>
-
-  <div class = 'main-wall'>
-    <%#= render "info_user" %>
-    <div class = 'panel-user'>
-      <div class = 'profile-info-follow'>
-        <%= render partial: 'followers_block' %>
-      </div>
-    </div>
-    <div class="title-background">
-      <div class="title-page">
-        <% if @user != current_user %>
-          <p>Читатели</p>
-        <% else %>
-          <p>Меня читают</p>
+<div class='wrap-profile'>
+  <%= render "profile_user" %>
+  <div class='menu'>
+    <ul>
+      <li>
+        <span><%= @user.posts.count %></span>
+        <%= link_to user_path(current_user) do %>
+          Публикации
         <% end %>
-      </div>
-    </div>
-    <div class="usual-list border-b-radius">
-      <div class = 'followers'>
-        <% @user.followers.each do |u|%>
-        <div class = 'follower'>
-          <div class="follower-user-button">
-            <div class='follower-user'>
-              <div class="preview-object">
-                  <div class="preview-object-avatar" style="background: url(
-                  <%= u.avatar.thumb %>
-                  ) no-repeat; background-size: cover;">
-                  </div>
-                  <div class="preview-object-info">
-                    <div class="object-text">
-                      <div class="object-maintext">
-                        <%= link_to u.name, user_path(u)%>
-                      </div>
+      </li>
+      <li>
+        <span><%= @user.get_voted(Post).count %></span>
+        <%= link_to favourite_user_path(current_user) do %>
+          Нравится
+        <% end %>
+      </li>
+      <li>
+        <span><%= @user.follow_count %></span>
+        <%= link_to following_user_path(current_user) do %>
+          <% if @user != current_user %>
+            Читает
+          <% else %>
+            Я читаю
+          <% end %>
+        <% end %>
+      </li>
+      <li class='active'>
+        <span><%= @user.followers_count %></span>
+        <%= link_to followers_user_path(current_user) do %>
+          <% if @user != current_user %>
+            Читатели
+          <% else %>
+            Меня читают
+          <% end %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class='card-butify center-block602'>
+  <div class="card-title">
+    <% if @user != current_user %>
+      <p>Читают</p>
+    <% else %>
+      <p>Меня читают</p>
+    <% end %>
+  </div>
+  <div class="usual-list border-b-radius">
+    <div class = 'followers'>
+      <% @user.followers.each do |u|%>
+      <div class = 'follower'>
+        <div class="follower-user-button">
+          <div class='follower-user'>
+            <div class="preview-object">
+                <div class="preview-object-avatar" style="background: url(
+                <%= u.avatar.thumb %>
+                ) no-repeat; background-size: cover;">
+                </div>
+                <div class="preview-object-info">
+                  <div class="object-text">
+                    <div class="object-maintext">
+                      <%= link_to u.name, user_path(u)%>
                     </div>
                   </div>
-              </div>
-              <div class="clearboth">
-              </div>
+                </div>
             </div>
-            <div class = 'follower-button'>
+            <div class="clearboth">
             </div>
           </div>
-          <div class="clearboth">
+          <div class = 'follower-button'>
           </div>
         </div>
-        <% end %>
-
+        <div class="clearboth">
+        </div>
       </div>
+      <% end %>
+
     </div>
   </div>
 </div>
+
+
+
+
+

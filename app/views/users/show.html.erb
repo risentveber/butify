@@ -1,49 +1,41 @@
 <div class='wrap-profile'>
-  <div class='avatar'>
-    <img src = '<%= @user.avatar %>' />
-    <% if current_user %>
-      <%= link_to new_post_path do %>
-        <button class='get-publication'>Опубликовать</button>
-      <% end %>
-    <% end %>
-  </div>
-  <div class='name'>
-    <%= @user.name %>
-  </div>
-  <% if @user.description.present? %>
-    <div class='aboutme'>
-      <%= @user.description %>
-    </div>
-  <% end %>
-  <div class='city'>
-    <%= @user.city.try(:name) %>
-  </div>
+  <%= render "profile_user" %>
   <div class='menu'>
-    <ul>
-      <li>
-        <span><%= @user.posts.count %></span> Публикации
-      </li>
-      <li>
-        <span><%= @user.get_voted(Post).count %></span> Нравится
-      </li>
-      <li>
-        <span><%= @user.followers_count %></span>
-        <% if @user != current_user %>
-          Читатели
-        <% else %>
-          Меня читают
-        <% end %>
-      </li>
-      <li>
-        <span><%= @user.follow_count %></span>
-        <% if @user != current_user %>
-          Читает
-        <% else %>
-          Я читаю
-        <% end %>
-      </li>
-    </ul>
-  </div>
+	  <ul>
+	    <li class='active'>
+	      <span><%= @user.posts.count %></span>
+	      <%= link_to user_path(current_user) do %>
+	        Публикации
+	      <% end %>
+	    </li>
+	    <li>
+	      <span><%= @user.get_voted(Post).count %></span>
+	      <%= link_to favourite_user_path(current_user) do %>
+	        Нравится
+	      <% end %>
+	    </li>
+	    <li>
+	      <span><%= @user.follow_count %></span>
+	      <%= link_to following_user_path(current_user) do %>
+	        <% if @user != current_user %>
+	          Читает
+	        <% else %>
+	          Я читаю
+	        <% end %>
+	      <% end %>
+	    </li>
+	    <li>
+	      <span><%= @user.followers_count %></span>
+	      <%= link_to followers_user_path(current_user) do %>
+	        <% if @user != current_user %>
+	          Читатели
+	        <% else %>
+	          Меня читают
+	        <% end %>
+	      <% end %>
+	    </li>
+	  </ul>
+	</div>
 </div>
 <div id="grid-gallery" class="grid-gallery">
   <%= react_component 'Gallery', posts_url: posts_path(@user) %>

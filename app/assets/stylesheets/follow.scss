@@ -4,6 +4,10 @@
 .follower:nth-child(2n){
 	background-color: #F5F5F5;
 }
+.follower:last-child{
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
 .btn-reject-follow{
 	background-color: transparent !important;
 	color: #6B6B6B !important;

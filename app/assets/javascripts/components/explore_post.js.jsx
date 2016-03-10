@@ -32,8 +32,8 @@ const ExplorePost = React.createClass({
         if (images_count + photo_count > 1)
           all_images_count = <span className="explore-num-photo">{images_count + photo_count}</span>
         image = (
-          <div onClick={this.onShowClick} className='img-show-post-explore'>
-            <img src={post.photos[0] && post.photos[0].url}/>
+          <div className='img-show-post-explore'>
+            <img onClick={this.onShowClick} src={post.photos[0] && post.photos[0].url}/>
             {all_images_count}
           </div>
         );
@@ -104,35 +104,27 @@ const ExplorePost = React.createClass({
     return(
         <figure>
           <div className='wrap-figure-explore-post'>
-            <div className="autor-explore border-radius-top">
-              {post_id}
-              <div className="avatar" style={{background: 'url('+post.author.avatar+') no-repeat', backgroundSize: 'cover'}}>
-              </div>
-              <div className="info">
-                <div className='name'>
-                  <a href={post.author.url}>{post.author.name}</a>
-                </div>
-                <div className='date'>
-                  <span>{post.time}</span>
-                </div>
-              </div>
-            </div>
             {image}
 
             <figcaption className='content-board border-b-radius'>
             <div className='main-contain'>
               {link_rendered}
               {title_link}
-              {text_rendered}
+              {/*text_rendered*/}
               {/*tags_rendered*/}
               <div>
-                
+
               </div>
             </div>
             {admin_block}
             <footer className='border-b-radius'>
               <div className='delicious-like'>
                 <div className='show-post'>
+                  <img className='avatar-explore' src={post.author.avatar}/>
+                  <span>
+                    <a href={post.author.url}>{post.author.name}</a>
+                    <p>homedepot.ru</p>
+                  </span>
                 </div>
                 <div className='action-of-post'>
                   <div>

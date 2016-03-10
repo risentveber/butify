@@ -3,9 +3,9 @@
     <div class='logo'>
       <h1>
         <% if current_user %>
-          <%= link_to "Butik", root_path, class: 'hat-logo-studpa-a'%>
+          <%= link_to "Butify", root_path, class: 'hat-logo-studpa-a'%>
         <% else %>
-          <%= link_to "Butik", main_path, class: 'hat-logo-studpa-a'%>
+          <%= link_to "Butify", main_path, class: 'hat-logo-studpa-a'%>
         <% end %>
       </h1>
     </div>
@@ -71,7 +71,7 @@
                     <%= current_user.posts.count %>
                   </span>
                   <img src="/images/publication.png">
-                  Мой микроблог
+                  Публикации
                 <% end %>
               </li>
               <li>

@@ -1,30 +1,6 @@
-<div class ='container' id = 'main-container'>
-    <div class = 'left-branch'>
-        <%= render "/partials/profile" %>
-        <%= render "/feed/recommended_users" %>
-        <%= render "/feed/popular_now" %>
-        <%= render "/partials/administration_data" %>
-    </div>
-    <div class = 'main-wall'>
-
-      <div class = 'wrap-mike'>
-        <div class = 'mike-speach'>
-
-        </div>
-      </div>
-
-      <%= render 'feed/recommend' %>
-      <div class = 'row' style = 'margin-top: 80px; z-index: 150;'>
-        <div class = 'col-xs-12'>
-          <div class = 'title-background border-radius-top'>
-            <div class = 'title-page'>
-             Публикации
-            </div>
-          </div>
-          <%= react_component("PostBox",
-        posts_url: posts_path, show_panel: (current_user.present?) ) %>
-        </div>
-      </div>
-    </div>
+<div class='feed-title'>
+	Публикации от тех, кого Вы читаете!
 </div>
-
+<div id="grid-gallery" class="grid-gallery">
+  <%= react_component 'Gallery', posts_url: posts_path(@user) %>
+</div>

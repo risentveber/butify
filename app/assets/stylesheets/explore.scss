@@ -60,6 +60,25 @@
 	border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
+/*.img-show-post-explore:before {
+	content: "\f040";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  color: #525252;
+  font-size: 13px;
+  padding-right: 0.5em;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  background-color: white;
+  text-align: center;
+  padding: 1px 6px;
+  border-radius: 2px;
+  cursor: pointer;
+}*/
+
 .grid-gallery figure figcaption img {
 	width: 12px;
 }
@@ -124,6 +143,7 @@
 .grid-gallery figure {
 	width: 25%;
 	float: left;
+	min-width: 267px;
 	&:hover .delicious-like > div:first-child{
  		display: block;
  	}
@@ -178,22 +198,26 @@
 }
 .grid-gallery footer{
 	border-top: 1px solid #DAE1E8;
-	min-height: 43px;
+	min-height: 63px;
  	.delicious-like{
  		font-weight: 400;
  		.show-post{
 			float: left;
-			width: 50%;
+			width: 68%;
 			color: #23527c;
 			font-size: 12px;
 			cursor: pointer;
-			display: none;
 			&:hover{
 				color: #3680be;
 			}
 			span{
-				font-size: 11px;
-				color: #969DA2;
+				position: relative;
+				left: 10px;
+			}
+			p{
+				font-size: 14px;
+				color: black;
+				font-weight: 500;
 			}
 		}
 
@@ -471,18 +495,21 @@ span.nav-close:before {
 @media screen and (max-width: 1118px) {
 	.grid-gallery figure {
 		width: 33.3%;
+		min-width: 267px;
 	}
 }
 
 @media screen and (max-width: 846px) {
 	.grid-gallery figure {
 		width: 50%;
+		min-width: 267px;
 	}
 }
 
 @media screen and (max-width: 573px) {
 	.grid-gallery figure {
 		width: 100%;
+		min-width: 267px;
 	}
 }
 
@@ -493,7 +520,6 @@ span.nav-close:before {
 }
 
 .autor-explore{
-	display: none;
 	background-color: white;
 	padding: 10px;
 	height: 52px;
@@ -535,6 +561,15 @@ span.nav-close:before {
 	width: 65% !important;
 	max-width: 980px;
 	min-width: 606px;
+	.unit-post-comments{
+		margin-top: 3px;
+	}
+	.action-angle{
+		margin-right: 18px;
+		.sign-dots-menu {
+	    font-size: 22px;
+		}
+	}
 	.modal-post-content{
 		img, iframe{
 			border-radius: 3px;
@@ -543,6 +578,7 @@ span.nav-close:before {
 	    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
 		}
 		.text-unit-post-comments{
+			font-size: 14px !important;
     	img{
     		box-shadow: none !important;
     	}
@@ -696,5 +732,12 @@ span.nav-close:before {
   border-top-right-radius: 6px;
 }
 .img-show-post-explore{
-	cursor: pointer;
+	img{
+		cursor: pointer;
+	}
+}
+.avatar-explore{
+	width: 35px !important;
+	border-radius: 200px !important;
+	float: left;
 }
