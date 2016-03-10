@@ -1,60 +1,86 @@
-<div class="modal-content modal-content-new-post add-new-product">
-	<div class="modal-body my-setting-modal-body">
-		<div class="container-fluid">
-			<div data-reactid=".8.1.0.0.$=10.1.0.0">
-				<input type="file" style="display:none;">
-				<div class="form-new-post usual-post-contant border-t-radius">
-					<div class="form-wrap-new-post-type">
-						<div class="split-cells-choose-photo">
-							<div class="split-cell">
-								<img src="/images/add_photo_from_device.png">
-								<br>
-								<span>Загрузить фото с компьютера</span>
-							</div>
-							<div class="split-cell">
-								<img src="/images/add_photo_from_internet.png">
-								<br>
-								<span>Добавить фото из Интернета</span>
-							</div>
-						</div>
-					</div>
+<!--<div class='card-butify center-block602 creaet-new-post'>
+	<div class="form-new-post usual-post-contant border-t-radius">
+		<div class="form-wrap-new-post-type">
+			<div class="split-cells-choose-photo">
+				<div class="split-cell">
+					<img src="/images/add_photo_from_device.png">
+					<br>
+					<span>Загрузить фото с компьютера</span>
 				</div>
-			</div>
-			<div>
-				<div>
-					<div>
-						<div class="post-add-text-element">
-							<input type="file" style="display:none;">
-							<div class="post-add-text-element-label">
-								<span class="add-element-label-photo hide-tipt-post-add-element">
-								</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="padding-usual-post-text-create">
-					<div class="usual-post-text-create action-create-element-post">
-						<div placeholder="Если хотите, можете добавить описание" class="text-new-post" contenteditable="true"></div>
-					</div>
-				</div>
-			</div>
-			<div class="post-tags-create clearboth">
-				<div class="selectize-control multi" style="width: 100%;">
-					<div class="selectize-input items not-full">
-						<input type="text" autocomplete="off" tabindex="" placeholder="#Теги" style="width: 37px;">
-					</div>
-					<div class="selectize-dropdown multi" style="display: none; width: 490px; top: 18px; left: 0px;">
-						<div class="selectize-dropdown-content">
-						</div>
-					</div>
-				</div>
-				<div class="tags-sp">
+				<div class="split-cell">
+					<img src="/images/add_photo_from_internet.png">
+					<br>
+					<span>Добавить фото из Интернета</span>
 				</div>
 			</div>
 		</div>
 	</div>
+	<div class="padding-usual-post-text-create">
+		<div class="usual-post-text-create action-create-element-post">
+			<div placeholder="Если хотите, можете добавить описание" class="text-new-post" contenteditable="true"></div>
+		</div>
+	</div>
+	<input class='post-category' placeholder="Категория" type='text' />
+	<input class='post-tags' placeholder="#Теги" type="text" />
 	<div class="modal-footer">
 		<div placeholder="Ссылка на сайт" class="text-new-post create-site-link" contenteditable="true"></div>
+		<button type="button" disabled="" class="btn btn-primary btn-st" data-loading-text="Подождите...">Опубликовать</button>
+	</div>
+	
+</div> -->
+<div class='card-butify creaet-new-post'>
+	<div class="modal-header">
+	  <div class='post-autor'>
+	    <a>
+	      <div class="usual-avatar" style="
+	        background: url('http://studpad.ru/uploads/teacher/avatar/1332/d48a191f01.jpg') no-repeat;
+	        background-size:'cover';">
+	      </div>
+	      <div class='post-autor-info'>
+	        <h4 class="modal-title" id="myModalLabel">Стрельников Борис</h4>
+	        <div>Москва, 10 марта</div>
+	      </div>
+	    </a>
+	  </div>
+	  <input class="text-new-post create-site-link" placeholder='Ссылка на сайт' type='text' />
+	</div>
+	<div class="modal-body">
+	  <div class='modal-post-content'>
+	    <div class="form-new-post usual-post-contant border-t-radius">
+				<div class="form-wrap-new-post-type">
+					<div class="split-cells-choose-photo">
+						<div class="split-cell">
+							<img src="/images/add_photo_from_device.png">
+							<br>
+							<span>Загрузить фото с компьютера</span>
+						</div>
+						<div class="split-cell">
+							<img src="/images/add_photo_from_internet.png">
+							<br>
+							<span>Добавить фото из Интернета</span>
+						</div>
+					</div>
+				</div>
+			</div>
+	    <div class="padding-usual-post-text-create">
+				<div class="usual-post-text-create action-create-element-post">
+					<div placeholder="Если хотите, можете добавить описание" class="text-new-post" contenteditable="true"></div>
+				</div>
+			</div>
+	  </div>
+	  <div class='modal-atributes'>
+	  	<div class='modal-category'>
+	  		<input class='post-category' placeholder="Категория" type='text' />
+	  	</div>
+	    <div class='modal-tags'>
+        <h4>Теги</h4>
+        <input class='post-tags' placeholder="#Теги" type="text" />
+      </div>
+	  </div>
+	</div>
+	<div class='clearboth'>
+	</div>
+	<div class="modal-footer">
 		<button type="button" disabled="" class="btn btn-primary btn-st" data-loading-text="Подождите...">Опубликовать</button>
 	</div>
 </div>

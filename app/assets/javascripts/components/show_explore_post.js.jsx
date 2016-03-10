@@ -108,6 +108,9 @@ var ShowExplorePost = React.createClass({
                                     </li>*/}
                 </ul>
               </div>
+              <div className='modal-category'>
+                <h4><a>Уютный дом</a></h4>
+              </div>
               {tags_block}
             </div>
           </div>

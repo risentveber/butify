@@ -267,6 +267,7 @@
 /* form new post */
 .form-new-post{
 	background-color: #F9F9F9;
+	border-radius: 6px;
 }
 .form-wrap-new-post-type{
 	padding-left: 15px;
@@ -725,6 +726,7 @@
 	background-color: #F5F5F5;
 	font-weight: 300;
 	color: #9A9A9A;
+	border-radius: 6px;
 	div{
 		float: left;
     width: 50%;
@@ -890,6 +892,40 @@
 	left: 50%;
 }
 .create-site-link{
-	float: left;
 	font-weight: 500;
+	padding: 0px 15px;
+	border: none !important;
+	outline: none !important;
+	font-size: 14px !important;
+	margin-top: 8px;
+}
+.creaet-new-post{
+	position: absolute;
+	top: 60px;
+	left: 50%;
+	width: 65% !important;
+	margin-left: -32.5%;
+	.form-wrap-new-post-type{
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
+	.padding-usual-post-text-create{
+		padding: 0px;
+	}
+}
+.post-category{
+	font-weight: 500;
+	padding: 0px;
+	border: none !important;
+	outline: none !important;
+}
+.post-tags{
+	padding: 0px;
+	border: none !important;
+	outline: none !important;
+}
+.modal-category{
+	h4{
+		margin-top: 18px;
+	}
 }
