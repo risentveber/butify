@@ -11,6 +11,16 @@ var ShowExplorePost = React.createClass({
   updateComment(comment_id, text){
     this.props.updateComment(this.props.post.id, comment_id, text);
   },
+  removeClick(){
+    $.ajax({
+      url: this.props.post.url,
+      type: 'DELETE',
+      success: function () {
+        window.location = window.location;
+      }
+    });
+    CI('PostBox::removePost', id);
+  },
   render(){
     if (!this.props.post) return null;
     console.log(this.props.post)
@@ -62,10 +72,10 @@ var ShowExplorePost = React.createClass({
                   <span className="sign-dots-menu" data-toggle="dropdown">•••</span>
                   <ul className="dropdown-menu blue-background-dropdown-menu" role="menu">
                     <li>
-                      <a>Редактировать</a>
+                      <a href={this.props.post.edit_url}>Редактировать</a>
                     </li>
                     <li>
-                      <a>Удалить</a>
+                      <a onClick={this.removeClick}>Удалить</a>
                     </li>
                     <li>
                       <a>Пожаловаться</a>

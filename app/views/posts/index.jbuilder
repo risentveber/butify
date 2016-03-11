@@ -8,6 +8,7 @@ json.array! @posts do |p|
   json.visible p.visible
   json.recommended p.recommended
   json.url post_path(p)
+  json.edit_url edit_post_path(p)
   json.text p.text
   json.youtube_id p.youtube_id
   json.type p.post_type

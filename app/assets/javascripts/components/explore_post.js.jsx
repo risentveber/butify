@@ -9,43 +9,20 @@ const ExplorePost = React.createClass({
   render(){
     post = this.props.post;
     var image, link_rendered;
-    switch (this.props.post.type) {
-      case PostTypes.link:
-        if (post.linkdata.image_url)
-          image = <img src={post.linkdata.image_url}/>
-        link_rendered = (
-          <p className='link'>
-            <img src="/images/link.png"/>
-            <a
-              target='blank'
-              href={post.linkdata.url}>
-              {post.linkdata.domain}
-            </a>
-          </p>
-        );
-        break;
-      case PostTypes.photo:
-        var photo_count = post.photos.length;
-        var images_count = $.grep(post.text_elements, function(e){return e.type == ElementTypes.image});
-        images_count = images_count.length;
-        var all_images_count;
-        if (images_count + photo_count > 1)
-          all_images_count = <span className="explore-num-photo">{images_count + photo_count}</span>
-        image = (
-          <div className='img-show-post-explore'>
-            <img onClick={this.onShowClick} src={post.photos[0] && post.photos[0].url}/>
-            {all_images_count}
-          </div>
-        );
-        break;
-      case PostTypes.video:
-        image = (
-          <iframe width='100%' height='100%'
-            src={"http://www.youtube.com/embed/" + post.youtube_id}>
-          </iframe>
-        );
-        break;
-    }
+
+    var photo_count = post.photos.length;
+    var images_count = $.grep(post.text_elements, function(e){return e.type == ElementTypes.image});
+    images_count = images_count.length;
+    var all_images_count;
+    if (images_count + photo_count > 1)
+      all_images_count = <span className="explore-num-photo">{images_count + photo_count}</span>
+    image = (
+      <div className='img-show-post-explore'>
+        <img onClick={this.onShowClick} src={post.photos[0] && post.photos[0].url}/>
+        {all_images_count}
+      </div>
+    );
+
     var rendered_likes;
     if (post.current_like) {
       rendered_likes = (
@@ -74,17 +51,10 @@ const ExplorePost = React.createClass({
         </span>
       );
     }
-    var text = $.grep(post.text_elements, function(e){return e.type == ElementTypes.text});
-    text = text[0] ? text[0].text : '';
-    var text = sanitizeHtml(text, {allowedTags: ['div', 'br']});
+    var text = sanitizeHtml(post.text, {allowedTags: ['div', 'br']});
 
     var tags = post.tags.map(function(name, i){return <a key={i} href={'/explore?tag_name=' + name}>{'#'+name}</a>})
-    // if (window.currentUser && post.author.url != window.currentUser.url)
-    //   var follower = (
-    //     <div className='follow'>
-    //       <a href={post.author.url+'/follow'} data-method='post'>Читать</a>
-    //     </div>
-    //   );
+
     if (window.currentUser && window.currentUser.admin){
       var admin_block = (
         <CategorySelect
@@ -116,6 +86,7 @@ const ExplorePost = React.createClass({
 
               </div>
             </div>
+            {text}
             {admin_block}
             <footer className='border-b-radius'>
               <div className='delicious-like'>
@@ -123,7 +94,7 @@ const ExplorePost = React.createClass({
                   <img className='avatar-explore' src={post.author.avatar}/>
                   <span>
                     <a href={post.author.url}>{post.author.name}</a>
-                    <p>homedepot.ru</p>
+                    <p>{post.sitelink}</p>
                   </span>
                 </div>
                 <div className='action-of-post'>

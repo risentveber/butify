@@ -21,7 +21,6 @@ var PhotosBox = React.createClass({
       success: function(data) {
         this.setState({url_text: '', show_input: false});
         this.props.addPhoto(data);
-        this.props.setFocus();
         CI('PhotosBox::Uploaded', data);
       }.bind(this),
       error: function (data) {
@@ -55,7 +54,6 @@ var PhotosBox = React.createClass({
         dataType: 'json',
         success: function(data) {
           this.props.addPhoto(data);
-          this.props.setFocus();
           this.setState({show_input: false, url_text: ''});
           CI('PhotosBox::Uploaded', data);
         }.bind(this),

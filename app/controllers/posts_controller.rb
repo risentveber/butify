@@ -9,24 +9,6 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.create post_params
     @post.bind_tags(params[:post][:tags])
-    @post.attachment_ids = params[:post][:attachment_ids]
-    params[:post][:text_elements].each do |position, element|
-      case element['type']
-      when 'text'
-        @post.text_elements.create text_type: 'text',
-          text: element[:text],
-          position: position
-      when 'image'
-        @post.text_elements.create text_type: 'image',
-          image: Attachment.find(element['data']['id']).file,
-          position: position
-      when 'divider'
-        @post.text_elements.create text_type: 'divider',
-          position: position
-      else
-        raise 'Undefined text type'
-      end
-    end
 
     render nothing: true
   end
@@ -77,41 +59,9 @@ class PostsController < ApplicationController
   end
 
   def update
+    #byebug
     @post.update_attributes post_params
     @post.bind_tags(params[:post][:tags])
-    @post.attachment_ids = params[:post][:attachment_ids]
-    element_ids = params[:post][:text_elements].values.map{|e| e[:id]}.compact
-    @post.text_element_ids = element_ids
-    params[:post][:text_elements].each do |position, element|
-      case element['type']
-      when 'text'
-        if element[:id]
-          @post.text_elements.find(element[:id]).update_attributes text_type: 'text',
-            text: element[:text],
-            position: position
-        else
-          @post.text_elements.create text_type: 'text',
-            text: element[:text],
-            position: position
-        end
-      when 'image'
-        if element[:id]
-          @post.text_elements.find(element[:id]).update_attributes position: position
-        else
-          @post.text_elements.create text_type: 'image',
-            image: Attachment.find(element['data']['id']).file,
-            position: position
-        end
-      when 'divider'
-        if element[:id]
-          @post.text_elements.find(element[:id]).update_attributes position: position
-        else
-          @post.text_elements.create text_type: 'divider', position: position
-        end
-      else
-        raise 'Undefined text type'
-      end
-    end
 
     render nothing: true
   end
@@ -124,10 +74,11 @@ class PostsController < ApplicationController
   private
     def post_params
       params.require(:post).permit(
-        :title, :post_type, :group_id, :city_id,
-        :youtube_id, :attachment_ids, :sitelink,
+        :post_type, :text, :city_id,
+        :sitelink,
+        category_ids: [],
         photo_ids: [],
-        linkdata: [:title, :domain, :description, :url, :image_url])
+      )
     end
 
     def find_post
