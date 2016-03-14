@@ -25,6 +25,9 @@ json.array! @posts do |p|
   json.categories do
     json.array! p.categories.map(&:id)
   end
+  json.category_names do
+    json.array! p.categories.map(&:name)
+  end
 
   json.likes p.cached_votes_total
   json.like_path like_post_path(p)

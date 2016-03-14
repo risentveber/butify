@@ -86,7 +86,7 @@ var StaticPostForm = React.createClass({
   render: function() {
     console.log(this.state.time)
     var button_disabled
-    if (this.state.post.photos.length == 0) {
+    if (this.state.post.photos.length == 0 || this.state.post.category_ids == 0) {
       button_disabled =  true;
     } else {
       button_disabled = false;

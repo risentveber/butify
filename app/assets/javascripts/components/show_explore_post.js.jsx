@@ -26,6 +26,9 @@ var ShowExplorePost = React.createClass({
     console.log(this.props.post)
     var post = this.props.post;
     var author = post.author;
+    var rendered_categories = this.props.post.category_names.map(function(name, i){
+      return (<h4 key={i}><a key={i} href={'/explore?category_name=' + name}>{name}</a></h4>);
+    });
     var tags = this.props.post.tags.map(function(name, i){
       return <a key={i} href={'/explore?tag_name=' + name}>{'#'+name}</a>
     });
@@ -119,7 +122,7 @@ var ShowExplorePost = React.createClass({
                 </ul>
               </div>
               <div className='modal-category'>
-                <h4><a>Уютный дом</a></h4>
+                {rendered_categories}
               </div>
               {tags_block}
             </div>
