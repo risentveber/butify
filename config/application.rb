@@ -20,11 +20,11 @@ module Studpad
   config.time_zone = 'Europe/Moscow'
   config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml')]
   #EMAILING
-  mail_config = YAML.load_file("#{Rails.root}/config/mailer.yml")[Rails.env]
+
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
-          api_key: mail_config['api_key'],
-          domain: mail_config['domain']
+          api_key: Rails.application.secrets.api_key,
+          domain: Rails.application.secrets.domain
   }
 
   config.active_record.raise_in_transactional_callbacks = true

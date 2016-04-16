@@ -103,7 +103,7 @@ const PostContentView = React.createClass({
         photos = photos.map(function (p, index) {
           return (
             <div key={index} className="usual-post-photo action-create-element-post">
-              <img src={p.url} />
+              <img className='img-usual-post-photo show-usual-post-photo' src={p.url} />
             </div>
           );
         });

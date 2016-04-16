@@ -86,7 +86,6 @@ const ExplorePost = React.createClass({
 
               </div>
             </div>
-            {text}
             {admin_block}
             <footer className='border-b-radius'>
               <div className='delicious-like'>

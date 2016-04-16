@@ -4,7 +4,7 @@ set :branch, "master"
 # This is used in the Nginx VirtualHost to specify which domains
 # the app should appear on. If you don't yet have DNS setup, you'll
 # need to create entries in your local Hosts file for testing.
-set :server_name, "studpad.ru www.studpad.ru"
+set :server_name, "www.butify.ru butify.ru"
 
 set :mailgun_api_key, ask('Enter api key for mailer:', nil)
 set :mailgun_domain_name, ask('Enter domain name for mailer:', nil)
@@ -13,7 +13,7 @@ set :mailgun_domain_name, ask('Enter domain name for mailer:', nil)
 # at filepaths
 set :full_app_name, "#{fetch(:application)}_#{fetch(:stage)}"
 
-server '188.127.237.111', user: 'deploy', roles: %w{web app db}, primary: true
+server '95.213.203.213', user: 'deploy', roles: %w{web app db}, primary: true
 
 set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
 

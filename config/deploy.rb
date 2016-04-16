@@ -1,9 +1,9 @@
-set :application, 'studpad'
+set :application, 'butify'
 set :deploy_user, 'deploy'
 
 # setup repo details
 set :scm, :git
-set :repo_url, 'git@github.com:studpad/studpad.git'
+set :repo_url, 'git@github.com:studpad/butify.git'
 
 # setup rbenv.
 set :rbenv_type, :system
@@ -15,7 +15,7 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :keep_releases, 5
 
 # files we want symlinking to specific entries in shared
-set :linked_files, %w{config/database.yml config/mailer.yml config/secrets.yml}
+set :linked_files, %w{config/database.yml}
 
 # dirs we want symlinking to shared
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
@@ -28,10 +28,8 @@ set :bundle_binstubs, -> { shared_path.join('bin') } #for get rails consle worki
 # see documentation in lib/capistrano/tasks/setup_config.cap
 # for details of operations
 set(:config_files, %w(
-  mailer.yml
-  secrets.yml
   nginx.conf
-  database.yml
+  database.example.yml
   log_rotation
   monit
   unicorn.rb
@@ -54,7 +52,6 @@ set(:symlinks, [
   {
     source: "nginx.conf",
     link: "/etc/nginx/sites-enabled/{{full_app_name}}"
-    #link: "/etc/nginx/nginx.conf"
   },
   {
     source: "unicorn_init.sh",
@@ -81,7 +78,7 @@ namespace :deploy do
   # only allow a deploy with passing tests to deployed
   before :deploy, "deploy:run_tests"
   # compile assets locally then rsync
-  #after 'deploy:symlink:shared', 'deploy:compile_assets_locally'
+  after 'deploy:symlink:shared', 'deploy:compile_assets_locally'
   after :finishing, 'deploy:cleanup'
 
   # remove the default nginx configuration as it will tend

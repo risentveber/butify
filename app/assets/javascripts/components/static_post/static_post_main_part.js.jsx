@@ -13,7 +13,7 @@ var StaticPostMainPart = React.createClass({
     return (
       <div className="modal-body">
         <div className='modal-post-content'>
-          <div className="form-new-post usual-post-contant border-t-radius">
+          <div className="form-edit-post usual-post-contant border-t-radius">
             <PhotosBox
               addPhoto={this.props.addPhoto}
               removePhoto={this.props.removePhoto}

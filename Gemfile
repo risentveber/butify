@@ -24,7 +24,7 @@ gem 'mailgun_rails'
 gem 'pundit'
 gem 'better_errors'
 gem 'react-rails'
-gem 'airbrake'
+gem 'airbrake', '~> 4.3.4'
 gem 'nokogiri'
 gem 'activeadmin', github: 'activeadmin'
 gem 'acts_as_votable'
@@ -49,6 +49,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'capistrano'
   gem 'capistrano-rails-console'
   gem 'capistrano3-unicorn'
   gem 'capistrano-rbenv'

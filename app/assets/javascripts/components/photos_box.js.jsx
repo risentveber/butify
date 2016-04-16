@@ -77,7 +77,7 @@ var PhotosBox = React.createClass({
             onClick={this.props.removePhoto.bind(this, p.id)}
             className='remove-angle photo-remove-angle'
             src = '/images/close.png' />
-          <img src={p.url} />
+          <img className='img-usual-post-photo' src={p.url} />
         </div>
       );
     }.bind(this));

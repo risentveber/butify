@@ -51,3 +51,35 @@
 		}
 	}
 }
+.current-edit-profile-avatar_img{
+	height: 228px;
+	border-radius: 6px;
+}
+.edit-profile{
+	margin-bottom: 20px;
+}
+.edit-profile-name{
+	input{
+		font-weight: 500;
+	}
+}
+.edit-profile-city{
+	.item{
+		font-size: 15px;
+		font-weight: 400;
+		color: #777777;
+	}
+}
+.input-edit-insta_id, .input-edit-vk_id {
+    display: inline !important;
+}
+.input-edit-vk_id {
+  width: 83.9% !important;
+}
+.input-edit-insta_id{
+	width: 69.9% !important;
+}
+.edit-profile-footer{
+	margin-bottom: 20px !important;
+  float: right !important;
+}
