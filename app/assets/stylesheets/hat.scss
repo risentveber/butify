@@ -1,12 +1,90 @@
 
-.hat-studpad{
-  background: rgba(47,47,47,0.98);
-  height: 48px;
-  border-bottom: 1px solid rgb(226, 226, 226);
+.hat-site{
+  background: rgba(255, 255, 255, 0.98);
+  height: 65px;
+  box-shadow: 0 0 1px rgba(0,0,0,.15);
   width: 100%;
   z-index: 900;
   position: fixed;
   top: 0px;
+  .inner-hat{
+    max-width: 1190px;
+    height: 100%;
+    padding: 0 10px;
+    position: relative;
+    margin: 0 auto;
+    .metabar-block-left{
+      float: left;
+      height: 100%;
+      img{
+        height: 41px;
+        margin-top: 12px; 
+      }
+    }
+    .metabar-block-right{
+      float: right;
+      height: 100%;
+      .profile{
+        height: 100%;
+        padding: 15px 0;
+        float: right;
+        div{
+          float: right;
+          margin-left: 16px;
+          cursor: pointer;
+          .menu-icon{
+            width: 24px;
+            position: relative;
+            top: 3px;
+          }
+          .profile-icon{
+            width: 34px;
+            border-radius: 200px;
+            cursor: pointer;
+          }
+          .dropdown-menu{
+            left: 100%;
+            margin-left: -250px;
+            li{
+              padding-top: 3px;
+              padding-bottom: 3px;
+              padding-left: 5px;
+              padding-right: 5px;
+              cursor: pointer;
+              border-radius: 2px;
+              font-size: 13px;
+              color: #516574;
+              &:hover{
+                background-color: #F5F5F5;
+              }
+              .divider{
+                padding-top: 0px !important;
+                padding-bottom: 0px !important;
+              }
+              img{
+                width: 20px;
+                position: relative;
+                top: -2px;
+              }
+              .badge{
+                background-color: transparent;
+                color: #FF6E1B;
+              }
+            }
+          }
+          .dropdown-menu > li > a{
+            font-size: inherit !important;
+            &:hover{
+              background-color: #F5F5F5 !important;
+            }
+          }
+          .dropdown-menu{
+            width: 250px !important;
+          }
+        }
+      }
+    }
+  }
   .contant-wrap{
     width: 90%;
     margin: auto;
@@ -38,67 +116,7 @@
         }
       }
     }
-    .profile{
-      width: 30%;
-      .menu-wrap{
-        width: 100%;
-        float: left;
-        margin-left: 80px;
-      }
-      div{
-        float: left;
-        margin-right: 16px;
-        cursor: pointer;
-        .menu-icon{
-          width: 24px;
-          position: relative;
-          top: 3px;
-        }
-        .profile-icon{
-          width: 34px;
-          border-radius: 200px;
-          cursor: pointer;
-        }
-        .dropdown-menu{
-          left: 80%;
-          li{
-            padding-top: 3px;
-            padding-bottom: 3px;
-            padding-left: 5px;
-            padding-right: 5px;
-            cursor: pointer;
-            border-radius: 2px;
-            font-size: 13px;
-            color: #516574;
-            &:hover{
-              background-color: #F5F5F5;
-            }
-            .divider{
-              padding-top: 0px !important;
-              padding-bottom: 0px !important;
-            }
-            img{
-              width: 20px;
-              position: relative;
-              top: -2px;
-            }
-            .badge{
-              background-color: transparent;
-              color: #317784;
-            }
-          }
-        }
-        .dropdown-menu > li > a{
-          font-size: inherit !important;
-          &:hover{
-            background-color: #F5F5F5 !important;
-          }
-        }
-        .dropdown-menu{
-          width: 250px !important;
-        }
-      }
-    }
+    
   } 
   .contant-wrap > div{
     float: left;
@@ -138,9 +156,9 @@
 }
 .amount-of-notices{
   /*background-color: #1FB6B5;*/
-  background-color: rgba(35, 110, 124, 0.9);
+  background-color: rgba(3, 171, 108, 0.9);
   top: 15px;
-  left: -27px;
+  left: 50px;
 }
 
 .entire-on-hat{
@@ -158,7 +176,7 @@
     }
 }
 
-@media screen and (max-width: 788px) {
+/*@media screen and (max-width: 788px) {
   .hat-studpad{
     .contant-wrap{
       .logo{
@@ -187,7 +205,7 @@
     top: 14px;
     left: -26px;
   }
-}
+} */
 
 .autocomplete-suggestions strong{
   color: #23527c !important;
