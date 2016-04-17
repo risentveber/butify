@@ -1,5 +1,5 @@
 <div class="homepage-hero-module">
-    <div class="welcome-yet" style = 'background: url(/images/bkg-m2.png); background-size: cover; background-repeat: no-repeat; background-position: center;'>
+    <div class="welcome-yet" style = 'background: url(/images/mosaic.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;'>
         <!-- <video autoplay muted class="fillWidth">
             <source src="<%= image_path "Marguerite.mp4" %>" type="video/mp4"/>
         </video> -->
@@ -26,7 +26,7 @@
             </div>
         </div>
     </div>
-    <div class = 'conclusion'>
+    <div class = 'conclusion' style = 'background: url(/images/mosaic_orange.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;'>
         <div class = 'content-conclusion'>
             <h1>Как видите, все очень просто</h1>
             <p>Теперь вы знаете, как это работает. Добро пожаловать на борт!</p>
@@ -43,3 +43,103 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    /*$(window).scroll(function() {
+        $('#introduce_img').each(function(){
+        var imagePos = $(this).offset().top;
+
+        var topOfWindow = $(window).scrollTop();
+            if (imagePos < topOfWindow+400) {
+                $(this).addClass("slideUp");
+            }
+        });
+        $('#about-UM_img').each(function(){
+        var imagePos = $(this).offset().top;
+
+        var topOfWindow = $(window).scrollTop();
+            if (imagePos < topOfWindow+400) {
+                $(this).addClass("slideUp");
+            }
+        });
+        $('#about-HW_img').each(function(){
+        var imagePos = $(this).offset().top;
+
+        var topOfWindow = $(window).scrollTop();
+            if (imagePos < topOfWindow+400) {
+                $(this).addClass("slideUp");
+            }
+        });
+        $('#conclusion_img').each(function(){
+        var imagePos = $(this).offset().top;
+
+        var topOfWindow = $(window).scrollTop();
+            if (imagePos < topOfWindow+400) {
+                $(this).addClass("slideUp");
+            }
+        });
+    }); */
+</script>
+
+<script>
+    $( document ).ready(function() {
+        $('#hat-studpad').hide();
+        scaleVideoContainer();
+
+        $(window).on('resize', function() {
+            scaleVideoContainer();
+        });
+
+    });
+
+    $('.hat-studpad').css('background', 'rgba(255, 255, 255, 0.98)');
+    $('.hat-logo-studpa-a').css('color', '#195B67');
+
+    function scaleVideoContainer() {
+
+        var height = $(window).height() + 5;
+        var unitHeight = parseInt(height) + 'px';
+        $('.homepage-hero-module').css('height',unitHeight);
+
+
+    }
+
+    function initBannerVideoSize(element){
+
+        $(element).each(function(){
+            $(this).data('height', $(this).height());
+            $(this).data('width', $(this).width());
+        });
+
+        scaleBannerVideoSize(element);
+
+    }
+
+    function scaleBannerVideoSize(element){
+
+        var windowWidth = $(window).width(),
+        windowHeight = $(window).height() + 5,
+        videoWidth,
+        videoHeight;
+
+        console.log(windowHeight);
+
+        $(element).each(function(){
+            var videoAspectRatio = $(this).data('height')/$(this).data('width');
+
+            $(this).width(windowWidth);
+
+            if(windowWidth < 1000){
+                videoHeight = windowHeight;
+                videoWidth = videoHeight / videoAspectRatio;
+                $(this).css({'margin-top' : 0, 'margin-left' : -(videoWidth - windowWidth) / 2 + 'px'});
+
+                $(this).width(videoWidth).height(videoHeight);
+            }
+
+            $('.homepage-hero-module .video-container video').addClass('animated');
+
+        });
+    }
+</script>

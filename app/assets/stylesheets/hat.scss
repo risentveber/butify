@@ -148,6 +148,12 @@
       &:hover{
         color: #3680be;
       }
+      a{
+        color: #383838 !important;
+        &:hover{
+          color: #00ab6b !important;
+        }
+      }
     }
   }
 }

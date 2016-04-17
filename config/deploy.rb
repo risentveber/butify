@@ -1,4 +1,4 @@
-set :application, 'butify'
+set :application, 'trenly'
 set :deploy_user, 'deploy'
 
 # setup repo details
