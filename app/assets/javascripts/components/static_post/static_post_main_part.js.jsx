@@ -10,6 +10,21 @@ var StaticPostMainPart = React.createClass({
     })
   },
   render: function() {
+    //console.log(this.props);
+    if (this.props.discountIsShown){
+      var discountPriceRendered = (
+        <h4>Цена со скидкой:
+          <span className='sale-price'>
+            <input
+              value={this.props.post.discount_price}
+              min='0'
+              onChange={this.props.onChangeDiscountPrice}
+              type='number'
+              lassName='input-modal-price' />
+          ₽</span>
+        </h4>
+      );
+    }
     return (
       <div className="modal-body">
         <div className='modal-post-content'>
@@ -32,16 +47,25 @@ var StaticPostMainPart = React.createClass({
         <div className='modal-atributes'>
           <div className='modal-site'>
             <input
-            value={this.props.sitelink}
-            onChange={this.props.onChangeSitelink}
-            className="text-new-post create-site-link"
-            placeholder='Ссылка на сайт'
-            type='text' />
+              value={this.props.post.sitelink}
+              onChange={this.props.onChangeSitelink}
+              className="text-new-post create-site-link"
+              placeholder='Ссылка на сайт'
+              type='text' />
           </div>
           <div className='modal-price'>
-            <h4>Цена: <input type='text' className='input-modal-price' /> ₽</h4>
-            <a>Добавить скидку</a>
-            <h4>Цена со скидкой: <span className='sale-price'><input type='text' className='input-modal-price' /> ₽</span></h4>
+            <h4>
+              Цена:
+              <input
+                type='number'
+                min='0'
+                value={this.props.post.price}
+                onChange={this.props.onChangePrice}
+                className='input-modal-price' />
+              ₽
+              </h4>
+            <a onClick={this.props.showDiscount}>Добавить скидку</a>
+            {discountPriceRendered}
           </div>
           <div className='modal-category'>
             <select

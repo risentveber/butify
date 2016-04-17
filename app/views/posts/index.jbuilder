@@ -7,6 +7,8 @@ json.array! @posts do |p|
   json.id p.id
   json.visible p.visible
   json.recommended p.recommended
+  json.price p.price
+  json.discount_price p.discount_price
   json.url post_path(p)
   json.edit_url edit_post_path(p)
   json.text p.text

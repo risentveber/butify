@@ -20,6 +20,7 @@ var StaticPostForm = React.createClass({
           tags:[],
           photos: [],
         },
+        discountIsShown: false,
         disabled: false
       };
   },
@@ -45,15 +46,22 @@ var StaticPostForm = React.createClass({
       }
     });
   },
-  onChangeSitelink(event){
+  changeUniversal(propertyName, event){
     var post = this.state.post;
-    post.sitelink = event.target.value;
+    console.log(propertyName, post[propertyName] = event.target.value);
     this.setState({post: post});
   },
+  onChangeSitelink(event){
+    this.changeUniversal('sitelink', event);
+  },
   onChangeText(event){
-    var post = this.state.post;
-    post.text = event.target.value;
-    this.setState({post: post});
+    this.changeUniversal('text', event);
+  },
+  onChangePrice(event){
+    this.changeUniversal('price', event);
+  },
+  onChangeDiscountPrice(event){
+    this.changeUniversal('discount_price', event);
   },
   setTags(values){
     post = this.state.post;
@@ -76,24 +84,30 @@ var StaticPostForm = React.createClass({
       post: post
     });
   },
-  changeCategoryIds(ids){
+  onChangeCategoryIds(ids){
     var post = this.state.post;
     post.category_ids = ids;
     this.setState({
       post: post
     });
   },
+  contentIsInvalid(){
+    var post = this.state.post;
+    return (
+      post.photos.length == 0 ||//не добавлено фото
+      post.category_ids && post.category_ids.length == 0 || !post.category_ids || // не указана ни одна из категорий
+      this.state.discountIsShown && !post.discount_price || //не заполнена скидка
+      post.tags && post.tags.length == 0 || !post.tags || //не выбраны теги
+      !trim(post.text) || //не заполнено описание
+      !trim(post.sitelink) //не заполнена ссылка
+    )
+  },
+  showDiscount(){
+    this.setState({
+      discountIsShown: true
+    });
+  },
   render: function() {
-    console.log(this.state.time)
-    var button_disabled;
-    console.log('Количество категорий', this.state.post.category_ids)//.length )
-    if (this.state.post.photos.length == 0 ||
-     this.state.post.category_ids && this.state.post.category_ids.length == 0
-     || !this.state.post.category_ids) {
-      button_disabled =  true;
-    } else {
-      button_disabled = false;
-    };
     return (
       <div className='card-butify creaet-new-post'>
         <StaticPostAuthor
@@ -103,17 +117,22 @@ var StaticPostForm = React.createClass({
           author={this.state.post.author}
           time={this.state.post.time}/>
         <StaticPostMainPart
-          changeCategoryIds={this.changeCategoryIds}
+          changeCategoryIds={this.onChangeCategoryIds}
+          onChangePrice={this.onChangePrice}
+          onChangeSitelink={this.onChangeSitelink}
+          onChangeDiscountPrice={this.onChangeDiscountPrice}
+          showDiscount={this.showDiscount}
           addPhoto={this.addPhoto}
           removePhoto={this.removePhoto}
           setTags={this.setTags}
           onChangeText={this.onChangeText}
-          post={this.state.post}/>
+          post={this.state.post}
+          discountIsShown={this.state.discountIsShown || this.state.post.discount_price}/>
         <div className='clearboth' />
         <div className="modal-footer">
           <button
             type="button"
-            disabled={button_disabled || this.state.disabled}
+            disabled={this.contentIsInvalid() || this.state.disabled}
             onClick={this.submitForm}
             className="btn btn-primary btn-st">
             Опубликовать

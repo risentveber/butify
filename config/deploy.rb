@@ -15,7 +15,7 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :keep_releases, 5
 
 # files we want symlinking to specific entries in shared
-set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml config/secrets.yml}
 
 # dirs we want symlinking to shared
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
@@ -77,24 +77,13 @@ namespace :deploy do
   before :deploy, "deploy:check_revision"
   # only allow a deploy with passing tests to deployed
   before :deploy, "deploy:run_tests"
-  # compile assets locally then rsync
-  after 'deploy:symlink:shared', 'deploy:compile_assets_locally'
-  after :finishing, 'deploy:cleanup'
 
   # remove the default nginx configuration as it will tend
   # to conflict with our configs.
   before 'deploy:setup_config', 'nginx:remove_default_vhost'
 
-  # reload nginx to it will pick up any modified vhosts from
-  # setup_config
   after 'deploy:setup_config', 'nginx:reload'
 
-  # Restart monit so it will pick up any monit configurations
-  # we've added
-  after 'deploy:setup_config', 'monit:restart'
-
-  # As of Capistrano 3.1, the `deploy:restart` task is not called
-  # automatically.
   after 'deploy:publishing', 'deploy:restart'
 end
 
