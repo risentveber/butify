@@ -92,8 +92,16 @@ var ShowExplorePost = React.createClass({
             <div className='modal-post-content'>
               <PostContentView
                 post={post}/>
-              <PostTextView
-                text_elements={post.text_elements}/>
+              <div className='usual-post-contant'>
+                <div className = 'usual-post-text action-create-element-post'>
+                  <div
+                    className = 'usual-post-text-text'
+                    dangerouslySetInnerHTML={{
+                    __html: sanitizeHtml(post.text, {allowedTags: ['div', 'br']})
+                    }}
+                  />
+                </div>
+              </div>
 
               <PostCommentBox
                 hide_like={true}
