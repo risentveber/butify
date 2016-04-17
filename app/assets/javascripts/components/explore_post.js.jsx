@@ -63,7 +63,7 @@ const ExplorePost = React.createClass({
           url={post.url}
           values={post.categories}/>
       );
-      var post_id = this.props.post.id;
+      var post_id = post.id;
     }
     if(post.linkdata.description)
       var title_link = <h3 className='title'>{post.linkdata.description}</h3>
@@ -72,12 +72,8 @@ const ExplorePost = React.createClass({
     if(text)
       var text_rendered = <p className='text' dangerouslySetInnerHTML={{__html: text}}></p>
 
-    var price_block = (
-      <div className='price-explore-post'>
-        <h5>Цена: <span className='old-price'>1190 ₽</span> <span className='sale-price'>990 ₽</span></h5>
-        <h5><span className='sale-value'>Скидка 50%</span></h5>
-      </div>
-    );
+
+
     return(
         <figure>
           <div className='wrap-figure-explore-post'>
@@ -87,14 +83,11 @@ const ExplorePost = React.createClass({
             <div className='main-contain'>
               {link_rendered}
               {title_link}
-              {/*text_rendered*/}
-              {/*tags_rendered*/}
-              <div>
-
-              </div>
             </div>
             {admin_block}
-            {price_block}
+            <div className='price-explore-post'>
+              <DiscountBlock price={post.price} discount_price={post.discount_price}/>
+            </div>
             <footer className='border-b-radius'>
               <div className='delicious-like'>
                 <div className='show-post'>
@@ -102,7 +95,7 @@ const ExplorePost = React.createClass({
                   <span>
                     <a href={post.author.url}>{post.author.name}</a>
                     <p>
-                      <a>{post.sitelink}</a>
+                      <a href={post.sitelink}>{getLocation(post.sitelink).hostname}</a>
                     </p>
                   </span>
                 </div>

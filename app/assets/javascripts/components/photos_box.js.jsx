@@ -66,7 +66,7 @@ var PhotosBox = React.createClass({
   },
   componentDidUpdate: function() {
     var node = this.refs.input;
-    if (node) $(node.getDOMNode()).focus();
+    if (node) $(node).focus();
   },
   render: function(){
     photos = this.props.photos;

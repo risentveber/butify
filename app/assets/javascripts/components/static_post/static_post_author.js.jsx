@@ -6,7 +6,6 @@ var StaticPostAuthor = React.createClass({
     } else {
       description = this.props.time
     };
-    console.log(this.props);
     return (
       <div className="modal-header">
         <div className='post-autor'>

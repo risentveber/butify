@@ -1,6 +1,6 @@
 var ContentEditableDiv = React.createClass({
   shouldComponentUpdate: function(nextProps){
-    return nextProps.html !== this.getDOMNode().innerHTML;
+    return nextProps.html !== this.innerHTML;
   },
   componentDidMount: function() {
     // var node = this.refs.textdiv.getDOMNode();

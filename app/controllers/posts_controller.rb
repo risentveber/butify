@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    #byebug
     @post = current_user.posts.create post_params
     @post.bind_tags(params[:post][:tags])
 
@@ -59,7 +60,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    #byebug
+    # byebug
     @post.update_attributes post_params
     @post.bind_tags(params[:post][:tags])
 
@@ -75,7 +76,7 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(
         :post_type, :text, :city_id,
-        :sitelink,
+        :sitelink, :price, :discount_price,
         category_ids: [],
         photo_ids: [],
       )
