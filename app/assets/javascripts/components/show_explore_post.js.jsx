@@ -27,7 +27,7 @@ var ShowExplorePost = React.createClass({
     var post = this.props.post;
     var author = post.author;
     var rendered_categories = this.props.post.category_names.map(function(name, i){
-      return (<h4 key={i}><a key={i} href={'/explore?category_name=' + name}>{name}</a></h4>);
+      return (<h5 key={i}><a key={i} href={'/explore?category_name=' + name}>{name}</a></h5>);
     });
     var tags = this.props.post.tags.map(function(name, i){
       return <a key={i} href={'/explore?tag_name=' + name}>{'#'+name}</a>
@@ -35,7 +35,7 @@ var ShowExplorePost = React.createClass({
     if (tags.length > 0)
       var tags_block = (
         <div className='modal-tags'>
-          <h4>Теги</h4>
+          <h5>Теги</h5>
           <p className="tags-sp">
             {tags}
           </p>
@@ -67,7 +67,7 @@ var ShowExplorePost = React.createClass({
                 </div>
                 <div className='post-autor-info'>
                   <h4 className="modal-title" id="myModalLabel">{author.name}</h4>
-                  <div>{post.city_name} {post.time}</div>
+                  <div>{post.city_name}, {post.time}</div>
                 </div>
               </a>
               <div className="action-angle post-action">
@@ -111,17 +111,23 @@ var ShowExplorePost = React.createClass({
               />
             </div>
             <div className='modal-atributes'>
-              <div className='likes-and-views'>
+              <div className='likes-and-views likes-and-price'>
                 <ul>
                   <li className='likes' onClick={this.likeClick}>
-                    <img src={like_image_path} className={classname_img}/> <span>{post.likes || ''}</span>
+                    <img src={like_image_path} className={classname_img}/> <span className='num-likes'>{post.likes || ''}</span>
+                  </li>
+                  <li>
+                    <h4>Цена: <span className='old-price'>1190 ₽</span> <span className='sale-price'>990 ₽</span></h4>
+                    <h5><span className='sale-value'>Скидка 50%</span></h5>
                   </li>
                   {/*<li className='views'>
                                       <img src='/images/views.png' /> <span>74563</span>
                                     </li>*/}
                 </ul>
               </div>
-              <div className='modal-category'>
+              <div className='clearboth'>
+              </div>
+              <div className='modal-categories'>
                 {rendered_categories}
               </div>
               {tags_block}

@@ -4,7 +4,7 @@ set :branch, "master"
 # This is used in the Nginx VirtualHost to specify which domains
 # the app should appear on. If you don't yet have DNS setup, you'll
 # need to create entries in your local Hosts file for testing.
-set :server_name, "www.butify.ru butify.ru"
+set :server_name, "www.trenly.ru trenly.ru"
 
 set :mailgun_api_key, ask('Enter api key for mailer:', nil)
 set :mailgun_domain_name, ask('Enter domain name for mailer:', nil)

@@ -11,10 +11,10 @@
 
 /* General style */
 .title-explore{
-	text-align: center;
-	color: #38707D;
-	font-size: 30px;
-	margin-top: 60px;
+	color: #00ab6b;
+  font-size: 30px;
+  margin-top: 95px;
+  text-align: center;
 }
 .city-explore{
 	text-align: center;
@@ -29,7 +29,7 @@
     	background-color: transparent;
     	input{
     		font-size: 16px !important;
-    		color: #38707D !important;
+    		color: #00ab6b !important;
     	}
     }
 	}
@@ -213,12 +213,18 @@
 			}
 			span{
 				position: relative;
-				left: 10px;
+				left: 6px;
+				font-weight: 200;
 			}
 			p{
-				font-size: 14px;
-				color: black;
-				font-weight: 500;
+				font-size: 12px;
+				font-weight: 400;
+				a{
+					color: #636363 !important;
+					&:hover{
+						color: #FF6E1B !important;
+					}
+				}
 			}
 		}
 
@@ -688,7 +694,6 @@ span.nav-close:before {
 	    font-size: 13px;
 	    line-height: 1;
 	    padding: 10px 0px;
-	    border-bottom: 1px solid #dddddd;
 	    -webkit-box-sizing: border-box;
 	    -moz-box-sizing: border-box;
 	    box-sizing: border-box;
@@ -696,7 +701,7 @@ span.nav-close:before {
 	    	width: 20px;
 	    	margin-right: 10px;
 	    }
-	    span{
+	    .num-likes{
 	    	font-weight: 400;
     		font-size: 14px;
 		    padding-top: 10px;
@@ -708,6 +713,12 @@ span.nav-close:before {
 		    box-sizing: border-box;
 	    }
 		}
+		li:last-child{
+			border-bottom: 1px solid #E6E6E6;
+		}
+	}
+	.modal-categories{
+		margin: 40px 0px 20px;
 	}
 	.modal-tags{
 		h4{
@@ -741,4 +752,19 @@ span.nav-close:before {
 	width: 35px !important;
 	border-radius: 200px !important;
 	float: left;
+}
+.old-price{
+  text-decoration: line-through;
+}
+.current-price{
+  
+}
+.sale-price{
+  color: #00ab6b;
+}
+.sale-value{
+  color: #FF6E1B;
+}
+.price-explore-post{
+	padding: 1px 15px;
 }

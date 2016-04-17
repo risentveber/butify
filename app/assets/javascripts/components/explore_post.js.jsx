@@ -71,6 +71,13 @@ const ExplorePost = React.createClass({
       var tags_rendered = <p className='tags-sp'>{tags}</p>
     if(text)
       var text_rendered = <p className='text' dangerouslySetInnerHTML={{__html: text}}></p>
+
+    var price_block = (
+      <div className='price-explore-post'>
+        <h5>Цена: <span className='old-price'>1190 ₽</span> <span className='sale-price'>990 ₽</span></h5>
+        <h5><span className='sale-value'>Скидка 50%</span></h5>
+      </div>
+    );
     return(
         <figure>
           <div className='wrap-figure-explore-post'>
@@ -87,13 +94,16 @@ const ExplorePost = React.createClass({
               </div>
             </div>
             {admin_block}
+            {price_block}
             <footer className='border-b-radius'>
               <div className='delicious-like'>
                 <div className='show-post'>
                   <img className='avatar-explore' src={post.author.avatar}/>
                   <span>
                     <a href={post.author.url}>{post.author.name}</a>
-                    <p>{post.sitelink}</p>
+                    <p>
+                      <a>{post.sitelink}</a>
+                    </p>
                   </span>
                 </div>
                 <div className='action-of-post'>

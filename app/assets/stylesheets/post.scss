@@ -525,7 +525,10 @@
 	}
 }
 .unit-post-comments .post-autor-data{
-	font-size: 10px;
+	font-size: 11px;
+	span{
+		color: rgba(0,0,0,.44) !important;
+	}
 }
 .unit-post-comments .preview-object-info-mini{
 	width: 81.5%;
@@ -910,6 +913,7 @@
 	outline: none !important;
 	font-size: 16px !important;
 	margin-top: 8px;
+	width: 100%
 }
 .creaet-new-post{
 	position: absolute;
@@ -937,6 +941,21 @@
 	border: none !important;
 	outline: none !important;
 }
+.modal-price{
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #E6E6E6;
+	.input-modal-price{
+		width: 80px;
+		text-align: center;
+		border: none;
+		border-bottom: 1px solid #383838 !important;
+		outline: none !important;
+	}
+	a{
+		font-size: 13px;
+	}
+}
 .modal-category{
 	h4{
 		margin-top: 18px;
@@ -944,7 +963,7 @@
 	}
 	input{
 		font-weight: 500;
-		font-size: 16px !important;
+		font-size: 14px !important;
 	}
 	.item{
 		font-size: 16px;

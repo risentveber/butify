@@ -30,6 +30,11 @@ var StaticPostMainPart = React.createClass({
           </div>
         </div>
         <div className='modal-atributes'>
+          <div className='modal-price'>
+            <h4>Цена: <input type='text' className='input-modal-price' /> ₽</h4>
+            <a>Добавить скидку</a>
+            <h4>Цена со скидкой: <span className='sale-price'><input type='text' className='input-modal-price' /> ₽</span></h4>
+          </div>
           <div className='modal-category'>
             <select
               ref='input'
@@ -37,7 +42,7 @@ var StaticPostMainPart = React.createClass({
               style={{width: '100%', visibility:'hidden'}} />
           </div>
           <div className='modal-tags'>
-            <h4>Теги</h4>
+            <h5>Теги</h5>
             <TagSelect
               values={this.props.post.tags}
               setTags={this.props.setTags}/>
