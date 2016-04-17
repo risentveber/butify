@@ -1,19 +1,11 @@
 .wrap-profile{
 	text-align: center;
 	.avatar{
-		margin-top: 85px;
-		img{
+		margin-top: 85px !important;
+		.img-avatar{
 			width: 120px;
 			height: 120px;
 			border-radius: 200px;
-		}
-		.get-publication{
-			margin-right: 12px;
-			position: absolute;
-			right: 12px;
-			&:hover{
-				color: #F3F3F3 !important;
-			}
 		}
 	}
 	.name{
@@ -23,6 +15,26 @@
 	}
 	.aboutme{
 		font-size: 15px;
+	}
+	.social-networks{
+		margin-right: 12px;
+		position: absolute;
+		right: 12px;
+		button{
+			margin-bottom: 10px;
+		}
+		p{
+			text-align: right;
+		}
+		img{
+			width: 27px;
+			height: 27px;
+		}
+		.get-publication{
+			&:hover{
+				color: #F3F3F3 !important;
+			}
+		}
 	}
 	.city{
 		font-size: 18px;

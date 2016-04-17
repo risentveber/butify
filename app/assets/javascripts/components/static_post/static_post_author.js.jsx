@@ -10,17 +10,15 @@ var StaticPostAuthor = React.createClass({
     return (
       <div className="modal-header">
         <div className='post-autor'>
-          <a>
             <div className="usual-avatar" style={{
               background: 'url(' + this.props.author.avatar + ') no-repeat',
               backgroundSize:'cover'
             }}>
             </div>
             <div className='post-autor-info'>
-              <h4 className="modal-title" id="myModalLabel">{this.props.author.name}</h4>
+              <a><h4 className="modal-title" id="myModalLabel">{this.props.author.name}</h4></a>
               <div>{description}</div>
             </div>
-          </a>
         </div>
       </div>
     );

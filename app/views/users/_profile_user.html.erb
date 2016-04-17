@@ -1,10 +1,24 @@
 <div class='avatar'>
-  <img src = '<%= @user.avatar %>' />
-  <% if current_user %>
-    <%= link_to new_post_path do %>
-      <button class='get-publication btn btn-st'>Опубликовать</button>
-    <% end %>
-  <% end %>
+  <img class='img-avatar' src = '<%= @user.avatar %>' />
+  <span class='social-networks'>
+      <% if @user == current_user %>
+        <%= link_to new_post_path do %>
+          <button class='get-publication btn btn-st'>Опубликовать</button>
+        <% end %>
+      <% end %>
+      <p>
+        <% if @user.vk_id.present? %>
+            <%= link_to "https://vk.com/#{@user.vk_id}", target: :blank do %>
+              <img src= '/images/vk.png' />
+            <% end %>
+        <% end %>
+        <% if @user.instagram_id.present? %>
+            <%= link_to "https://www.instagram.com/#{@user.instagram_id}", target: :blank do %>
+              <img src= '/images/insta.png' />
+            <% end %>
+        <% end %>
+      </p>
+  </span>
 </div>
 <div class='name'>
   <%= @user.name %>
