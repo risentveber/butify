@@ -30,6 +30,14 @@ var StaticPostMainPart = React.createClass({
           </div>
         </div>
         <div className='modal-atributes'>
+          <div className='modal-site'>
+            <input
+            value={this.props.sitelink}
+            onChange={this.props.onChangeSitelink}
+            className="text-new-post create-site-link"
+            placeholder='Ссылка на сайт'
+            type='text' />
+          </div>
           <div className='modal-price'>
             <h4>Цена: <input type='text' className='input-modal-price' /> ₽</h4>
             <a>Добавить скидку</a>

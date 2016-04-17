@@ -697,6 +697,17 @@ span.nav-close:before {
 	    -webkit-box-sizing: border-box;
 	    -moz-box-sizing: border-box;
 	    box-sizing: border-box;
+	    .show-post-site-link{
+	    	  font-size: 16px;
+			    float: right;
+			    font-weight: 400;
+				a{
+					color: #636363 !important;
+					&:hover{
+						color: #FF6E1B !important;
+					}
+				}
+			}
 	    img{
 	    	width: 20px;
 	    	margin-right: 10px;

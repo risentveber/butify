@@ -22,13 +22,6 @@ var StaticPostAuthor = React.createClass({
             </div>
           </a>
         </div>
-
-        <input
-          value={this.props.sitelink}
-          onChange={this.props.onChangeSitelink}
-          className="text-new-post create-site-link"
-          placeholder='Ссылка на сайт'
-          type='text' />
       </div>
     );
   }
