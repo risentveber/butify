@@ -95,7 +95,7 @@ const ExplorePost = React.createClass({
                   <span>
                     <a href={post.author.url}>{post.author.name}</a>
                     <p>
-                      <a href={post.sitelink}>{getLocation(post.sitelink).hostname}</a>
+                      <a href={post.sitelink} target='_blank'>{getLocation(post.sitelink).hostname}</a>
                     </p>
                   </span>
                 </div>

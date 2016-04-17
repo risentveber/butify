@@ -124,7 +124,7 @@ var ShowExplorePost = React.createClass({
                   <li className='likes' onClick={this.likeClick}>
                     <img src={like_image_path} className={classname_img}/> <span className='num-likes'>{post.likes || ''}</span>
                     <span className='show-post-site-link'>
-                    <a href={post.sitelink}>{getLocation(post.sitelink).hostname}</a>
+                    <a href={post.sitelink} target='_blank'>{getLocation(post.sitelink).hostname}</a>
                     </span>
                   </li>
                   <li>

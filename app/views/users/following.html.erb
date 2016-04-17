@@ -4,19 +4,19 @@
     <ul>
       <li>
         <span><%= @user.posts.count %></span>
-        <%= link_to user_path(current_user) do %>
+        <%= link_to user_path(@user) do %>
           Публикации
         <% end %>
       </li>
       <li>
         <span><%= @user.get_voted(Post).count %></span>
-        <%= link_to favourite_user_path(current_user) do %>
+        <%= link_to favourite_user_path(@user) do %>
           Нравится
         <% end %>
       </li>
       <li class='active'>
         <span><%= @user.follow_count %></span>
-        <%= link_to following_user_path(current_user) do %>
+        <%= link_to following_user_path(@user) do %>
           <% if @user != current_user %>
             Читает
           <% else %>
@@ -26,7 +26,7 @@
       </li>
       <li>
         <span><%= @user.followers_count %></span>
-        <%= link_to followers_user_path(current_user) do %>
+        <%= link_to followers_user_path(@user) do %>
           <% if @user != current_user %>
             Читатели
           <% else %>

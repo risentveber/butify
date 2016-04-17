@@ -13,7 +13,7 @@ set :mailgun_domain_name, ask('Enter domain name for mailer:', nil)
 # at filepaths
 set :full_app_name, "#{fetch(:application)}_#{fetch(:stage)}"
 
-server '95.213.203.213', user: 'deploy', roles: %w{web app db}, primary: true
+server '95.213.252.191', user: 'deploy', roles: %w{web app db}, primary: true
 
 set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
 

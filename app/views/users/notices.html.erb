@@ -6,6 +6,7 @@
     <div class="usual-list border-b-radius">
       <div class = 'followers'>
         <% @user.notifications.order(created_at: :desc).limit(30).each do |n| %>
+        <%if n.who %>
           <div class = 'follower'>
             <div class='follower-user-button'>
               <div class='follower-user'>
@@ -17,7 +18,7 @@
                     <div class="preview-object-info">
                       <div class="object-text">
                         <div class="object-maintext">
-                          <%= link_to n.who.name, user_path(n.who) %>
+                          <%= link_to n.who.name, user_path(n.who), class: 'thin-text300' %>
                           <% if n.comment? %>
                           <span>прокоментировал(а)</span>
                           <%= link_to 'эту', post_path(n.post_id) %>
@@ -51,6 +52,7 @@
             <div class="clearboth">
             </div>
           </div>
+        <% end %>
         <% end %>
         <% @user.notifications.where(viewed: false).update_all(viewed: true) %>
       </div>
