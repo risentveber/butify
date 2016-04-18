@@ -29,19 +29,28 @@ var StaticPostForm = React.createClass({
   submitForm(){
     var post = this.state.post;
     var photo_ids = post.photos.map(function(p){ return p.id })
-    post.photo_ids = photo_ids;
     var url = this.props.post ? this.props.url : '/posts'
     var request_type = this.props.post ? 'PATCH' : 'POST'
-
-    if (post.sitelink && post.sitelink.slice(0, 4) != 'http')
-      post.sitelink = 'http://' + post.sitelink;
+    var sitelink = post.sitelink;
+    if (sitelink && sitelink.slice(0, 4) != 'http')
+      sitelink = 'http://' + sitelink;
 
     this.setState({disabled: true});
     var self = this;
     $.ajax({
       url: url,
       type: request_type,
-      data: {post: post},
+      data: {
+        post: {
+          city_id: post.city_id,
+          sitelink: sitelink,
+          text: post.text,
+          tags: post.tags,
+          photo_ids: photo_ids,
+          price: post.price,
+          discount_price: post.discount_price,
+        }
+      },
       success: function(data) {
         window.location = '/';
       },
