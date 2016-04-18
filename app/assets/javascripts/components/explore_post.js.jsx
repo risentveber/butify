@@ -72,7 +72,9 @@ const ExplorePost = React.createClass({
     if(text)
       var text_rendered = <p className='text' dangerouslySetInnerHTML={{__html: text}}></p>
 
-
+    var exist_Sitelink; //костыль от Макса
+    if(post.sitelink.length)
+      exist_Sitelink = <a href={post.sitelink} target='_blank'>{getLocation(post.sitelink).hostname}</a>
 
     return(
         <figure>
@@ -95,7 +97,7 @@ const ExplorePost = React.createClass({
                   <span>
                     <a href={post.author.url}>{post.author.name}</a>
                     <p>
-                      <a href={post.sitelink} target='_blank'>{getLocation(post.sitelink).hostname}</a>
+                      {exist_Sitelink}
                     </p>
                   </span>
                 </div>
