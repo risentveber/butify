@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update] do
     post :change, on: :collection
   end
-  get 'vk', to: 'sessions#create_external'
+  get '/auth/:provider/callback', to: 'sessions#create_external'
   #get '/auth/twitter', to: 'sessions#vkontakte'
 
   get 'profile/edit' => 'users#edit_profile'
