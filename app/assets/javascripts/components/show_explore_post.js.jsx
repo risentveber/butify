@@ -30,10 +30,6 @@ var ShowExplorePost = React.createClass({
       return (<h5 key={i}><a key={i} href={'/explore?category_name=' + name}>{name}</a></h5>);
     });
 
-    var exist_Sitelink; //костыль от Макса
-    if(post.sitelink.length)
-      exist_Sitelink = <a href={post.sitelink} target='_blank'>{getLocation(post.sitelink).hostname}</a>
-
     var tags = this.props.post.tags.map(function(name, i){
       return <a key={i} href={'/explore?tag_name=' + name}>{'#'+name}</a>
     });
@@ -129,7 +125,7 @@ var ShowExplorePost = React.createClass({
                   <li className='likes'>
                     <img src={like_image_path} onClick={this.likeClick} className={classname_img}/> <span className='num-likes'>{post.likes || ''}</span>
                     <span className='show-post-site-link'>
-                      {exist_Sitelink}
+                      <a href={post.sitelink} target='_blank'>{getLocation(post.sitelink).hostname}</a>
                     </span>
                   </li>
                   <li>

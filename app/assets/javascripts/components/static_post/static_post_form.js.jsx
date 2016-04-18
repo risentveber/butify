@@ -108,7 +108,7 @@ var StaticPostForm = React.createClass({
       this.state.discountIsShown && !post.discount_price //не заполнена скидка
       //post.tags && post.tags.length == 0 || !post.tags || //не выбраны теги
       //!trim(post.text) || //не заполнено описание
-      !trim(post.sitelink) //не заполнена ссылка
+      //!trim(post.sitelink) //не заполнена ссылка
     )
   },
   showDiscount(){
