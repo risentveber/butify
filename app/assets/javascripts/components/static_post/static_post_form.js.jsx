@@ -32,9 +32,12 @@ var StaticPostForm = React.createClass({
     post.photo_ids = photo_ids;
     var url = this.props.post ? this.props.url : '/posts'
     var request_type = this.props.post ? 'PATCH' : 'POST'
+
+    if (post.sitelink && post.sitelink.slice(0, 4) != 'http')
+      post.sitelink = 'http://' + post.sitelink;
+
     this.setState({disabled: true});
     var self = this;
-    console.log('отправка', post.sitelink);
     $.ajax({
       url: url,
       type: request_type,
@@ -54,13 +57,7 @@ var StaticPostForm = React.createClass({
     this.setState({post: post});
   },
   onChangeSitelink(event){
-    var post = this.state.post;
-    var sitelink = event.target.value;
-    if (sitelink.slice(0, 4) != 'http'){
-      sitelink = 'http://' + sitelink;
-    }
-    post.sitelink = sitelink;
-    this.setState({post: post});
+    this.changeUniversal('sitelink', event);
   },
   onChangeText(event){
     this.changeUniversal('text', event);
@@ -105,7 +102,7 @@ var StaticPostForm = React.createClass({
       post.photos.length == 0 ||//не добавлено фото
       post.category_ids && post.category_ids.length == 0 || !post.category_ids || // не указана ни одна из категорий
       !post.price || //не заполнена цена
-      this.state.discountIsShown && !post.discount_price //не заполнена скидка
+      this.state.discountIsShown && !post.discount_price || //не заполнена скидка
       //post.tags && post.tags.length == 0 || !post.tags || //не выбраны теги
       //!trim(post.text) || //не заполнено описание
       !trim(post.sitelink) //не заполнена ссылка
