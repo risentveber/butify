@@ -32,9 +32,12 @@ var StaticPostForm = React.createClass({
     post.photo_ids = photo_ids;
     var url = this.props.post ? this.props.url : '/posts'
     var request_type = this.props.post ? 'PATCH' : 'POST'
+
+    if (post.sitelink && post.sitelink.slice(0, 4) != 'http')
+      post.sitelink = 'http://' + post.sitelink;
+
     this.setState({disabled: true});
     var self = this;
-    console.log('отправка', post.sitelink);
     $.ajax({
       url: url,
       type: request_type,
@@ -54,13 +57,7 @@ var StaticPostForm = React.createClass({
     this.setState({post: post});
   },
   onChangeSitelink(event){
-    var post = this.state.post;
-    var sitelink = event.target.value;
-    if (sitelink.slice(0, 4) != 'http'){
-      sitelink = 'http://' + sitelink;
-    }
-    post.sitelink = sitelink;
-    this.setState({post: post});
+    this.changeUniversal('sitelink', event);
   },
   onChangeText(event){
     this.changeUniversal('text', event);
