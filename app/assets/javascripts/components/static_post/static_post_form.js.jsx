@@ -14,6 +14,8 @@ var StaticPostForm = React.createClass({
           time: this.props.time_now,
           city_name: window.currentUser.city_name,
           post_type: 'photo',
+          price: '',
+          discount_price: '',
           sitelink:'',
           text:'',
           category_ids: [],
@@ -52,7 +54,13 @@ var StaticPostForm = React.createClass({
     this.setState({post: post});
   },
   onChangeSitelink(event){
-    this.changeUniversal('sitelink', event);
+    var post = this.state.post;
+    var sitelink = event.target.value;
+    if (sitelink.slice(0, 4) != 'http'){
+      sitelink = 'http://' + sitelink;
+    }
+    post.sitelink = sitelink;
+    this.setState({post: post});
   },
   onChangeText(event){
     this.changeUniversal('text', event);
@@ -98,7 +106,7 @@ var StaticPostForm = React.createClass({
       post.category_ids && post.category_ids.length == 0 || !post.category_ids || // не указана ни одна из категорий
       this.state.discountIsShown && !post.discount_price || //не заполнена скидка
       //post.tags && post.tags.length == 0 || !post.tags || //не выбраны теги
-      !trim(post.text) //|| //не заполнено описание
+      //!trim(post.text) || //не заполнено описание
       !trim(post.sitelink) //не заполнена ссылка
     )
   },

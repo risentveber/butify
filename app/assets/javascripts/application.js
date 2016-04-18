@@ -79,8 +79,9 @@ function getLocation(href) {
     // however .href will return an absolute URL which then can be used on itself
     // to populate these additional fields.
     if (location.host == "") {
-      location.href = location.href;
+      return 'Невалидный адрес'
     }
+    console.log('сслыка', location);
     return location;
 };
 
