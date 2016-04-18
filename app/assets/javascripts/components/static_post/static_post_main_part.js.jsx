@@ -36,11 +36,12 @@ var StaticPostMainPart = React.createClass({
           </div>
           <div className="padding-usual-post-text-create">
             <div className="usual-post-text-create action-create-element-post">
-              <ContentEditableDiv
+              <ContentEditable
+                className='text-new-post'
+                html={this.props.post.text}
                 onChange={this.props.onChangeText}
                 placeholder="Если хотите, можете добавить описание"
-                cssClass="text-new-post"
-                html={this.props.post.text}/>
+              />
             </div>
           </div>
         </div>
