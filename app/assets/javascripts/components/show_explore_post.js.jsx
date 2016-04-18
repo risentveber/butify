@@ -121,8 +121,8 @@ var ShowExplorePost = React.createClass({
             <div className='modal-atributes'>
               <div className='likes-and-views likes-and-price'>
                 <ul>
-                  <li className='likes' onClick={this.likeClick}>
-                    <img src={like_image_path} className={classname_img}/> <span className='num-likes'>{post.likes || ''}</span>
+                  <li className='likes'>
+                    <img src={like_image_path} onClick={this.likeClick} className={classname_img}/> <span className='num-likes'>{post.likes || ''}</span>
                     <span className='show-post-site-link'>
                     <a href={post.sitelink} target='_blank'>{getLocation(post.sitelink).hostname}</a>
                     </span>

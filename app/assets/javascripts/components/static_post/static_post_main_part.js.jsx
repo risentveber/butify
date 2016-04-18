@@ -13,14 +13,14 @@ var StaticPostMainPart = React.createClass({
     //console.log(this.props);
     if (this.props.discountIsShown){
       var discountPriceRendered = (
-        <h4>Цена со скидкой:
+        <h4>Цена со скидкой:&nbsp;
           <span className='sale-price'>
             <input
               value={this.props.post.discount_price}
               min='0'
               onChange={this.props.onChangeDiscountPrice}
               type='number'
-              lassName='input-modal-price' />
+              className='input-modal-price' />&nbsp;
           ₽</span>
         </h4>
       );
@@ -56,13 +56,13 @@ var StaticPostMainPart = React.createClass({
           </div>
           <div className='modal-price'>
             <h4>
-              Цена:
+              Цена:&nbsp;
               <input
                 type='number'
                 min='0'
                 value={this.props.post.price}
                 onChange={this.props.onChangePrice}
-                className='input-modal-price' />
+                className='input-modal-price' />&nbsp;
               ₽
               </h4>
             <a onClick={this.props.showDiscount}>Добавить скидку</a>
