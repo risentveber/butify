@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'recommend' => 'feed#recommend'
   get 'popular' => 'feed#popular'
   get 'fresh' => 'feed#fresh'
+  get 'hits' => 'feed#hits'
 
   resources :posts do
     member do
