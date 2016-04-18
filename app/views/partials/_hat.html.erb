@@ -16,7 +16,7 @@
         <div class="input-group">
           <input id='hat-search' type="text" class="form-control" placeholder='Поиск...'>
           <div class="input-group-btn">
-            <button type="button" class="btn btn-default dropdown-toggle dont-hide" data-toggle="dropdown">Категории <span class="caret"></span></button>
+            <button type="button" class="btn btn-default dropdown-toggle dont-hide btn-without-props-btn" data-toggle="dropdown">Категории <span class="caret"></span></button>
             <div class="dropdown-menu main-categories" role="menu">
               <% b, a = Category.all.order('created_at').to_a.partition.with_index{ |c, i| i < 10 } %>
                 <div class='pole'>
@@ -54,7 +54,7 @@
                 </div>
             </div>
             <%= link_to hits_path do %>
-              <button type="button" class="btn btn-default dropdown-toggle dont-hide btn-day-product">Товары дня</button>
+              <button type="button" class="btn btn-default dont-hide btn-day-product btn-without-props-btn">Товары дня</button>
             <% end %>
           </div>
         </div>
@@ -118,6 +118,11 @@
                   <%= notifications_count unless notifications_count.zero? %>
                 </div>
             <% end if current_user %>
+            <% if current_user %>
+              <%= link_to new_post_path do %>
+                <button class='get-publication-hat btn btn-st'>Опубликовать</button>
+              <% end %>
+            <% end %>
             <% if !current_user %>
               <div class = 'entire-on-hat'>
                 <%= link_to "Вход", new_session_path, class: 'btn btn-primary btn-st welcom-main-page'%>
