@@ -1,9 +1,4 @@
-<% if !current_user %>
-	<div class = 'join-to-us-under-hat'>
-		<div>Это место, где Вы можете найти интересные вещи, эксклюзивные товары, идеи для подарков.</div>
-		<%= link_to "Присоединяйтесь!", new_user_path, class: 'btn btn-st'%>
-	</div>
-<% end %>
+<%= render 'about_trenly' %>
 <div class='title-explore'>
   Фотографии
 </div>
