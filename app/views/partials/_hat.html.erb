@@ -120,7 +120,7 @@
             <% end if current_user %>
             <% if current_user %>
               <%= link_to new_post_path do %>
-                <button class='get-publication-hat btn btn-st'>Опубликовать</button>
+                <button class='get-publication-hat btn btn-st <%= insert_class_name(yield(:class_name)) %>'>Опубликовать</button>
               <% end %>
             <% end %>
             <% if !current_user %>

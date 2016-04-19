@@ -23,5 +23,14 @@ module ApplicationHelper
       ""
     end
   end
+
+  def insert_class_name(class_name)
+    base_class = ""
+    if class_name.empty?
+      base_class
+    else
+      class_name
+    end
+  end
   
 end
