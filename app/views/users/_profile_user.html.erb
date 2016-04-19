@@ -36,6 +36,14 @@
   <div class='aboutme'>
     <%= @user.description %>
   </div>
+<% else %>
+  <% if @user == current_user %>
+    <div class='aboutme'>
+      <%= link_to profile_edit_path do %>
+        Добавить контакты и информацию о себе
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
 <div class='city'>
   <%= @user.city.try(:name) %>
