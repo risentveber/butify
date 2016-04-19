@@ -38,6 +38,8 @@ var StaticPostMainPart = React.createClass({
             <input
               ref='title'
               type='text'
+              value={this.props.post.title}
+              onChange={this.props.onChangeTitle}
               className='input-new-post form-text-title input-sp form-control'
               placeholder = 'Название товара'/>
           </div>

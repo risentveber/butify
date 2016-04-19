@@ -4,20 +4,14 @@ json.array! @posts do |p|
     json.url user_path(p.user)
     json.avatar p.user.avatar.thumb.to_s
   end
-  json.id p.id
-  json.visible p.visible
-  json.recommended p.recommended
-  json.price p.price
-  json.discount_price p.discount_price
   json.url post_path(p)
   json.edit_url edit_post_path(p)
-  json.text p.text
-  json.youtube_id p.youtube_id
-  json.city_id p.city_id
+  json.(p,
+    :title, :text, :youtube_id, :city_id, :price, :discount_price, :visible,
+    :recommended, :id, :linkdata, :sitelink
+  )
   json.city_name p.city.try(:name)
-  json.linkdata p.linkdata
-  json.sitelink p.sitelink
-  json.title p.title
+
   json.time l(p.created_at)
   json.can_edit policy(p).update?
   json.can_remove policy(p).destroy?
