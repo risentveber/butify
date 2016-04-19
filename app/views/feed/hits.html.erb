@@ -3,6 +3,9 @@
   Товары дня
 </div>
 <%= render 'partials/city_select' %>
+<div class='tips-and-comments title-under-title'>
+  Здесь находятся товары, скидка на которые больше 10 процентов. Успейте купить!
+</div>
 <div id="grid-gallery" class="grid-gallery">
   <div id='demo'>
     <%= react_component 'Gallery', posts_url: hits_path + city_params(params[:city_id]) %>
