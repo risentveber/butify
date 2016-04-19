@@ -1,33 +1,33 @@
+<span class='social-networks'>
+    <% if current_user && @user != current_user %>
+      <% if current_user.following?(@user) %>
+        <%= link_to 'Читаю', unfollow_user_path(@user),
+        method: :post,
+        class: 'btn btn-primary btn-st btn-follow btn-follow-on',
+        data: { toggle: 'tooltip', placement: 'bottom' } %>
+      <% else %>
+        <%= link_to 'Читать', follow_user_path(@user),
+        method: :post,
+        class: 'btn btn-primary btn-st',
+        data: { toggle: 'tooltip', placement: 'bottom' } %>
+      <% end %>
+    <!-- <button class = 'btn btn-primary btn-st'>Читать</button> -->
+    <% end %>
+    <p>
+      <% if @user.vk_id.present? %>
+          <%= link_to "https://vk.com/#{@user.vk_id}", target: :blank do %>
+            <img src= '/images/vk.png' />
+          <% end %>
+      <% end %>
+      <% if @user.instagram_id.present? %>
+          <%= link_to "https://www.instagram.com/#{@user.instagram_id}", target: :blank do %>
+            <img src= '/images/insta.png' />
+          <% end %>
+      <% end %>
+    </p>
+</span>
 <div class='avatar'>
   <div class='img-avatar' style = 'background: url(<%= @user.avatar %>) no-repeat; background-size: cover; background-color: white;'></div>
-  <span class='social-networks'>
-      <% if current_user && @user != current_user %>
-        <% if current_user.following?(@user) %>
-          <%= link_to 'Читаю', unfollow_user_path(@user),
-          method: :post,
-          class: 'btn btn-primary btn-st btn-follow btn-follow-on',
-          data: { toggle: 'tooltip', placement: 'bottom' } %>
-        <% else %>
-          <%= link_to 'Читать', follow_user_path(@user),
-          method: :post,
-          class: 'btn btn-primary btn-st',
-          data: { toggle: 'tooltip', placement: 'bottom' } %>
-        <% end %>
-      <!-- <button class = 'btn btn-primary btn-st'>Читать</button> -->
-      <% end %>
-      <p>
-        <% if @user.vk_id.present? %>
-            <%= link_to "https://vk.com/#{@user.vk_id}", target: :blank do %>
-              <img src= '/images/vk.png' />
-            <% end %>
-        <% end %>
-        <% if @user.instagram_id.present? %>
-            <%= link_to "https://www.instagram.com/#{@user.instagram_id}", target: :blank do %>
-              <img src= '/images/insta.png' />
-            <% end %>
-        <% end %>
-      </p>
-  </span>
 </div>
 <div class='name'>
   <%= @user.name %>

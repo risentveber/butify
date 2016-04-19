@@ -19,26 +19,6 @@
 	.aboutme{
 		font-size: 15px;
 	}
-	.social-networks{
-		margin-right: 12px;
-		position: absolute;
-		right: 12px;
-		.btn{
-			margin-bottom: 10px;
-		}
-		p{
-			text-align: right;
-		}
-		img{
-			width: 27px;
-			height: 27px;
-		}
-		.get-publication{
-			&:hover{
-				color: #F3F3F3 !important;
-			}
-		}
-	}
 	.city{
 		font-size: 18px;
 		margin-top: 5px;
@@ -98,3 +78,24 @@
 	margin-bottom: 20px !important;
   float: right !important;
 }
+.social-networks{
+		margin-right: 12px;
+		position: absolute;
+		right: 12px;
+		top: 82px;
+		.btn{
+			margin-bottom: 10px;
+		}
+		p{
+			text-align: right;
+		}
+		img{
+			width: 27px;
+			height: 27px;
+		}
+		.get-publication{
+			&:hover{
+				color: #F3F3F3 !important;
+			}
+		}
+	}
