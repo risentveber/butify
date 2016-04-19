@@ -20,9 +20,9 @@
             <div class="dropdown-menu main-categories" role="menu">
               <% b, a = Category.all.order('created_at').to_a.partition.with_index{ |c, i| i < 10 } %>
                 <div class='pole'>
-                  <p><%= link_to 'Популярное', popular_path %></p>
-                  <p><%= link_to 'Новое', fresh_path %></p>
-                  <p><%= link_to 'Наш выбор', recommend_path %></p>
+                  <p><b><%= link_to 'Популярное', popular_path %></b></p>
+                  <p><b><%= link_to 'Новое', fresh_path %></b></p>
+                  <p><b><%= link_to 'Наш выбор', recommend_path %></b></p>
                   <% b.each do |c| %>
                     <p>
                       <%= link_to c.name, category_name_path(c.name) %>
