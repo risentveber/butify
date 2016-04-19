@@ -12,11 +12,6 @@ class Post < ActiveRecord::Base
   has_and_belongs_to_many :tags
   has_and_belongs_to_many :categories
 
-  enum post_type: {
-    filegroup: 0, link: 1, text: 2,
-    quotation: 3, photo: 4, video: 5
-  }
-
   scope :recommended, -> { where(recommended: true)}
 
   serialize :linkdata
