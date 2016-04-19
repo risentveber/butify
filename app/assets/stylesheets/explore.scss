@@ -264,7 +264,7 @@
 				}
 			}
 		}
- 		img{
+ 		.avatar-explore{
  			width: 16px;
  			float: left;
  			cursor: pointer;
@@ -625,6 +625,7 @@ span.nav-close:before {
 				width: 48px;
     		height: 48px;
     		margin-left: 0px !important;
+    		border-radius: 200px;
 			}
 			.post-autor-info{
 				h1{
@@ -765,6 +766,7 @@ span.nav-close:before {
 }
 .avatar-explore{
 	width: 35px !important;
+	height: 35px !important;
 	border-radius: 200px !important;
 	float: left;
 }

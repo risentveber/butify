@@ -93,7 +93,10 @@ const ExplorePost = React.createClass({
             <footer className='border-b-radius'>
               <div className='delicious-like'>
                 <div className='show-post'>
-                  <img className='avatar-explore' src={post.author.avatar}/>
+                  <div className="avatar-explore" style={{
+                    background: 'url(' + post.author.avatar + ') no-repeat',
+                    backgroundSize:'cover'}}>
+                  </div>
                   <span>
                     <a href={post.author.url}>{post.author.name}</a>
                     <p>
