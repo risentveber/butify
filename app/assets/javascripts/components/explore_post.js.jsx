@@ -71,7 +71,10 @@ const ExplorePost = React.createClass({
       var tags_rendered = <p className='tags-sp'>{tags}</p>
     if(text)
       var text_rendered = <p className='text' dangerouslySetInnerHTML={{__html: text}}></p>
-
+    if (post.sitelink)
+      var sitelink_rendered = (
+        <a href={post.sitelink} target='_blank'>{getLocation(post.sitelink).hostname}</a>
+      );
     return(
         <figure>
           <div className='wrap-figure-explore-post'>
@@ -93,7 +96,7 @@ const ExplorePost = React.createClass({
                   <span>
                     <a href={post.author.url}>{post.author.name}</a>
                     <p>
-                      <a href={post.sitelink} target='_blank'>{getLocation(post.sitelink).hostname}</a>
+                      {sitelink_rendered}
                     </p>
                   </span>
                 </div>
