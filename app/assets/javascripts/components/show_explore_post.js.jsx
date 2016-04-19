@@ -57,6 +57,19 @@ var ShowExplorePost = React.createClass({
       var sitelink_rendered = (
         <a href={post.sitelink} target='_blank'>{getLocation(post.sitelink).hostname}</a>
       );
+
+    if (post.can_edit)
+      var edit_link_rendered = (
+        <li>
+          <a href={this.props.post.edit_url}>Редактировать</a>
+        </li>
+      );
+    if (post.can_remove)
+      var remove_link_rendered = (
+        <li>
+          <a onClick={this.removeClick}>Удалить</a>
+        </li>
+      );
     return (
       <ReactBootstrap.Modal
         dialogClassName='modal-dialog modal-dialog-show-post'
@@ -78,12 +91,8 @@ var ShowExplorePost = React.createClass({
                 <div className="btn-group">
                   <span className="sign-dots-menu" data-toggle="dropdown">•••</span>
                   <ul className="dropdown-menu blue-background-dropdown-menu" role="menu">
-                    <li>
-                      <a href={this.props.post.edit_url}>Редактировать</a>
-                    </li>
-                    <li>
-                      <a onClick={this.removeClick}>Удалить</a>
-                    </li>
+                    {edit_link_rendered}
+                    {remove_link_rendered}
                     <li>
                       <a>Пожаловаться</a>
                     </li>
