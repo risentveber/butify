@@ -1,5 +1,5 @@
 <div class='avatar'>
-  <img class='img-avatar' src = '<%= @user.avatar %>' />
+  <div class='img-avatar' style = 'background: url(<%= @user.avatar %>) no-repeat; background-size: cover; background-color: white;'></div>
   <span class='social-networks'>
       <% if current_user && @user != current_user %>
         <% if current_user.following?(@user) %>
