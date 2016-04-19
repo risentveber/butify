@@ -1,7 +1,13 @@
 <%= render 'about_trenly' %>
-<div class='title-explore'>
-  Популярное
-</div>
+<% if current_user %>
+	<div class='title-explore'>
+	  Популярное
+	</div>
+<% else %>
+	<div class='title-explore_lmargin'>
+	  Популярное
+	</div>
+<% end %>
 <%= render 'partials/city_select' %>
 <div id="grid-gallery" class="grid-gallery">
   <div id='demo'>
