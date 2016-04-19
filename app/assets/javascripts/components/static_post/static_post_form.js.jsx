@@ -32,6 +32,8 @@ var StaticPostForm = React.createClass({
     var url = this.props.post ? this.props.url : '/posts'
     var request_type = this.props.post ? 'PATCH' : 'POST'
     var sitelink = post.sitelink;
+    if (sitelink)
+      sitelink = sitelink.trim();
     if (sitelink && sitelink.slice(0, 4) != 'http')
       sitelink = 'http://' + sitelink;
     console.log(sitelink);

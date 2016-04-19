@@ -53,7 +53,10 @@ var ShowExplorePost = React.createClass({
       like_image_path = '/images/like_grey.png';
       classname = 'post-like';
     }
-    //main_content =
+    if (post.sitelink)
+      var sitelink_rendered = (
+        <a href={post.sitelink} target='_blank'>{getLocation(post.sitelink).hostname}</a>
+      );
     return (
       <ReactBootstrap.Modal
         dialogClassName='modal-dialog modal-dialog-show-post'
@@ -125,7 +128,7 @@ var ShowExplorePost = React.createClass({
                   <li className='likes'>
                     <img src={like_image_path} onClick={this.likeClick} className={classname_img}/> <span className='num-likes'>{post.likes || ''}</span>
                     <span className='show-post-site-link'>
-                      <a href={post.sitelink} target='_blank'>{getLocation(post.sitelink).hostname}</a>
+                      {sitelink_rendered}
                     </span>
                   </li>
                   <li>
