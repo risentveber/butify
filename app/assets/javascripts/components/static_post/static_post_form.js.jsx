@@ -8,7 +8,7 @@ var StaticPostForm = React.createClass({
     } else
       return {
         post: {
-
+          title: '',
           author: window.currentUser,
           city_id: window.currentUser.city_id,
           time: this.props.time_now,
@@ -47,6 +47,7 @@ var StaticPostForm = React.createClass({
           city_id: post.city_id,
           sitelink: sitelink,
           text: post.text,
+          title: post.title,
           category_ids: post.category_ids,
           tags: post.tags,
           photo_ids: photo_ids,
@@ -73,6 +74,9 @@ var StaticPostForm = React.createClass({
   },
   onChangeText(event){
     this.changeUniversal('text', event);
+  },
+  onChangeTitle(event){
+    this.changeUniversal('title', event);
   },
   onChangePrice(event){
     this.changeUniversal('price', event);
@@ -139,6 +143,7 @@ var StaticPostForm = React.createClass({
           onChangePrice={this.onChangePrice}
           onChangeSitelink={this.onChangeSitelink}
           onChangeDiscountPrice={this.onChangeDiscountPrice}
+          onChangeTitle={this.onChangeTitle}
           showDiscount={this.showDiscount}
           addPhoto={this.addPhoto}
           removePhoto={this.removePhoto}

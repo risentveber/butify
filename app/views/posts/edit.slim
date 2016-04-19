@@ -9,6 +9,7 @@ div class="tips-and-comments title-under-hat"
                     avatar: @post.user.avatar.to_s},
           city_id: @post.user.city_id,
           time: l(@post.created_at),
+          title: @post.title,
           city_name: @post.user.city.try(:name),
           sitelink: @post.sitelink,
           text: @post.text,
