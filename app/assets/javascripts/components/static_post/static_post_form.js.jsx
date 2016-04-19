@@ -34,7 +34,7 @@ var StaticPostForm = React.createClass({
     var sitelink = post.sitelink;
     if (sitelink && sitelink.slice(0, 4) != 'http')
       sitelink = 'http://' + sitelink;
-
+    console.log(sitelink);
     this.setState({disabled: true});
     var self = this;
     $.ajax({
@@ -45,6 +45,7 @@ var StaticPostForm = React.createClass({
           city_id: post.city_id,
           sitelink: sitelink,
           text: post.text,
+          category_ids: post.category_ids,
           tags: post.tags,
           photo_ids: photo_ids,
           price: post.price,
