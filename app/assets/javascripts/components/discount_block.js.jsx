@@ -23,11 +23,11 @@ const DiscountBlock = React.createClass({
     }
     return (
       <div>
-        <h4>
+        <h5>
           {price}
           &nbsp;&nbsp;
           {discount_price_rendered}
-        </h4>
+        </h5>
         {discount_rendered}
       </div>
     );

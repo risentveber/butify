@@ -34,6 +34,13 @@ var StaticPostMainPart = React.createClass({
               removePhoto={this.props.removePhoto}
               photos={this.props.post.photos}/>
           </div>
+          <div className='title-post-create'>
+            <input
+              ref='title'
+              type='text'
+              className='input-new-post form-text-title input-sp form-control'
+              placeholder = 'Название товара'/>
+          </div>
           <div className="padding-usual-post-text-create">
             <div className="usual-post-text-create action-create-element-post">
               <ContentEditable

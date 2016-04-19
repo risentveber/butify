@@ -84,6 +84,7 @@ const ExplorePost = React.createClass({
             <div className='main-contain'>
               {link_rendered}
               {title_link}
+              <h4>Название</h4>
             </div>
             {admin_block}
             <div className='price-explore-post'>

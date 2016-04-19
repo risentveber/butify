@@ -174,5 +174,27 @@
   color: #00ab6b;
   font-size: 22px;
   margin-top: 95px;
+  margin-bottom: 15px;
   text-align: center;
+}
+.feed-contant{
+  
+}
+.feed-right-column{
+  
+}
+.feed-content{
+  max-width: 1190px;
+  margin: 0 auto;
+  .grid-gallery{
+    float: left;
+    width: 75%;
+    figure{
+      width: 33%;
+    }
+  }
+  .feed-right-column{
+    width: 25%;
+    padding: 15px 10px;
+  }
 }

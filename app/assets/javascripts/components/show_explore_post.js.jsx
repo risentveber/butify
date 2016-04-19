@@ -97,6 +97,9 @@ var ShowExplorePost = React.createClass({
               <PostContentView
                 post={post}/>
               <div className='usual-post-contant'>
+                <div className = 'title-post'>
+                  <h3>Название товара</h3>
+                </div>
                 <div className = 'usual-post-text action-create-element-post'>
                   <div
                     className = 'usual-post-text-text'
