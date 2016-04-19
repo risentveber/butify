@@ -111,10 +111,10 @@ var StaticPostForm = React.createClass({
       post.photos.length == 0 ||//не добавлено фото
       post.category_ids && post.category_ids.length == 0 || !post.category_ids || // не указана ни одна из категорий
       !post.price || //не заполнена цена
-      this.state.discountIsShown && !post.discount_price || //не заполнена скидка
+      this.state.discountIsShown && !post.discount_price //не заполнена скидка
       //post.tags && post.tags.length == 0 || !post.tags || //не выбраны теги
       //!trim(post.text) || //не заполнено описание
-      !trim(post.sitelink) //не заполнена ссылка
+      //!trim(post.sitelink) //не заполнена ссылка
     )
   },
   showDiscount(){
