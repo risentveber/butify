@@ -13,7 +13,6 @@ json.array! @posts do |p|
   json.edit_url edit_post_path(p)
   json.text p.text
   json.youtube_id p.youtube_id
-  json.type p.post_type
   json.city_id p.city_id
   json.city_name p.city.try(:name)
   json.linkdata p.linkdata
