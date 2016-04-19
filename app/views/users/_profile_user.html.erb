@@ -1,11 +1,20 @@
 <div class='avatar'>
   <img class='img-avatar' src = '<%= @user.avatar %>' />
   <span class='social-networks'>
-      <!--<% if @user == current_user %>
-        <%= link_to new_post_path do %>
-          <button class='get-publication btn btn-st'>Опубликовать</button>
+      <% if current_user && @user != current_user %>
+        <% if current_user.following?(@user) %>
+          <%= link_to 'Читаю', unfollow_user_path(@user),
+          method: :post,
+          class: 'btn btn-primary btn-st btn-follow btn-follow-on',
+          data: { toggle: 'tooltip', placement: 'bottom' } %>
+        <% else %>
+          <%= link_to 'Читать', follow_user_path(@user),
+          method: :post,
+          class: 'btn btn-primary btn-st',
+          data: { toggle: 'tooltip', placement: 'bottom' } %>
         <% end %>
-      <% end %>-->
+      <!-- <button class = 'btn btn-primary btn-st'>Читать</button> -->
+      <% end %>
       <p>
         <% if @user.vk_id.present? %>
             <%= link_to "https://vk.com/#{@user.vk_id}", target: :blank do %>
