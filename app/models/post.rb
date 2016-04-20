@@ -14,6 +14,8 @@ class Post < ActiveRecord::Base
 
   scope :recommended, -> { where(recommended: true)}
 
+  delegate :name, to: :city, allow_nil: true, prefix: true
+
   serialize :linkdata
 
   def self.listed(group, user=nil)

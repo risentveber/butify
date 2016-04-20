@@ -34,18 +34,22 @@
         <div class='user-contact'>
           <h4>Контакты: </h4>
           <p>Обязательно введите контакты, чтобы с Вами мог связаться клиент!</p>
-          <div class = 'edit-profile'>
-                <input class='form-control input-sp' placeholder='Телефон'/>
+          <div class = 'edit-profile edit-profile-social'>
+            <%= f.text_field :phone,
+              class: 'form-control input-sp',
+              placeholder: 'Телефон' %>
           </div>
           <div class = 'edit-profile edit-profile-social'>
             <img src = '/images/social_vk.png'/>
             <%= f.text_field :vk_id,
-                class: 'form-control input-sp',
-                placeholder: 'вконтакте' %>
+              class: 'form-control input-sp',
+              placeholder: 'вконтакте' %>
           </div>
           <div class = 'edit-profile edit-profile-social'>
-              <img src = '/images/social_facebook.png'/>
-              <input class='form-control input-sp' placeholder='facebook'/>
+            <img src = '/images/social_facebook.png'/>
+            <%= f.text_field :facebook_id,
+              class: 'form-control input-sp',
+              placeholder: 'facebook' %>
           </div>
           <div class = 'edit-profile edit-profile-social'>
             <img src = '/images/social_insta.png'/>

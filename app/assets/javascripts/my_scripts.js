@@ -79,30 +79,10 @@ function main(){
       window.location.search = queryString.stringify(q);
     });
 
-    /*$('.select-huekt').select2({
-      placeholder: "#Теги",
-      delay: 10000,
-      language: 'ru',
-      tags: true,
-      tokenSeparators: [','],
-      ajax: {
-        url: "/tags.json",
-        cache: "true",
-        processResults: function (data) {
-          result = data.map(function(t){
-            return {text: t.name, id: t.name};
-          });
-          CL(result);
-          return {
-            results: result
-          };
-        }
-      },
-      minimumInputLength: 3,
-      allowClear: true,
-      minimumResultsForSearch: -1,
-      width: 300
-    });*/
+    var selector = document.getElementById("user_phone");
+
+    var im = new Inputmask("+7(999)-999-9999");
+    im.mask(selector);
 
     $('.usual-post-text-expand-span').click(function(){
       alert('sf');
