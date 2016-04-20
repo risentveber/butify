@@ -30,17 +30,29 @@
             class: 'form-control input-sp input-edit-profile-school',
             placeholder: 'Сайт' %>
         </div>
-        <div class = 'edit-profile edit-profile-school'>
-          <span>vk.com/</span>
-          <%= f.text_field :vk_id,
-            class: 'form-control input-sp input-edit-vk_id',
-            placeholder: 'id' %>
-        </div>
-        <div class = 'edit-profile edit-profile-school'>
-          <span>instagram.com/</span>
-          <%= f.text_field :instagram_id,
-            class: 'form-control input-sp input-edit-insta_id',
-            placeholder: 'id' %>
+
+        <div class='user-contact'>
+          <h4>Контакты: </h4>
+          <p>Обязательно введите контакты, чтобы с Вами мог связаться клиент!</p>
+          <div class = 'edit-profile edit-profile-school'>
+                <input class='form-control input-sp' placeholder='Телефон'/>
+          </div>
+          <div class = 'edit-profile edit-profile-school'>
+            <span>vk.com/</span>
+            <%= f.text_field :vk_id,
+                class: 'form-control input-sp input-edit-vk_id',
+                placeholder: 'id' %>
+          </div>
+          <div class = 'edit-profile edit-profile-school'>
+            <span>facebook.com/</span>
+              <input class='form-control input-sp input-edit-facebook_id' placeholder='id'/>
+          </div>
+          <div class = 'edit-profile edit-profile-school'>
+            <span>instagram.com/</span>
+            <%= f.text_field :instagram_id,
+              class: 'form-control input-sp input-edit-insta_id',
+              placeholder: 'id' %>
+          </div>
         </div>
 
         <div class = 'change-password'>
