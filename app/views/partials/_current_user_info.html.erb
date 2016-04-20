@@ -8,7 +8,7 @@
     window.currentUser.city_id =  '<%= j current_user.city_id.to_s %>';
     window.currentUser.city_name =  '<%= j current_user.city.try(:name).to_s %>';
     window.categories = [
-      <% Category.all.each do |c| %>
+      <% Category.all.order(name: :asc).each do |c| %>
         { value: <%= c.id %>,
           text: '<%= j c.name %>',
         },

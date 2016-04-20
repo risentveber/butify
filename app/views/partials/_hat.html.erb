@@ -18,7 +18,7 @@
           <div class="input-group-btn">
             <button type="button" class="btn btn-default dropdown-toggle dont-hide btn-without-props-btn" data-toggle="dropdown">Категории <span class="caret"></span></button>
             <div class="dropdown-menu main-categories" role="menu">
-              <% b, a = Category.all.order(:name).to_a.partition.with_index{ |c, i| i < 10 } %>
+              <% b, a = Category.all.order(name: :asc).to_a.partition.with_index{ |c, i| i < 10 } %>
                 <div class='pole'>
                   <p><b><%= link_to 'Популярное', popular_path %></b></p>
                   <p><b><%= link_to 'Новое', fresh_path %></b></p>
@@ -130,7 +130,7 @@
               </div>
             <% end %>
 
-            
+
           </div>
         </div>
       </div>
