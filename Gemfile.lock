@@ -19,7 +19,6 @@ GIT
 
 GEM
   remote: https://rubygems.org/
-  remote: https://rails-assets.org/
   specs:
     actionmailer (4.2.1)
       actionpack (= 4.2.1)
@@ -422,3 +421,6 @@ DEPENDENCIES
   unicorn
   vkontakte_api (~> 1.4)
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.11.2

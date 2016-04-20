@@ -10,9 +10,6 @@ gem 'selectize-rails', '~> 0.12.1'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-source 'https://rails-assets.org' do
-  gem 'rails-assets-jquery.inputmask'
-end
 gem 'mini_magick'
 gem 'sorcery'
 gem 'simple_form'
