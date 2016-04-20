@@ -157,6 +157,19 @@ var ShowExplorePost = React.createClass({
                 {rendered_categories}
               </div>
               {tags_block}
+              <div className='modal-contact-saler'>
+                <button className='btn btn-st show-contact-saler'>Связаться с продавцом</button>
+                <div className='contact-saler'>
+                  <h4><span>+7 918 323-32-56</span></h4>
+                  <div className='social-networks'>
+                    <p>
+                      <img src= '/images/social_vk.png' />
+                      <img src= '/images/social_facebook.png' />
+                      <img src= '/images/social_insta.png' />
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div className="modal-footer">

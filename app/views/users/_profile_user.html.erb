@@ -16,12 +16,12 @@
     <p>
       <% if @user.vk_id.present? %>
           <%= link_to "https://vk.com/#{@user.vk_id}", target: :blank do %>
-            <img src= '/images/vk.png' />
+            <img src= '/images/social_vk.png' />
           <% end %>
       <% end %>
       <% if @user.instagram_id.present? %>
           <%= link_to "https://www.instagram.com/#{@user.instagram_id}", target: :blank do %>
-            <img src= '/images/insta.png' />
+            <img src= '/images/social_insta.png' />
           <% end %>
       <% end %>
     </p>
