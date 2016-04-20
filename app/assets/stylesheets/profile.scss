@@ -51,8 +51,8 @@
 	}
 }
 .current-edit-profile-avatar_img{
-	height: 228px;
-	border-radius: 6px;
+	height: 143px;
+	border-radius: 200px;
 }
 .edit-profile{
 	margin-bottom: 20px;
@@ -68,15 +68,6 @@
 		font-weight: 400;
 		color: #777777;
 	}
-}
-.input-edit-insta_id, .input-edit-vk_id {
-    display: inline !important;
-}
-.input-edit-vk_id {
-  width: 83.9% !important;
-}
-.input-edit-insta_id{
-	width: 69.9% !important;
 }
 .edit-profile-footer{
 	margin-bottom: 20px !important;
@@ -105,4 +96,18 @@
 	}
 .user-contact{
 	margin-top: 60px;
+	.edit-profile-social{
+		img{
+			width: 27px;
+	    height: 27px;
+		}
+		input{
+			margin-left: 2%;
+			width: 88% !important;
+			display: inline !important;
+		}
+	}
+}
+.input-edit-profile-about{
+	height: 40px !important;
 }

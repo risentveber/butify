@@ -4,7 +4,7 @@ const DiscountBlock = React.createClass({
       
       var discount_rendered = ''
       var preliminary_calculation = Math.round(this.props.discount_price / this.props.price * 100)
-      if(preliminary_calculation != 100){
+      if(preliminary_calculation < 100){
         var procents = 100 - preliminary_calculation;
         discount_rendered = <h5><span className='sale-value'>Скидка {procents}%</span></h5>
       }
