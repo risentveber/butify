@@ -1,5 +1,5 @@
 ActiveAdmin.setup do |config|
-  config.site_title = "Studpad"
+  config.site_title = "Trenly"
   config.site_title_link  = "/"
   config.authentication_method = :authenticate_admin
   config.current_user_method = :current_user
