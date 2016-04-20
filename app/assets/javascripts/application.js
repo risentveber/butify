@@ -26,6 +26,7 @@
 //= require jquery.form
 //= require jquery.query-object
 //= require jquery.autocomplete
+//= require jquery.inputmask
 //= require dropzone
 //= require my_scripts
 //= require selectize_fixed

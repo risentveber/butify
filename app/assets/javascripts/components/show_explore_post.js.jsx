@@ -1,4 +1,7 @@
 var ShowExplorePost = React.createClass({
+  getInitialState(){
+    return {show_author_info:false}
+  },
   removeComment(comment_id){
     this.props.removeComment(this.props.post.id, comment_id);
   },
@@ -10,6 +13,9 @@ var ShowExplorePost = React.createClass({
   },
   updateComment(comment_id, text){
     this.props.updateComment(this.props.post.id, comment_id, text);
+  },
+  showAuthorInfoClick(){
+    this.setState({show_author_info: true});
   },
   removeClick(){
     $.ajax({
@@ -70,6 +76,7 @@ var ShowExplorePost = React.createClass({
           <a onClick={this.removeClick}>Удалить</a>
         </li>
       );
+
     return (
       <ReactBootstrap.Modal
         dialogClassName='modal-dialog modal-dialog-show-post'
@@ -146,9 +153,6 @@ var ShowExplorePost = React.createClass({
                   <li>
                     <DiscountBlock price={post.price} discount_price={post.discount_price}/>
                   </li>
-                  {/*<li className='views'>
-                                      <img src='/images/views.png' /> <span>74563</span>
-                                    </li>*/}
                 </ul>
               </div>
               <div className='clearboth'>
@@ -157,19 +161,7 @@ var ShowExplorePost = React.createClass({
                 {rendered_categories}
               </div>
               {tags_block}
-              <div className='modal-contact-saler'>
-                <button className='btn btn-st show-contact-saler'>Связаться с продавцом</button>
-                <div className='contact-saler'>
-                  <h4><span>+7 918 323-32-56</span></h4>
-                  <div className='social-networks'>
-                    <p>
-                      <img src= '/images/social_vk.png' />
-                      <img src= '/images/social_facebook.png' />
-                      <img src= '/images/social_insta.png' />
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <AuthorInfo user={this.props.post.author}/>
             </div>
           </div>
           <div className="modal-footer">

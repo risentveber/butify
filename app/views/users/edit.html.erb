@@ -35,17 +35,21 @@
           <h4>Контакты: </h4>
           <p>Обязательно введите контакты, чтобы с Вами мог связаться клиент!</p>
           <div class = 'edit-profile edit-profile-school'>
-                <input class='form-control input-sp' placeholder='Телефон'/>
+            <%= f.text_field :phone,
+              class: 'form-control input-sp',
+              placeholder: 'Телефон' %>
           </div>
           <div class = 'edit-profile edit-profile-school'>
             <span>vk.com/</span>
             <%= f.text_field :vk_id,
-                class: 'form-control input-sp input-edit-vk_id',
-                placeholder: 'id' %>
+              class: 'form-control input-sp input-edit-vk_id',
+              placeholder: 'id' %>
           </div>
           <div class = 'edit-profile edit-profile-school'>
             <span>facebook.com/</span>
-              <input class='form-control input-sp input-edit-facebook_id' placeholder='id'/>
+            <%= f.text_field :facebook_id,
+              class: 'form-control input-sp input-edit-facebook_id',
+              placeholder: 'id' %>
           </div>
           <div class = 'edit-profile edit-profile-school'>
             <span>instagram.com/</span>
