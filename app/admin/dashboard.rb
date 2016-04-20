@@ -16,7 +16,7 @@ style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" tit
           yandex_link.html_safe
         end
       end
-      
+
       column do
         panel "Пользователи" do
           h1 "#{User.count}/#{User.unscoped.count}"
