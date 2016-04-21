@@ -10,120 +10,42 @@
 		<div class='content-feed-right-column'>
 			<h4 class='on-grey'>Рекомендуем к просмотру</h4>
 			<div class='feed-recomended-list'>
-				<div class='person'>
-          <a href='#'>
-            <div class="usual-avatar" style=" background: url(https://pp.vk.me/c633719/v633719355/20fc7/mhp2IdfPItQ.jpg) no-repeat; background-size: cover";>
-            </div>
-            <div class='info-person'>
-              <h5 class="name-person">Вася Пупкин</h5>
-              <div class='city-person'>Москва</div>
-            </div>
-            <div class='clearboth'></div>
-          </a>
-        </div>
-        <div class='person'>
-          <a href='#'>
-            <div class="usual-avatar" style=" background: url(https://pp.vk.me/c633519/v633519355/242cb/hhPabn5LgXE.jpg) no-repeat; background-size: cover";>
-            </div>
-            <div class='info-person'>
-              <h5 class="name-person">Рома Пипочкин</h5>
-              <div class='city-person'>Москва</div>
-            </div>
-            <div class='clearboth'></div>
-          </a>
-        </div>
-        <div class='person'>
-          <a href='#'>
-            <div class="usual-avatar" style=" background: url(https://pp.vk.me/c633719/v633719355/20fc7/mhp2IdfPItQ.jpg) no-repeat; background-size: cover";>
-            </div>
-            <div class='info-person'>
-              <h5 class="name-person">Вася Пупкин</h5>
-              <div class='city-person'>Москва</div>
-            </div>
-            <div class='clearboth'></div>
-          </a>
-        </div>
-        <div class='person'>
-          <a href='#'>
-            <div class="usual-avatar" style=" background: url(https://pp.vk.me/c633719/v633719355/20fc7/mhp2IdfPItQ.jpg) no-repeat; background-size: cover";>
-            </div>
-            <div class='info-person'>
-              <h5 class="name-person">Вася Пупкин</h5>
-              <div class='city-person'>Москва</div>
-            </div>
-            <div class='clearboth'></div>
-          </a>
-        </div>
-        <div class='person'>
-          <a href='#'>
-            <div class="usual-avatar" style=" background: url(https://pp.vk.me/c633719/v633719355/20fc7/mhp2IdfPItQ.jpg) no-repeat; background-size: cover";>
-            </div>
-            <div class='info-person'>
-              <h5 class="name-person">Вася Пупкин</h5>
-              <div class='city-person'>Москва</div>
-            </div>
-            <div class='clearboth'></div>
-          </a>
-        </div>
+        <% User.recommended.random_order.limit(5).each do |u| %>
+  				<div class='person'>
+            <%= link_to u do %>
+              <div class="usual-avatar"
+                style="background: url(<%= u.avatar.thumb %>) no-repeat;
+                      background-size: cover";>
+              </div>
+              <div class='info-person'>
+                <h5 class="name-person"><%= u.name %></h5>
+                <div class='city-person'><%= u.city_name %></div>
+              </div>
+              <div class='clearboth'></div>
+            <% end %>
+          </div>
+        <% end %>
 			</div>
-			<h4 class='on-grey'>Мастера с Вашего города</h4>
-			<div class='feed-citizen-list'>
-				<div class='person'>
-          <a href='#'>
-            <div class="usual-avatar" style=" background: url(https://pp.vk.me/c633719/v633719355/20fc7/mhp2IdfPItQ.jpg) no-repeat; background-size: cover";>
+      <% if current_user.city_name %>
+  			<h4 class='on-grey'>Мастера с Вашего города</h4>
+  			<div class='feed-citizen-list'>
+          <% User.having_posts.where.not(id: current_user).where(city: current_user.city).random_order.limit(5).each do |u| %>
+    				<div class='person'>
+              <%= link_to u do %>
+                <div class="usual-avatar"
+                  style="background: url(<%= u.avatar.thumb %>) no-repeat;
+                        background-size: cover";>
+                </div>
+                <div class='info-person'>
+                  <h5 class="name-person"><%= u.name %></h5>
+                  <div class='city-person'><%= u.city_name %></div>
+                </div>
+                <div class='clearboth'></div>
+              <% end %>
             </div>
-            <div class='info-person'>
-              <h5 class="name-person">Вася Пупкин</h5>
-              <div class='city-person'>Москва</div>
-            </div>
-            <div class='clearboth'></div>
-          </a>
-        </div>
-        <div class='person'>
-          <a href='#'>
-            <div class="usual-avatar" style=" background: url(https://pp.vk.me/c633519/v633519355/242cb/hhPabn5LgXE.jpg) no-repeat; background-size: cover";>
-            </div>
-            <div class='info-person'>
-              <h5 class="name-person">Рома Пипочкин</h5>
-              <div class='city-person'>Москва</div>
-            </div>
-            <div class='clearboth'></div>
-          </a>
-        </div>
-        <div class='person'>
-          <a href='#'>
-            <div class="usual-avatar" style=" background: url(https://pp.vk.me/c633719/v633719355/20fc7/mhp2IdfPItQ.jpg) no-repeat; background-size: cover";>
-            </div>
-            <div class='info-person'>
-              <h5 class="name-person">Вася Пупкин</h5>
-              <div class='city-person'>Москва</div>
-            </div>
-            <div class='clearboth'></div>
-          </a>
-        </div>
-        <div class='person'>
-          <a href='#'>
-            <div class="usual-avatar" style=" background: url(https://pp.vk.me/c633719/v633719355/20fc7/mhp2IdfPItQ.jpg) no-repeat; background-size: cover";>
-            </div>
-            <div class='info-person'>
-              <h5 class="name-person">Вася Пупкин</h5>
-              <div class='city-person'>Москва</div>
-            </div>
-            <div class='clearboth'></div>
-          </a>
-        </div>
-        <div class='person'>
-          <a href='#'>
-            <div class="usual-avatar" style=" background: url(https://pp.vk.me/c633719/v633719355/20fc7/mhp2IdfPItQ.jpg) no-repeat; background-size: cover";>
-            </div>
-            <div class='info-person'>
-              <h5 class="name-person">Вася Пупкин</h5>
-              <div class='city-person'>Москва</div>
-            </div>
-            <div class='clearboth'></div>
-          </a>
-        </div>
-			</div>
+          <% end %>
+  			</div>
+      <% end %>
 		</div>
 	</div>
 </div>

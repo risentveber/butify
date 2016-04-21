@@ -17,7 +17,13 @@ class User < ActiveRecord::Base
   has_one  :basket
   belongs_to :city
 
-  scope :recommended, -> {where(recommended: true)}
+  scope :recommended, -> { where(recommended: true) }
+  scope :random_order, -> { order('RANDOM()') }
+  scope :having_posts, -> {
+    where('users.id IN (SELECT DISTINCT posts.user_id FROM posts)')
+  }
+
+  delegate :name, to: :city, allow_nil: true, prefix: true
 
   validates :password,
     length:       {message: 'Не менее 5 символов', minimum: 5},
@@ -45,7 +51,7 @@ class User < ActiveRecord::Base
   def self.recommended_for(user)
     if user
       where.not(id: [user.id] + user.all_follows.map(&:followable_id))
-        .recommended.order('RANDOM()').limit(3)
+        .recommended.random_order.limit(3)
     else
       recommended.limit(3)
     end
