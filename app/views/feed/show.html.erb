@@ -29,7 +29,11 @@
       <% if current_user.city_name %>
   			<h4 class='on-grey'>Мастера с Вашего города</h4>
   			<div class='feed-citizen-list'>
+<<<<<<< HEAD
           <% User.having_posts.where(city: current_user.city).random_order.limit(5).each do |u| %>
+=======
+          <% User.having_posts.where.not(id: current_user).where(city: current_user.city).random_order.limit(5).each do |u| %>
+>>>>>>> 1d1e46a0323001f5adc31c8ba55d584f06cdccfc
     				<div class='person'>
               <%= link_to u do %>
                 <div class="usual-avatar"
