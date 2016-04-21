@@ -8,7 +8,7 @@ class Notification < ActiveRecord::Base
     case mode
     when 'like'    then '/images/like_active.png'
     when 'comment' then '/images/chatting.png'
-    when 'recommended'  then '/images/delicious_active.png'
+    when 'recommendation'  then '/thumbsup.png'
     when 'follow'  then '/empty.png'
     end
   end

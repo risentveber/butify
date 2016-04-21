@@ -20,7 +20,7 @@
                       <div class="object-text">
                         <div class="object-maintext">
                           <% if n.recommendation? %>
-                            Поздравляем! Команда Trenly добавила Вас в список пользователей, рекомендованных к просмотру.
+                            Поздравляем! Команда Trenly добавила Вас в список пользователей, рекомендованных к просмотру
                           <% elsif n.who %>
                             <%= link_to n.who.name, user_path(n.who), class: 'thin-text300' %>
                             <% if n.comment? %>
