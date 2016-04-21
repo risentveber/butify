@@ -6,35 +6,35 @@
     <div class="usual-list border-b-radius">
       <div class = 'followers'>
         <% @user.notifications.order(created_at: :desc).limit(30).each do |n| %>
-        <%if n.who %>
           <div class = 'follower'>
             <div class='follower-user-button'>
               <div class='follower-user'>
                 <div class="preview-object">
+                    <%if n.who %>
                     <div class="preview-object-avatar" style="background: url(
                     <%= n.who.avatar.thumb %>
                     ) no-repeat; background-size: cover;">
                     </div>
+                    <% end %>
                     <div class="preview-object-info">
                       <div class="object-text">
                         <div class="object-maintext">
-                          <%= link_to n.who.name, user_path(n.who), class: 'thin-text300' %>
-                          <% if n.comment? %>
-                          <span>прокоментировал(а)</span>
-                          <%= link_to 'эту', post_path(n.post_id) %>
-                          <span>публикацию</span>
-                          <% elsif n.like? %>
-                          <span>понравилась</span>
-                          <%= link_to 'эта', post_path(n.post_id) %>
-                           <span>публикация</span>
-                          <% elsif n.basket? %>
-                          <span>добавил(а)</span>
-                          <%= link_to 'эту', post_path(n.post_id) %>
-                           <span>публикацию в "Самое вкусное"</span>
-                          <% else %>
-                          <span>начал(а) читать Вас</span>
+                          <% if n.recommendation? %>
+                            Поздравляем! Команда Trenly добавила Вас в список пользователей, рекомендованных к просмотру.
+                          <% elsif n.who %>
+                            <%= link_to n.who.name, user_path(n.who), class: 'thin-text300' %>
+                            <% if n.comment? %>
+                            <span>прокоментировал(а)</span>
+                            <%= link_to 'эту', post_path(n.post_id) %>
+                            <span>публикацию</span>
+                            <% elsif n.like? %>
+                            <span>понравилась</span>
+                            <%= link_to 'эта', post_path(n.post_id) %>
+                             <span>публикация</span>
+                            <% else %>
+                            <span>начал(а) читать Вас</span>
+                            <% end %>
                           <% end %>
-
                         </div>
                         <div class="object-subtext-data">
                           <%= l n.created_at %>
@@ -52,7 +52,6 @@
             <div class="clearboth">
             </div>
           </div>
-        <% end %>
         <% end %>
         <% @user.notifications.where(viewed: false).update_all(viewed: true) %>
       </div>

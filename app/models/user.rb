@@ -44,6 +44,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  after_update :recommended_notification
+
+  def recommended_notification
+    notifications.recommendation.create if self.recommended_changed? && self.recommended
+  end
+
   def recommended_users
     User.none
   end
