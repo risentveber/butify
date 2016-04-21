@@ -175,7 +175,7 @@
   font-size: 22px;
   margin-top: 95px;
   margin-bottom: 15px;
-  text-align: center;
+  text-align: left;
 }
 .feed-contant{
   
@@ -188,14 +188,57 @@
   margin: 0 auto;
   .grid-gallery{
     float: left;
-    width: 38%;
+    width: 68%;
     figure{
-      width: 100%;
+      width: 33%;
+      min-width: 250px;
     }
   }
   .feed-right-column{
     float: left;
-    width: 62%;
-    /*padding: 15px 10px;*/
+    width: 32%;
+    .content-feed-right-column{
+      padding: 15px 10px;
+      margin-top: 140px;
+      margin-left: 15px;
+      h4{
+        font-weight: 300;
+        font-size: 16px;
+      }
+    }
+  }
+}
+.grid-gallery{
+  .title-under-hat{
+    /*margin-left: 10px;
+    text-align: left;*/
+    a{
+      font-size: 14px;
+    }
+  }
+}
+
+.feed-recomended-list, .feed-citizen-list{
+  margin-bottom: 45px;
+  .person{
+    margin: 18px 0;
+    .usual-avatar{
+      width: 38px;
+      height: 38px;
+    }
+    .info-person{
+      float: left;
+      margin-left: 10px;
+      h5{
+        margin-top: 0px;
+        margin-bottom: 3px;
+        font-weight: 400;
+      }
+      .city-person{
+        color: #747474;
+        text-shadow: 0 1px 0px white;
+        font-size: 13px;
+      }
+    }
   }
 }
