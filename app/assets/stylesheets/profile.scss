@@ -78,6 +78,7 @@
 		position: absolute;
 		right: 12px;
 		top: 82px;
+		text-align: right;
 		.btn{
 			margin-bottom: 10px;
 		}
@@ -110,4 +111,8 @@
 }
 .input-edit-profile-about{
 	height: 40px !important;
+}
+.notification-more-contact{
+	margin-top: 20px;
+	width: 203px;
 }
