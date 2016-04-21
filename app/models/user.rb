@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   acts_as_follower
 
   before_validation :remove_whitespaces
+  before_validation :parse_social
 
   has_many :notifications
   has_many :posts
@@ -63,6 +64,21 @@ class User < ActiveRecord::Base
   end
 
   private
+    def parse_social
+      if vk_id
+        vk_id.gsub!('https://vk.com/', '')
+        vk_id.gsub!('@', '')
+      end
+      if facebook_id
+        facebook_id.gsub!('https://facebook.com/', '')
+        facebook_id.gsub!('@', '')
+      end
+      if instagram_id
+        instagram_id.gsub!('https://instagram.com/', '')
+        instagram_id.gsub!('@', '')
+      end
+    end
+
     def remove_whitespaces
       self.email = email.to_s.squish
       self.type = 'teacher'
