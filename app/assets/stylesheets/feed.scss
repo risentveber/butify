@@ -188,13 +188,14 @@
   margin: 0 auto;
   .grid-gallery{
     float: left;
-    width: 75%;
+    width: 38%;
     figure{
-      width: 33%;
+      width: 100%;
     }
   }
   .feed-right-column{
-    width: 25%;
-    padding: 15px 10px;
+    float: left;
+    width: 62%;
+    /*padding: 15px 10px;*/
   }
 }

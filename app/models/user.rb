@@ -67,8 +67,10 @@ class User < ActiveRecord::Base
     def parse_social
       if vk_id
         vk_id.gsub!('https://www.vk.com/', '')
+        vk_id.gsub!('http://www.vk.com/', '')
         vk_id.gsub!('www.vk.com/', '')
         vk_id.gsub!('https://vk.com/', '')
+        vk_id.gsub!('http://vk.com/', '')
         vk_id.gsub!('vk.com/', '')
         vk_id.gsub!('@', '')
       end
