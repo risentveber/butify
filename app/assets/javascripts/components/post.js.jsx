@@ -70,8 +70,6 @@ const Post = React.createClass({
         <div className = 'post-content'>
           <PostContentView
             post={this.props.post}/>
-          <PostTextView
-            text_elements={this.props.post.text_elements}/>
           <div className='wrap-post-tags-sp'>
             <p className='tags-sp'>{tags}</p>
           </div>

@@ -67,18 +67,21 @@ class User < ActiveRecord::Base
     def parse_social
       if vk_id
         vk_id.gsub!('https://www.vk.com/', '')
+        vk_id.gsub!('www.vk.com/', '')
         vk_id.gsub!('https://vk.com/', '')
         vk_id.gsub!('vk.com/', '')
         vk_id.gsub!('@', '')
       end
       if facebook_id
         facebook_id.gsub!('https://www.facebook.com/', '')
+        facebook_id.gsub!('www.facebook.com/', '')
         facebook_id.gsub!('https://facebook.com/', '')
         facebook_id.gsub!('facebook.com/', '')
         facebook_id.gsub!('@', '')
       end
       if instagram_id
         instagram_id.gsub!('https://www.instagram.com/', '')
+        instagram_id.gsub!('www.instagram.com/', '')
         instagram_id.gsub!('https://instagram.com/', '')
         instagram_id.gsub!('instagram.com/', '')
         instagram_id.gsub!('@', '')
