@@ -4,7 +4,11 @@
 		  <div>Публикации от тех, кого Вы читаете</div>
 		  <%= link_to fresh_path do%>Посмотреть все свежие публикации<% end %>
 		</div>
-	  <%= react_component 'Gallery', posts_url: posts_path(@user) %>
+    <% if current_user.follow_count.zero? %>
+      <h1>Вы не подписаны на мастеров</h1>
+    <% else %>
+	    <%= react_component 'Gallery', posts_url: posts_path(@user) %>
+    <% end %>
 	</div>
 	<div class='feed-right-column'>
 		<div class='content-feed-right-column'>
