@@ -24,9 +24,10 @@ $(document).on("turbolinks:load ready", function main(){
 
     $('#user_city_id').selectize({
       placeholder: "Укажите город",
+      options: window.cities,
       load: function(query, callback) {
         CL('selectize', query, callback);
-        if (query.length < 3) return callback();
+        if (query.length == 0) return callback();
         $.ajax({
           url: '/ajax/get_cities?term=' + encodeURIComponent(query),
           type: 'GET',
@@ -44,9 +45,10 @@ $(document).on("turbolinks:load ready", function main(){
 
     console.log('bind fresh city_id')
     $('#fresh_city_id').selectize({
+      options: window.cities,
       load: function(query, callback) {
         CL('selectize', query, callback);
-        if (query.length < 3) return callback();
+        if (query.length == 0 ) return callback();
         $.ajax({
           url: '/ajax/get_cities?term=' + encodeURIComponent(query),
           type: 'GET',

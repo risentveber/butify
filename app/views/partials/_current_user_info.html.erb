@@ -14,4 +14,12 @@
         },
       <% end %>
     ]
+
+    window.cities = [
+      <% City.limit(10).each do |c| %>
+        { value: <%= c.id %>,
+          text: '<%= j c.name %>',
+        },
+      <% end %>
+    ]
   <% end if current_user %>
