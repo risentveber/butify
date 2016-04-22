@@ -6,6 +6,9 @@
           <%= link_to root_path do %>
             <img src='/images/logo_trenly.png' />
           <% end %>
+          <% if current_user.admin? %>
+          <a class='btn btn-default' style="margin-top: 12px" href='/admin'>Админка</a>
+          <% end %>
         <% else %>
           <%= link_to main_path do %>
             <img src='/images/logo_trenly.png' />
