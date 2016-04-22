@@ -39,9 +39,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.turbolinks-progress-bar {
-  background-color: #058E5B;
-  height: 20px;
+html.turbolinks-progress-bar::before {
+  background-color: #00ab6b !important;
+  height: 3px !important;
 }
 
 .autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
@@ -2362,4 +2362,7 @@ iframe{
 .on-grey{
   color: #747474;
   text-shadow: 0 1px 0px white;
+}
+.selectize-control.single .selectize-input:after{
+  display: none !important;
 }

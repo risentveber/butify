@@ -1,4 +1,4 @@
-$(document).on("turbolinks:load ready", function main(){
+$(document).on("page:load ready", function main(){
     $('#hat-search').autocomplete({
       serviceUrl: '/tags',
       paramName: 'term',

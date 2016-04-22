@@ -36,6 +36,7 @@
 //= require change_password
 
 Dropzone.autoDiscover = false;
+Turbolinks.enableProgressBar();
 
 function truncate(string, length){
   if (string.length < length){
