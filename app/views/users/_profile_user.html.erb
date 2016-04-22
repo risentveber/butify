@@ -61,6 +61,14 @@
     </div>
   <% end %>
 <% end %>
-<div class='city'>
-  <%= @user.city.try(:name) %>
-</div>
+<% if @user.city.present? %>
+  <div class='city'>
+    <%= @user.city.try(:name) %>
+  </div>
+<% else %>
+  <div class='city'>
+    <%= link_to profile_edit_path do %>
+      Укажите город
+    <% end %>
+  </div>
+<% end %>
