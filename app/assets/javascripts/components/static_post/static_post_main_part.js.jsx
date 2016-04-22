@@ -4,6 +4,7 @@ var StaticPostMainPart = React.createClass({
     $(this.refs.input).selectize({
       options: window.categories,
       items: this.props.post.category_ids,
+      maxItems: 3,
       placeholder: 'Категории'
     }).change(function () {
       self.props.changeCategoryIds($(self.refs.input).val())
