@@ -1,5 +1,5 @@
 
-$(document).on("page:load ready", function(){
+$(document).on("turbolinks:load ready", function(){
   $('#change-password').click(function(){
     $("#change-password-form").ajaxSubmit({
       success: function(data, status, response) {

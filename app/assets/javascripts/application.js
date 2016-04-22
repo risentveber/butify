@@ -34,13 +34,6 @@
 //= require autoresize.jquery.min
 //= require avatar
 //= require change_password
-//= require notifications
-//= require speech
-//= require statistics
-//= require explore
-//= require imagesloaded.pkgd.min
-//= require classie
-
 
 Dropzone.autoDiscover = false;
 

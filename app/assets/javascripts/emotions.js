@@ -13,7 +13,7 @@
  *
  * @author Brian Reavis <brian@diy.org>
  */
-$(document).on("page:load ready", function() {
+$(document).on("turbolinks:load ready", function() {
 
 (function($, window, document) {
 

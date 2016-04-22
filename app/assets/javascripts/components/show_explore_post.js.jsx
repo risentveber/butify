@@ -22,10 +22,9 @@ var ShowExplorePost = React.createClass({
       url: this.props.post.url,
       type: 'DELETE',
       success: function () {
-        window.location = window.location;
+        Turbolinks.visit(window.location)
       }
     });
-    CI('PostBox::removePost', id);
   },
   render(){
     if (!this.props.post) return null;

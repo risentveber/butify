@@ -1,4 +1,4 @@
-function main(){
+$(document).on("turbolinks:load ready", function main(){
     $('#hat-search').autocomplete({
       serviceUrl: '/tags',
       paramName: 'term',
@@ -12,13 +12,13 @@ function main(){
         return {suggestions: result};
       },
       onSelect: function(s){
-        window.location = '/explore?tag_name=' + s.value;
+        Turbolinks.visit('/explore?tag_name=' + s.value);
       }
     }).on('keydown', function(e){
       var ENTER = 13;
       if( e.keyCode == ENTER ) {
         e.preventDefault();
-        window.location = '/explore?tag_name=' + e.target.value;
+        Turbolinks.visit('/explore?tag_name=' + e.target.value);
       }
     });
 
@@ -42,7 +42,7 @@ function main(){
       }
     })
 
-
+    console.log('bind fresh city_id')
     $('#fresh_city_id').selectize({
       load: function(query, callback) {
         CL('selectize', query, callback);
@@ -61,28 +61,26 @@ function main(){
         });
       }
     }).on("change", function (e) {
-      //CL($(e.target).val());
-      //this.props.onChange(e);
       var q = queryString.parse(location.search);
       q.city_id = e.target.value;
-      window.location.search = queryString.stringify(q);
+      Turbolinks.visit(location.pathname + '?' + queryString.stringify(q));
     })
     $('#all_publications').click(function(){
       var q = queryString.parse(location.search);
       q.city_id = undefined;
-      window.location.search = queryString.stringify(q);
+      Turbolinks.visit(location.pathname + '?' + queryString.stringify(q));
     });
 
     $('#my_city').click(function(){
       var q = queryString.parse(location.search);
       q.city_id = window.currentUser.city_id;
-      window.location.search = queryString.stringify(q);
+      Turbolinks.visit(location.pathname + '?' + queryString.stringify(q));
     });
 
     var selector = document.getElementById("user_phone");
 
     var im = new Inputmask("+7(999)-999-9999");
-    im.mask(selector);
+    if (selector) im.mask(selector);
 
     $('.usual-post-text-expand-span').click(function(){
       alert('sf');
@@ -164,20 +162,6 @@ function main(){
     event.stopPropagation();
   });
 
-  /*$(".fancybox-thumb").fancybox({
-    parent: 'body',
-    prevEffect  : 'none',
-    nextEffect  : 'none',
-    helpers  : {
-      title : {
-        type: 'outside'
-      },
-      thumbs   : {
-        width : 50,
-        height   : 50
-      }
-    }
-  });*/
 
   $('#settigns-profile').tooltip();
   $('.btn').tooltip();
@@ -192,37 +176,6 @@ function main(){
   $("#close-notice").click(function(){
     $(this).parent().fadeOut();
   });
-
-
-  /*$("#save-edit-profile").click(function(){
-    $('.notice-content').html('Ваши данные успешно сохранены!');
-    $('.notice').fadeIn();
-  });
-
-  $("#save-edit-class").click(function(){
-    val = $('.input-edit-classroom-name').val();
-    if(val){
-      $('.notice-content').removeClass('warning').removeClass('error').html('Данные класса успешно сохранены!');
-      $('.notice').fadeIn();
-    }
-    else{
-      $('.notice-content').addClass('error').html('Вы ведь ничего не ввели в поле!');
-      $('.notice').fadeIn();
-    }
-  });
-
-  $("#save-edit-community").click(function(){
-    val = $('.input-edit-community-name').val();
-    if(val){
-      $('.notice-content').removeClass('warning').removeClass('error').html('Данные сообщества успешно сохранены!');
-      $('.notice').fadeIn();
-    }
-    else{
-      $('.notice-content').addClass('error').html('Вы ведь ничего не ввели в поле!');
-      $('.notice').fadeIn();
-    }
-  });
-*/
 
   $('#classroom_name').change(function(){
     val = $(this).val();
@@ -352,6 +305,6 @@ function main(){
     }
   });
 
-}
+});
 
-$(document).on("page:load ready", main)
+

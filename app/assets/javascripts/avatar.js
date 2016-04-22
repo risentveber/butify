@@ -1,5 +1,5 @@
 var avatar_crop;
-$(document).on("page:load ready", function(){
+$(document).on("turbolinks:load ready", function(){
 
   $('textarea#feedback_message').autoResize({
     limit:600,
