@@ -30,6 +30,12 @@ class Post < ActiveRecord::Base
     User.unscoped { super }
   end
 
+  after_update :recommended_notification
+
+  def recommended_notification
+    notifications.post_recommendation.create(user_id: user_id) if self.recommended_changed? && self.recommended
+  end
+
   def city_id= (id)
     self[:city_id] = id.present? ? City.load_external_data(id).id : nil
   end
