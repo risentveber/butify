@@ -1,46 +1,46 @@
 var StaticPostAuthor = React.createClass({
-  componentDidMount(){
-    var endDate = new Date();
-    endDate.setDate(endDate.getDate() + 7);
-    $(this.refs.publication_time).clockpicker({donetext: 'Готово'});
-    $(this.refs.publication_date).datepicker({autoclose: true, language: 'ru', startDate: Date(), endDate: endDate});
+  getInitialState() {
+    return {publicationInfoIsVisible: false}
+  },
+  publicationInfoClick(){
+    this.setState({publicationInfoIsVisible: !this.state.publicationInfoIsVisible})
+    this.props.onChangePublicationTime({target :{value: null}});
+    this.props.onChangePublicationDate({target :{value: null}});
   },
   render: function(){
     var description;
-    if (this.props.city_name) {
-      description = this.props.city_name + ', ' + this.props.time
+    var post = this.props.post;
+    if (post.city_name) {
+      description = post.city_name + ', ' + post.time
     } else {
-      description = this.props.time
+      description = post.time
     };
+    if (this.state.publicationInfoIsVisible){
+      var publicationInfo = (
+        <PublicationTimeBlock
+          publication_date={this.props.post.publication_date}
+          publication_time={this.props.post.publication_time}
+          onChangePublicationTime={this.props.onChangePublicationTime}
+          onChangePublicationDate={this.props.onChangePublicationDate}
+        />);
+    }
     return (
       <div className="modal-header">
         <div className='post-autor'>
             <div className="usual-avatar" style={{
-              background: 'url(' + this.props.author.avatar + ') no-repeat',
+              background: 'url(' + post.author.avatar + ') no-repeat',
               backgroundSize:'cover'
             }}>
             </div>
             <div className='post-autor-info'>
-              <a><h4 className="modal-title" id="myModalLabel">{this.props.author.name}</h4></a>
+              <a><h4 className="modal-title" id="myModalLabel">{post.author.name}</h4></a>
               <div className='post-autor-city'>{description}
-              <span>
-                <input ref='publication_date'/>
-              </span>
-                <span>
-                  в
-                <input type="text" ref='publication_time' className="form-control"/>
-                </span> &nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;<a>Опубликовать передним числом</a></div>
+                {publicationInfo}&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;
+                <a onClick={this.publicationInfoClick}>Опубликовать передним числом</a>
+              </div>
             </div>
         </div>
       </div>
     );
   }
 });
-
-// <TagSelect
-//             setTags={this.props.setTags}
-//             values={this.props.post.tags}/>
-
-
-
-

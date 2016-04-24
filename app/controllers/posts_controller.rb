@@ -76,8 +76,8 @@ class PostsController < ApplicationController
         :post_type, :text, :city_id, :title,
         :sitelink, :price, :discount_price,
         :category_ids, :recommended, :moderated, :visible,
-        category_ids: [],
-        photo_ids: [],
+        :published_time, :published_date, category_ids: [],
+        photo_ids: []
       )
     end
 
