@@ -34,6 +34,9 @@
 //= require autoresize.jquery.min
 //= require avatar
 //= require change_password
+//= require bootstrap-clockpicker
+//= require bootstrap-datepicker
+//= require bootstrap-datepicker.ru
 
 Dropzone.autoDiscover = false;
 Turbolinks.enableProgressBar();

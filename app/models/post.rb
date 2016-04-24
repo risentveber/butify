@@ -15,7 +15,7 @@ class Post < ActiveRecord::Base
   scope :recommended, -> { where(recommended: true) }
   scope :moderated, -> { where(moderated: true) }
   scope :visible, -> { where(visible: true) }
-  scope :time_order, -> { where(created_at: :desc) }
+  scope :time_order, -> { order(created_at: :desc) }
 
   delegate :name, to: :city, allow_nil: true, prefix: true
 

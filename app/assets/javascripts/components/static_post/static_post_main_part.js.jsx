@@ -9,6 +9,7 @@ var StaticPostMainPart = React.createClass({
     }).change(function () {
       self.props.changeCategoryIds($(self.refs.input).val())
     })
+
   },
   render: function() {
     //console.log(this.props);
