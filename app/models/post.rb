@@ -12,7 +12,10 @@ class Post < ActiveRecord::Base
   has_and_belongs_to_many :tags
   has_and_belongs_to_many :categories
 
-  scope :recommended, -> { where(recommended: true)}
+  scope :recommended, -> { where(recommended: true) }
+  scope :moderated, -> { where(moderated: true) }
+  scope :visible, -> { where(visible: true) }
+  scope :time_order, -> { where(created_at: :desc) }
 
   delegate :name, to: :city, allow_nil: true, prefix: true
 

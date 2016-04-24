@@ -8,7 +8,7 @@ json.array! @posts do |p|
   json.edit_url edit_post_path(p)
   json.(p,
     :title, :text, :youtube_id, :city_id, :price, :discount_price, :visible,
-    :recommended, :id, :linkdata, :sitelink, :city_name
+    :recommended, :id, :linkdata, :sitelink, :city_name, :moderated
   )
   json.time l(p.created_at)
   json.can_edit policy(p).update?

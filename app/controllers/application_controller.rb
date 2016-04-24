@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
     @city = City.load_external_data(params[:city_id]) if params[:city_id]
   end
 
+  def require_admin
+    raise ActiveRecord::RecordNotFound unless current_user && current_user.admin?
+  end
+
   private
     def authenticate_admin
       redirect_to root_path unless current_user.try(:admin?)

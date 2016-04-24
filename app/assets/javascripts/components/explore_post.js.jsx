@@ -58,6 +58,7 @@ const ExplorePost = React.createClass({
         <CategorySelect
           recommended={post.recommended}
           visible={post.visible}
+          moderated={post.moderated}
           url={post.url}
           values={post.categories}/>
       );

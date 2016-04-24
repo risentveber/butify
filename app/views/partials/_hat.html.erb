@@ -7,7 +7,8 @@
             <img src='/images/logo_trenly.png' />
           <% end %>
           <% if current_user.admin? %>
-            <a class='btn btn-default' style="margin-top: 12px" href='/admin'>Админка</a>
+            <a class='btn btn-sm btn-default mt-12' href='/admin'>Админка</a>
+            <%= link_to 'Модерация', admin_moderate_path, class: 'btn btn-sm btn-default mt-12' %>
           <% end %>
         <% else %>
           <%= link_to main_path do %>

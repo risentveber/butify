@@ -7,7 +7,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    #byebug
     @post = current_user.posts.create post_params
     @post.bind_tags(params[:post][:tags])
 
@@ -15,9 +14,8 @@ class PostsController < ApplicationController
   end
 
   def change_categories
-    @post.category_ids = params[:category_ids]
-    puts @post.update_attributes recommended: params[:recommended],
-      visible: params[:visible]
+    @post.update_attributes admin_post_params
+
     render nothing: true
   end
 
@@ -77,8 +75,16 @@ class PostsController < ApplicationController
       params.require(:post).permit(
         :post_type, :text, :city_id, :title,
         :sitelink, :price, :discount_price,
+        :category_ids, :recommended, :moderated, :visible,
         category_ids: [],
         photo_ids: [],
+      )
+    end
+
+    def admin_post_params
+      params.require(:post).permit(
+        :recommended, :moderated, :visible,
+        category_ids: []
       )
     end
 

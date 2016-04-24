@@ -43,7 +43,6 @@ $(document).on("page:load ready", function main(){
       }
     })
 
-    console.log('bind fresh city_id')
     $('#fresh_city_id').selectize({
       options: window.cities,
       load: function(query, callback) {
