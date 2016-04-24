@@ -930,12 +930,9 @@
 	}
 }
 .creaet-new-post{
-	position: absolute;
-	top: 105px;
-	left: 50%;
 	width: 65% !important;
 	min-width: 632px;
-	margin-left: -32.5%;
+	margin: auto;
 	.form-wrap-new-post-type{
 		padding-left: 0px !important;
 		padding-right: 0px !important;
@@ -999,4 +996,18 @@
 }
 .title-post-create{
 	margin-top: 8px;
+}
+.datepicker-days{
+	.day{
+		background: linear-gradient(to top, #00AB6B, #00AB6B);
+		color: white;
+		&:hover{
+			background-color: #AFAFAF !important;
+		}
+	}
+}
+.clockpicker-popover{
+	.text-primary {
+    color: #FF6E1B;
+	}
 }

@@ -6,7 +6,7 @@
 		</div>
     <% if current_user.follow_count.zero? %>
     	<div class='align-c'>
-      	<h1>Вы не читаете ни одного мастера</h1>
+      	<h1>Вы пока еще никого не читаете</h1>
       </div>
     <% else %>
 	    <%= react_component 'Gallery', posts_url: posts_path(@user) %>

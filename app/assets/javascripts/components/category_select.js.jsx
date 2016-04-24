@@ -49,7 +49,7 @@ var CategorySelect = React.createClass({
           placeholder='Категории'
           style={{width: '100%', visibility:'hidden'}} >
         </select>
-        <button onClick={this.saveClick} className='btn btn-xs btn-info'>Сохранить</button>
+        <button onClick={this.saveClick} className='btn btn-xs btn-st'>Сохранить</button>
         <div className = 'tags-sp'>
         </div>
       </div>
