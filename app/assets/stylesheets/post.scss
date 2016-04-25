@@ -997,13 +997,18 @@
 .title-post-create{
 	margin-top: 8px;
 }
-.datepicker-days{
+.datetimepicker{
 	.day{
-		background: linear-gradient(to top, #00AB6B, #00AB6B);
-		color: white;
+		background: linear-gradient(to top, #FFFFFF, #FFFFFF);
 		&:hover{
-			background-color: #AFAFAF !important;
+			background-color: #E4E4E4 !important;
 		}
+	}
+	.active{
+		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#00AB69), to(#00AB69)) !important;
+    background-image: -webkit-linear-gradient(top, #00AB69, #00AB69) !important;
+    background-image: -o-linear-gradient(top, #00AB69, #00AB69) !important;
+    background-image: linear-gradient(top, #00AB69, #00AB69) !important;
 	}
 }
 .clockpicker-popover{

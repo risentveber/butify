@@ -45,6 +45,7 @@ var StaticPostForm = React.createClass({
       data: {
         post: {
           city_id: post.city_id,
+          published_at: post.published_at,
           sitelink: sitelink,
           text: post.text,
           title: post.title,
@@ -72,11 +73,9 @@ var StaticPostForm = React.createClass({
   onChangeSitelink(event){
     this.changeUniversal('sitelink', event);
   },
-  onChangePublicationTime(event){
-    this.changeUniversal('publication_time', event);
-  },
-  onChangePublicationDate(event){
-    this.changeUniversal('publication_date', event);
+  onChangePublicatedAt(event){
+    console.log(event.target.value)
+    this.changeUniversal('published_at', event);
   },
   onChangeText(event){
     this.changeUniversal('text', event);
@@ -140,8 +139,7 @@ var StaticPostForm = React.createClass({
       <div className='card-butify creaet-new-post'>
         <StaticPostAuthor
           onChangeSitelink={this.onChangeSitelink}
-          onChangePublicationDate={this.onChangePublicationDate}
-          onChangePublicationTime={this.onChangePublicationTime}
+          onChangePublicatedAt={this.onChangePublicatedAt}
           post={this.state.post}/>
         <StaticPostMainPart
           changeCategoryIds={this.onChangeCategoryIds}

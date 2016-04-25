@@ -1,8 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessor :published_time, :published_date
-
   after_update :recommended_notification
-  before_update :set_published_at
 
   acts_as_votable
   belongs_to :user
@@ -21,7 +18,7 @@ class Post < ActiveRecord::Base
   scope :moderated, -> { where(moderated: true) }
   scope :visible, -> { where(visible: true) }
   scope :time_order, -> { order(created_at: :desc) }
-  scope :published, -> {where('posts.published_at IS NULL OR post.published_at > (?)', Time.now)}
+  scope :published, -> {where('posts.published_at IS NULL OR posts.published_at > (?)', Time.now)}
   scope :default, -> {time_order.moderated.published}
 
   delegate :name, to: :city, allow_nil: true, prefix: true
@@ -40,16 +37,15 @@ class Post < ActiveRecord::Base
     User.unscoped { super }
   end
 
-
   def recommended_notification
     notifications.post_recommendation.create(user_id: user_id) if self.recommended_changed? && self.recommended
   end
 
-  def set_published_at
-    if published_time && published_date
-      self.published_at = DateTime.strptime("#{published_date} #{published_time} +03", '%d.%m.%Y %H:%M %z')
-    end
-  end
+  # def set_published_at
+  #   if published_time && published_date
+  #     self.published_at = DateTime.strptime("#{published_date} #{published_time} +03", '%d.%m.%Y %H:%M %z')
+  #   end
+  # end
 
   def city_id= (id)
     self[:city_id] = id.present? ? City.load_external_data(id).id : nil
