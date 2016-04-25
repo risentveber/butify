@@ -4,8 +4,7 @@ var StaticPostAuthor = React.createClass({
   },
   publicationInfoClick(){
     this.setState({publicationInfoIsVisible: !this.state.publicationInfoIsVisible})
-    this.props.onChangePublicationTime({target :{value: null}});
-    this.props.onChangePublicationDate({target :{value: null}});
+    this.props.onChangePublicatedAt({target :{value: null}});
   },
   render: function(){
     var description;
@@ -18,10 +17,8 @@ var StaticPostAuthor = React.createClass({
     if (this.state.publicationInfoIsVisible){
       var publicationInfo = (
         <PublicationTimeBlock
-          publication_date={this.props.post.publication_date}
-          publication_time={this.props.post.publication_time}
-          onChangePublicationTime={this.props.onChangePublicationTime}
-          onChangePublicationDate={this.props.onChangePublicationDate}
+          publicated_at={this.props.post.publicated_at}
+          onChangePublicatedAt={this.props.onChangePublicatedAt}
         />);
     }
     return (

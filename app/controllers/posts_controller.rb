@@ -74,7 +74,7 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(
         :post_type, :text, :city_id, :title,
-        :sitelink, :price, :discount_price,
+        :sitelink, :price, :discount_price, :published_at,
         :category_ids, :recommended, :moderated, :visible,
         :published_time, :published_date, category_ids: [],
         photo_ids: []
