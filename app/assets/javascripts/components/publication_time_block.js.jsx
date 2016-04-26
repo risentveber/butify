@@ -4,9 +4,9 @@ const PublicationTimeBlock = React.createClass({
         autoclose: true,
         todayBtn: true,
         startDate: new Date(),
-        format: 'dd.mm hh:ii',
-        language:'ru'}).change(this.props.onChangePublicatedAt);
-    //$(this.refs.publication_date).datepicker({autoclose: true, language: 'ru', startDate: Date(), endDate: endDate});
+        format: 'yyyy-mm-dd hh:ii',
+        language: 'ru'
+      }).change(this.props.onChangePublicatedAt);
   },
   render: function() {
     return (

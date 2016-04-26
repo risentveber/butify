@@ -9,17 +9,20 @@ var StaticPostAuthor = React.createClass({
   render: function(){
     var description;
     var post = this.props.post;
-    if (post.city_name) {
-      description = post.city_name + ', ' + post.time
-    } else {
-      description = post.time
-    };
+
     if (this.state.publicationInfoIsVisible){
+      description = post.city_name;
       var publicationInfo = (
         <PublicationTimeBlock
           publicated_at={this.props.post.publicated_at}
           onChangePublicatedAt={this.props.onChangePublicatedAt}
         />);
+    } else {
+      if (post.city_name) {
+        description = post.city_name + ', ' + post.time
+      } else {
+        description = post.time
+      };
     }
     return (
       <div className="modal-header">
@@ -31,7 +34,8 @@ var StaticPostAuthor = React.createClass({
             </div>
             <div className='post-autor-info'>
               <a><h4 className="modal-title" id="myModalLabel">{post.author.name}</h4></a>
-              <div className='post-autor-city'>{description}
+              <div className='post-autor-city'>
+                {description}
                 {publicationInfo}&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;
                 <a onClick={this.publicationInfoClick}>Опубликовать передним числом</a>
               </div>
