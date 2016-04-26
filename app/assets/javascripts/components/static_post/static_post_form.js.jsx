@@ -57,7 +57,7 @@ var StaticPostForm = React.createClass({
         }
       },
       success: function(data) {
-        Turbolinks.visit('/');
+        Turbolinks.visit(window.currentUser.url);
       },
       error: function(xhr, status, err) {
         self.setState({disabled: false});
