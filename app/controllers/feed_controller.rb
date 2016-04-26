@@ -76,4 +76,7 @@ class FeedController < ApplicationController
       f.html {}
     end
   end
+
+  def desire
+  end
 end
