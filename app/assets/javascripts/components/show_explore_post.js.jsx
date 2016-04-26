@@ -77,7 +77,7 @@ var ShowExplorePost = React.createClass({
       );
     var time_rendered
     if (post.published_at) {
-      time_rendered = "Будет опубликовано: " + post.published_at;
+      time_rendered = "Будет опубликовано " + post.published_at;
     } else {
       time_rendered = post.time;
     }
