@@ -11,7 +11,7 @@ var StaticPostAuthor = React.createClass({
     var post = this.props.post;
 
     if (this.state.publicationInfoIsVisible){
-      description = post.city_name;
+      description = post.city_name + ', ';
       var publicationInfo = (
         <PublicationTimeBlock
           publicated_at={this.props.post.publicated_at}
