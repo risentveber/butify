@@ -32,7 +32,7 @@ class FeedController < ApplicationController
   def moderate
     respond_to do |f|
       f.json do
-        @posts = Post.time_order.limit(params[:count])
+        @posts = Post.time_order.limit(params[:count]).where("moderated IS NULL OR moderated = false")
         render 'posts/index'
       end
       f.html {}
