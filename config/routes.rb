@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :tags
   resources :photos
+  resources :desires
   resources :users, except: :edit do
     get :followers, on: :member
     get :following, on: :member
