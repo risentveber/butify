@@ -74,8 +74,10 @@ const ExplorePost = React.createClass({
       var sitelink_rendered = (
         <a href={post.sitelink} target='_blank'>{getLocation(post.sitelink).hostname}</a>
       );
+    if (post.published_at)
+      var css_class = 'half-opacity';
     return(
-        <figure>
+        <figure className={css_class}>
           <div className='wrap-figure-explore-post'>
             {image}
 

@@ -4,3 +4,4 @@ ru:
   time:
     formats:
       default: '%e %b'
+      full_time: '%e %b %H:%M'

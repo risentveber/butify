@@ -75,6 +75,12 @@ var ShowExplorePost = React.createClass({
           <a onClick={this.removeClick}>Удалить</a>
         </li>
       );
+    var time_rendered
+    if (post.published_at) {
+      time_rendered = "Будет опубликовано: " + post.published_at;
+    } else {
+      time_rendered = post.time;
+    }
 
     return (
       <ReactBootstrap.Modal
@@ -90,7 +96,7 @@ var ShowExplorePost = React.createClass({
                 </div>
                 <div className='post-autor-info'>
                   <h4 className="modal-title" id="myModalLabel">{author.name}</h4>
-                  <div>{post.city_name}, {post.time}</div>
+                  <div>{post.city_name}, {time_rendered}</div>
                 </div>
               </a>
               <div className="action-angle post-action">

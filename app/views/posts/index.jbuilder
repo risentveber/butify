@@ -6,11 +6,13 @@ json.array! @posts do |p|
   end
   json.url post_path(p)
   json.edit_url edit_post_path(p)
-  json.(p,
-    :title, :text, :youtube_id, :city_id, :price, :discount_price, :visible,
-    :recommended, :id, :linkdata, :sitelink, :city_name, :moderated
+  json.(p, :title, :text, :youtube_id, :city_id, :price, :discount_price,
+    :visible, :recommended, :id, :linkdata, :sitelink, :city_name, :moderated
   )
   json.time l(p.created_at)
+  if p.published_at && p.published_at > Time.now
+    json.published_at l(p.published_at, format: :full_time)
+  end
   json.can_edit policy(p).update?
   json.can_remove policy(p).destroy?
 
