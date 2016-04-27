@@ -9,7 +9,7 @@ class Post < ActiveRecord::Base
   belongs_to :category
   belongs_to :city
 
-  has_many :photos, dependent: :destroy
+  has_many :photos, dependent: :destroy, as: :photable
   has_many :comments, as: :commentable, inverse_of: :commentable, dependent: :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
   has_many :notifications, dependent: :destroy
