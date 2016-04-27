@@ -270,6 +270,7 @@ html.turbolinks-progress-bar::before {
       }
       &:focus{
         color: white !important;
+        background-color: #EC6212 !important;
       }
       &:active{
         background-color: #EC6212 !important;
@@ -301,7 +302,28 @@ html.turbolinks-progress-bar::before {
       background-color: white !important;
       color: #383838 !important;
       width: 76px;
-      border-color: #B1B1B1;
+      border-color: rgba(177, 177, 177, 0.3);
+    }
+    .btn-neutral{
+      background-color: white !important;
+      color: #383838 !important;
+      width: 76px;
+      border-color: rgba(177, 177, 177, 0.3);
+      &:hover{
+        color: #383838 !important;
+        border-color: rgba(177, 177, 177, 0.4);
+        background-color: white !important;
+      }
+      &:focus{
+        color: #383838 !important;
+        border-color: rgba(177, 177, 177, 0.4);
+        background-color: white !important;
+      }
+      &:active{
+        color: #383838 !important;
+        border-color: rgba(177, 177, 177, 0.4);
+        background-color: white !important;
+      }
     }
     .del-post-modal-window{
       position: relative;
@@ -1800,7 +1822,7 @@ textarea.form-control{
     border-color: #8EC1DA;
   }
 }
-.simple_form > div{
+.form-vertical > div{
   margin-top: 30px;
 }
 .fade-object{

@@ -36,7 +36,7 @@
             color: #383838 !important;
           }
           .wrap-title-text{
-            width: 62%;
+            width: 100%;
             float: left;
             padding-right: 10px;
             h3{
@@ -59,6 +59,9 @@
           span{
             color: rgba(0,0,0,.3);
           }
+          h4{
+            color: #00AB69;
+          }
         }
       }
     }
@@ -79,13 +82,20 @@
 }
 
 .desire-content{
-  max-width: 700px;
+  max-width: 810px;
   margin: 0 auto;
   margin-top: 95px;
   .post-autor{
+    .usual-avatar{
+      margin-top: 0px;
+      margin-left: 0px;
+    }
+    .post-autor-info{
+      margin-top: 0px;
+    }
     h4{
       font-size: 15px !important;
-      font-weight: 300;
+      font-weight: 400;
       margin-top: 3px;
     }
     .city-time{
@@ -96,9 +106,55 @@
 
   }
   .post-description{
-
+    textarea{
+      font-size: 16px !important;
+      padding: 0px !important;
+      min-height: 40px !important;
+      border: none !important;
+      box-shadow: none !important;
+      background-color: transparent !important;
+    }
   }
   .post-img{
     width: 100%;
+  }
+}
+.input-new-desire{
+    font-size: 30px !important;
+    background-color: transparent !important;
+    height: 39px !important;
+    border-bottom: none !important;
+    font-weight: 400;
+}
+.desire-description{
+  margin-top: 10px;
+  font-size: 16px;
+}
+.desire-title{
+  margin-top: 10px;
+  h1{
+    margin-top: 0px;
+  }
+}
+.text-new-desire{
+  font-size: 16px;
+}
+.desire-footer{
+  text-align: left;
+  margin-top: 20px;
+}
+.desire-variants{
+  text-align: left;
+  margin-top: 40px;
+  border-top: 1px solid #D2D2D2;
+  padding-top: 20px;
+  .tips-and-comments{
+    text-align: left;
+    margin-left: 10px;
+  }
+}
+.post-autor{
+  button{
+    float: right;
   }
 }

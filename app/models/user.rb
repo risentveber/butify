@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
   has_many :feedbacks
+  has_many :desires, dependent: :destroy
   has_one  :basket
   belongs_to :city
 

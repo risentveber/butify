@@ -1,0 +1,120 @@
+<div class='iwant-content'>
+	<div class='wrap-desires-list'>
+		<div class='tips-and-comments title-under-hat'>
+		  <div>Читайте желания людей и пре</div>
+		</div>
+    <div class='desires-list'>
+      <% @desires.each do |desire| %>
+        <figure>
+          <div class="post-autor">
+            <%= link_to desire.user do %>
+              <div class="usual-avatar" style="background:url(https://pp.vk.me/c5382/v5382599/a70/lVMwRxI_h3w.jpg) no-repeat; background-size:cover;"></div>
+            <% end %>
+            <div class="post-autor-info">
+              <%= link_to desire.user do %>
+                <h4 class="modal-title" id="myModalLabel"><%= desire.user.name %></h4>
+              <% end %>
+              <div class='city-time'>
+                <span><%= desire.user.city_name %>, <%= l(desire.created_at) %></span>
+              </div>
+            </div>
+          </div>
+          <div class='post-content-title-text-img'>
+            <%= link_to desire do %>
+              <div class='wrap-title-text'>
+                <h3>
+                  <%= desire.title %>
+                </h3>
+                <div>
+                  <%= desire.text%>
+                </div>
+              </div>
+              <div class='clearboth'>
+              </div>
+            <% end %>
+          </div>
+          <%= link_to desire do %>
+            <div class='post-footer'>
+              <span>16 ответов</span>
+            </div>
+          <% end %>
+        </figure>
+      <% end %>
+        <figure>
+          <div class="post-autor">
+            <a href="#">
+              <div class="usual-avatar" style="background:url(https://pp.vk.me/c5382/v5382599/a70/lVMwRxI_h3w.jpg) no-repeat; background-size:cover;"></div>
+              <div class="post-autor-info">
+                <h4 class="modal-title" id="myModalLabel">Анастасия Носкова</h4>
+                <div class='city-time'>
+                  <span>Уфа</span>
+                  <span>, </span>
+                  <span>24 апр.</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class='post-content-title-text-img'>
+            <a href='#'>
+              <div class='wrap-title-text'>
+                <h3>
+                  How does your bot say ‘ketchup’?
+                </h3>
+                <div>
+                  I didn’t know, so I explored by attempting to make a simple bot to help my family to order in delivery. This proved surprisingly difficult for me. Not because of the technology: as a designer-who-can-code-some, the technical ease of building a bot was exciting. No, the issue I faced wasn’t an argument in code but rather my childhood dinner table: whether to accept ‘catsup’ as a substitute for saying ‘ketchup’.
+                </div>
+              </div>
+              <div class='clearboth'>
+              </div>
+            </a>
+          </div>
+          <div class='post-footer'>
+            <span>16 ответов</span>
+            <h4>Выполнено</h4>
+          </div>
+        </figure>
+    </div>
+	</div>
+	<div class='feed-right-column'>
+		<div class='content-feed-right-column'>
+			<h4 class='on-grey'>Рекомендуем к просмотру</h4>
+			<div class='feed-recomended-list'>
+        <% User.recommended.random_order.limit(5).each do |u| %>
+  				<div class='person'>
+            <%= link_to u do %>
+              <div class="usual-avatar"
+                style="background: url(<%= u.avatar.thumb %>) no-repeat;
+                      background-size: cover";>
+              </div>
+              <div class='info-person'>
+                <h5 class="name-person"><%= u.name %></h5>
+                <div class='city-person'><%= u.city_name %></div>
+              </div>
+              <div class='clearboth'></div>
+            <% end %>
+          </div>
+        <% end %>
+			</div>
+      <% if current_user.city_name %>
+  			<h4 class='on-grey'>Мастера из вашего города</h4>
+  			<div class='feed-citizen-list'>
+          <% User.having_posts.where.not(id: current_user).where(city: current_user.city).random_order.limit(5).each do |u| %>
+    				<div class='person'>
+              <%= link_to u do %>
+                <div class="usual-avatar"
+                  style="background: url(<%= u.avatar.thumb %>) no-repeat;
+                        background-size: cover";>
+                </div>
+                <div class='info-person'>
+                  <h5 class="name-person"><%= u.name %></h5>
+                  <div class='city-person'><%= u.city_name %></div>
+                </div>
+                <div class='clearboth'></div>
+              <% end %>
+            </div>
+          <% end %>
+  			</div>
+      <% end %>
+		</div>
+	</div>
+</div>

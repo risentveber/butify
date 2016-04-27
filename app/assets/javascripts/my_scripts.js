@@ -95,7 +95,7 @@ $(document).on("page:load ready", function main(){
 
     $('textarea').autoResize({
       limit:300,
-      extraSpace:30,
+      extraSpace:35,
       animate:true
     });
     /*$('textarea.description-add-material').autoResize({

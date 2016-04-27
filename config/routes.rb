@@ -18,8 +18,7 @@ Rails.application.routes.draw do
   get 'popular' => 'feed#popular'
   get 'fresh' => 'feed#fresh'
   get 'hits' => 'feed#hits'
-  get 'iwant' => 'feed#iwant'
-  get 'desire' => 'feed#desire'
+  get 'iwant' => 'desires#index'
 
   resources :posts do
     member do
