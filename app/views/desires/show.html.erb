@@ -51,6 +51,7 @@
     <% if @desire.completed %>
         <h4 class='complete-desire'>Желание исполнено</h4>
         <% if current_user == @desire.user %>
+          <div>Вы уже, наверное, выбрали товар, который Вам по душе)) Теперь осталось связаться с его продавцом</div></br></br>
           <%= simple_form_for(@desire, url: uncomplete_desire_path) do |f| %>
             <%= f.button :submit, "Продолжить исполнение желания", class: 'btn btn-st btn-neutral' %>
           <% end %>

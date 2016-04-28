@@ -60,7 +60,7 @@
                 <h1 class='impressed-text'>Вы ничего не можете предложить, у Вас нет публикаций</h1>
               </div>
             <% else %>
-              <%= react_component 'Gallery', posts_url: posts_path(current_user), desire_id: @desire.id, desire_count: @desire.posts.where(user_id: current_user).count, person_count: Post.joins(:desires).where('posts.user_id = (?)', current_user.id).where('desires_posts.created_at > (?)', 1.day.ago).count %>
+              <%= react_component 'Gallery', posts_url: posts_user_path(current_user), desire_id: @desire.id, desire_count: @desire.posts.where(user_id: current_user).count, person_count: Post.joins(:desires).where('posts.user_id = (?)', current_user.id).where('desires_posts.created_at > (?)', 1.day.ago).count %>
             <% end %>
           </div>
         <% end %>
