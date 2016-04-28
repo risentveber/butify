@@ -64,7 +64,7 @@
         <% if @desire.posts.where(user_id: current_user).count > 0 %>
           <span class='short-essay-on-gray'>Вы уже предложили свой товар. Человек получил уведомление о Вашем предложении.</span>
         <% else %>
-          <% if Post.joins(:desires).where('posts.user_id = (?)', current_user.id).where('desires_posts.created_at > (?)', 1.day.ago).count > 10 %>
+          <% if Post.joins(:desires).where('posts.user_id = (?)', current_user.id).where('desires_posts.created_at > (?)', 1.day.ago).count > 2 %>
             <span class='short-essay-on-gray'>Вы можете предлагать только свой товар только 3 людям в сутки, поэтому предлагайте не всем подряд, а только тем, кому Вы действительно можете помочь.</span>
           <% else %>
             <%= link_to offer_desire_path do %>
