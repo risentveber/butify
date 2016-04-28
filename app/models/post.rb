@@ -16,11 +16,11 @@ class Post < ActiveRecord::Base
   has_and_belongs_to_many :desires
 
   scope :recommended, -> { where(recommended: true) }
-  scope :moderated, -> { where(moderated: true) }
+  scope :moderated, -> (user_id) { where('posts.moderated = true OR posts.user_id = (?)', user_id) }
   scope :visible, -> { where(visible: true) }
   scope :time_order, -> { order(created_at: :desc) }
-  scope :published, -> {where('posts.published_at IS NULL OR posts.published_at > (?)', Time.now)}
-  scope :default, -> {time_order.moderated.published}
+  scope :published, -> {where('posts.published_at IS NULL OR posts.published_at < (?)', Time.now)}
+  scope :default, -> (user_id) {time_order.moderated(user_id).published}
 
   delegate :name, to: :city, allow_nil: true, prefix: true
 

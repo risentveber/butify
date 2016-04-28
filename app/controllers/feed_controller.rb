@@ -21,7 +21,7 @@ class FeedController < ApplicationController
   def fresh
     respond_to do |f|
       f.json do
-        @posts = Post.default.visible.limit(params[:count])
+        @posts = Post.default(current_user.try(:id)).visible.limit(params[:count])
         @posts = @posts.where(city_id: params[:city_id]) if params[:city_id]
         render 'posts/index'
       end
@@ -42,7 +42,7 @@ class FeedController < ApplicationController
   def recommend
     respond_to do |f|
       f.json do
-        @posts = Post.default.recommended.limit(params[:count])
+        @posts = Post.default(current_user.try(:id)).recommended.limit(params[:count])
         @posts = @posts.where(city_id: params[:city_id]) if params[:city_id]
         render 'posts/index'
       end
@@ -53,7 +53,7 @@ class FeedController < ApplicationController
   def popular
     respond_to do |f|
       f.json do
-        @posts = Post.order(cached_votes_total: :desc).moderated.published
+        @posts = Post.order(cached_votes_total: :desc).moderated(current_user.try(:id)).published
           .where('created_at >= ?', 2.weeks.ago)
           .limit(params[:count])
         @posts = @posts.where(city_id: params[:city_id]) if params[:city_id]
@@ -66,7 +66,7 @@ class FeedController < ApplicationController
   def hits
     respond_to do |f|
       f.json do
-        @posts = Post.default
+        @posts = Post.default(current_user.try(:id))
           .where('updated_at >= ?', 2.days.ago)
           .limit(params[:count])
         @posts = @posts.where('discount_price != 0 AND discount_price < price AND (100 - (100*discount_price/price)) > 10')
