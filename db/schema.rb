@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160425163502) do
+=======
+ActiveRecord::Schema.define(version: 20160427120036) do
+>>>>>>> iwant
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +88,27 @@ ActiveRecord::Schema.define(version: 20160425163502) do
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
+  create_table "desires", force: :cascade do |t|
+    t.string   "title",                      null: false
+    t.text     "text"
+    t.boolean  "completed",  default: false
+    t.integer  "user_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "desires", ["user_id"], name: "index_desires_on_user_id", using: :btree
+
+  create_table "desires_posts", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "post_id"
+    t.integer  "desire_id"
+  end
+
+  add_index "desires_posts", ["desire_id"], name: "index_desires_posts_on_desire_id", using: :btree
+  add_index "desires_posts", ["post_id"], name: "index_desires_posts_on_post_id", using: :btree
+
   create_table "feedbacks", force: :cascade do |t|
     t.text     "message"
     t.integer  "user_id"
@@ -125,8 +150,10 @@ ActiveRecord::Schema.define(version: 20160425163502) do
     t.string   "image"
     t.integer  "user_id"
     t.integer  "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "photable_id"
+    t.string   "photable_type"
   end
 
   add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
@@ -250,4 +277,5 @@ ActiveRecord::Schema.define(version: 20160425163502) do
   add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
+  add_foreign_key "desires", "users"
 end

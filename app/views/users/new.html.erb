@@ -17,6 +17,9 @@
           label: "Я принимаю #{link_to 'правила сайта', terms_path}  и #{link_to 'лицензионное соглашение', licence_path}.".html_safe %>
       </div>
       <%= f.button :submit, button_name(@user), class: 'btn-st btn-primary' %>
+      <%= link_to '/auth/vkontakte', class: 'link-to-reg-vk btn btn-st vk-link-page-new-session-and-reg' do%>
+        <img src='/images/vk_link_reg1.png'/> Войти через ВК
+      <% end %>
     <% end %>
     </div>
   </div>

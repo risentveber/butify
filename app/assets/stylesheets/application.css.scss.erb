@@ -34,6 +34,7 @@
 *= require emotions
 *= require explore
 *= require hat
+*= require iwant
 *= require bootstrap-clockpicker
 *= require datepicker
 */
@@ -269,6 +270,7 @@ html.turbolinks-progress-bar::before {
       }
       &:focus{
         color: white !important;
+        background-color: #EC6212 !important;
       }
       &:active{
         background-color: #EC6212 !important;
@@ -300,7 +302,28 @@ html.turbolinks-progress-bar::before {
       background-color: white !important;
       color: #383838 !important;
       width: 76px;
-      border-color: #B1B1B1;
+      border-color: rgba(177, 177, 177, 0.3);
+    }
+    .btn-neutral{
+      background-color: white !important;
+      color: #383838 !important;
+      border-color: rgba(177, 177, 177, 0.5);
+      box-shadow: 0 2px 5px rgba(175, 175, 175, 0.2), inset 0 0 1px rgba(255, 255, 255, 0.5) !important;
+      &:hover{
+        color: #383838 !important;
+        border-color: rgba(177, 177, 177, 0.4);
+        background-color: white !important;
+      }
+      &:focus{
+        color: #383838 !important;
+        border-color: rgba(177, 177, 177, 0.4);
+        background-color: white !important;
+      }
+      &:active{
+        color: #383838 !important;
+        border-color: rgba(177, 177, 177, 0.4);
+        background-color: white !important;
+      }
     }
     .del-post-modal-window{
       position: relative;
@@ -1799,7 +1822,7 @@ textarea.form-control{
     border-color: #8EC1DA;
   }
 }
-.simple_form > div{
+.form-vertical > div{
   margin-top: 30px;
 }
 .fade-object{
@@ -2369,4 +2392,13 @@ iframe{
 }
 .selectize-control.single .selectize-input:after{
   display: none !important;
+}
+.short-essay-on-gray{
+  color: rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 0px white;
+  font-size: 14px;
+}
+.impressed-text{
+  color: #e2e2e2;
+  text-shadow: -1px -1px #C1C1C1, 1px 1px #FFF;
 }

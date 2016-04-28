@@ -1,0 +1,99 @@
+<div class='iwant-content'>
+	<div class='wrap-desires-list'>
+		<div class='tips-and-comments title-under-hat'>
+		  <div>Здесь находятся Ваши желания</div>
+      <%= link_to desires_path do %><span>Все желания</span><% end %> <a>•</a> <%= link_to iwant_path do %><span class='active'>Мои желания</span><% end %>
+		</div>
+    <div class='desires-list'>
+      <% @desires.each do |desire| %>
+        <figure>
+          <div class="post-autor">
+            <%= link_to desire.user do %>
+              <div class="usual-avatar" style="background:url(<%= desire.user.avatar.thumb %>) no-repeat; background-size:cover;"></div>
+            <% end %>
+            <div class="post-autor-info">
+              <%= link_to desire.user do %>
+                <h4 class="modal-title" id="myModalLabel"><%= desire.user.name %></h4>
+              <% end %>
+              <div class='city-time'>
+                <span><%= desire.user.city_name %>, <%= l(desire.created_at) %></span>
+              </div>
+            </div>
+          </div>
+          <div class='post-content-title-text-img'>
+            <%= link_to desire do %>
+              <div class='wrap-title-text'>
+                <h3>
+                  <%= desire.title %>
+                </h3>
+                <div>
+                  <%= desire.text%>
+                </div>
+              </div>
+              <div class='wrap-img'>
+                <img src='<%= desire.photos.first.try :url %>' />
+              </div>
+              <div class='clearboth'>
+              </div>
+            <% end %>
+          </div>
+          <%= link_to desire do %>
+            <div class='post-footer'>
+              <span>Ответов: <%= desire.posts.count %></span>
+              <% if desire.completed %>
+                <h4>Желание исполнено</h4>
+              <% end %>
+            </div>
+          <% end %>
+        </figure>
+      <% end %>
+    </div>
+	</div>
+	<div class='feed-right-column'>
+		<div class='content-feed-right-column'>
+      <div>
+        <%= link_to new_desire_path do %>
+          <button class='btn btn-st'>Написать желание</button>
+        <% end %>
+      </div>
+			<h4 class='on-grey'>Рекомендуем к просмотру</h4>
+			<div class='feed-recomended-list'>
+        <% User.recommended.random_order.limit(5).each do |u| %>
+  				<div class='person'>
+            <%= link_to u do %>
+              <div class="usual-avatar"
+                style="background: url(<%= u.avatar.thumb %>) no-repeat;
+                      background-size: cover";>
+              </div>
+              <div class='info-person'>
+                <h5 class="name-person"><%= u.name %></h5>
+                <div class='city-person'><%= u.city_name %></div>
+              </div>
+              <div class='clearboth'></div>
+            <% end %>
+          </div>
+        <% end %>
+			</div>
+      <% if current_user.city_name %>
+  			<h4 class='on-grey'>Мастера из вашего города</h4>
+  			<div class='feed-citizen-list'>
+          <% User.having_posts.where.not(id: current_user).where(city: current_user.city).random_order.limit(5).each do |u| %>
+    				<div class='person'>
+              <%= link_to u do %>
+                <div class="usual-avatar"
+                  style="background: url(<%= u.avatar.thumb %>) no-repeat;
+                        background-size: cover";>
+                </div>
+                <div class='info-person'>
+                  <h5 class="name-person"><%= u.name %></h5>
+                  <div class='city-person'><%= u.city_name %></div>
+                </div>
+                <div class='clearboth'></div>
+              <% end %>
+            </div>
+          <% end %>
+  			</div>
+      <% end %>
+		</div>
+	</div>
+</div>

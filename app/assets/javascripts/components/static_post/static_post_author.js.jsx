@@ -37,7 +37,7 @@ var StaticPostAuthor = React.createClass({
               <div className='post-autor-city'>
                 {description}
                 {publicationInfo}&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;
-                <a onClick={this.publicationInfoClick}>Опубликовать передним числом</a>
+                <a onClick={this.publicationInfoClick}>Отсроченная публикация</a>
               </div>
             </div>
         </div>

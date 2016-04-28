@@ -1,0 +1,88 @@
+<div class='desire-content'>
+  <div class="post-autor">
+    <%= link_to @desire.user do %>
+      <div class="usual-avatar" style = 'background: url(<%= @desire.user.avatar.thumb %>) no-repeat; background-size: cover; background-color: white;'>
+      </div>
+      <div class="post-autor-info">
+        <h4 class="modal-title" id="myModalLabel"><%= @desire.user.name %></h4>
+        <div class='city-time'>
+          <%= @desire.user.city_name %>, <%= l(Time.now) %>
+        </div>
+      </div>
+    <% end %>
+  
+    <div class="action-angle post-action">
+      <div class="btn-group">
+        <span class="sign-dots-menu-big" data-toggle="dropdown">•••</span>
+        <ul class="dropdown-menu blue-background-dropdown-menu" role="menu">
+          <% if current_user == @desire.user && !@desire.completed %>
+            <li>
+              <%= link_to edit_desire_path do %>Редактировать<% end %>
+            </li>
+            <li>
+              <%= link_to 'Удалить', desire_path(@desire),
+              method: :delete,
+              data: { confirm: 'Вы уверены?' } %>
+            </li>
+          <% end %>
+          <li>
+            <a>Пожаловаться</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class='post-title desire-title'>
+    <h1><%= @desire.title %></h1>
+  </div>
+
+  <div class='post-description desire-description'>
+    <div class="usual-desire-text-create action-create-element-desire">
+      <%= @desire.text %>
+    </div>
+  </div>
+
+  <div class='post-img desire-img'>
+    <img src = '<%= @desire.photos.first.try :url %>' />
+  </div>
+
+  <div class="post-footer desire-footer">
+    <% if @desire.completed %>
+        <h4 class='complete-desire'>Желание исполнено</h4>
+        <% if current_user == @desire.user %>
+          <%= simple_form_for(@desire, url: uncomplete_desire_path) do |f| %>
+            <%= f.button :submit, "Продолжить исполнение желания", class: 'btn btn-st btn-neutral' %>
+          <% end %>
+        <% end %>
+    <% else %>
+      <% if current_user == @desire.user %>
+        <%= simple_form_for(@desire, url: complete_desire_path) do |f| %>
+          <%= f.button :submit, "Спасибо, желание исполнено!", class: 'btn btn-primary btn-st' %>
+        <% end %>
+      <% else %>
+        <% if @desire.posts.where(user_id: current_user).count > 0 %>
+          <span class='short-essay-on-gray'>Вы уже предложили свой товар. Человек получил уведомление о Вашем предложении.</span>
+        <% else %>
+          <% if Post.joins(:desires).where('posts.user_id = (?)', current_user.id).where('desires_posts.created_at > (?)', 1.day.ago).count > 2 %>
+            <span class='short-essay-on-gray'>Вы можете предлагать только свой товар только 3 людям в сутки, поэтому предлагайте не всем подряд, а только тем, кому Вы действительно можете помочь.</span>
+          <% else %>
+            <%= link_to offer_desire_path do %>
+              <button type="button" class="btn btn-primary btn-st">
+                Предложить свой товар
+              </button>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="desire-variants">
+    <div class='tips-and-comments'>Ответов (<%= @desire.posts.count %>)</div>
+    <div id="grid-gallery" class="grid-gallery">
+      <%= react_component 'Gallery', posts_url: desire_offers_path(@desire) %>
+    </div>
+  </div>
+
+</div>

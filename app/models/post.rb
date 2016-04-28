@@ -6,13 +6,14 @@ class Post < ActiveRecord::Base
   belongs_to :category
   belongs_to :city
 
-  has_many :photos, dependent: :destroy
+  has_many :photos, dependent: :destroy, as: :photable
   has_many :comments, as: :commentable, inverse_of: :commentable, dependent: :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :text_elements, -> { order(:position) }, dependent: :destroy
   has_and_belongs_to_many :tags
   has_and_belongs_to_many :categories
+  has_and_belongs_to_many :desires
 
   scope :recommended, -> { where(recommended: true) }
   scope :moderated, -> { where(moderated: true) }

@@ -171,6 +171,8 @@ var Gallery = React.createClass({
         <ExplorePost
           showClick={self.showClick}
           like_post={self.like_post}
+          desire_id={self.props.desire_id}
+          desire_count={self.props.desire_count}
           key={i}
           post={post}/>
       );

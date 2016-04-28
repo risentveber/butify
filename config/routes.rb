@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'popular' => 'feed#popular'
   get 'fresh' => 'feed#fresh'
   get 'hits' => 'feed#hits'
+  get 'iwant' => 'desires#iwant'
 
   resources :posts do
     member do
@@ -36,6 +37,12 @@ Rails.application.routes.draw do
   resources :categories
   resources :tags
   resources :photos
+  resources :desires do
+    patch :complete, on: :member
+    patch :uncomplete, on: :member
+    get :offer, on: :member
+    resources :offers
+  end
   resources :users, except: :edit do
     get :followers, on: :member
     get :following, on: :member

@@ -57,8 +57,8 @@
                   <% end %>
                 </div>
             </div>
-            <%= link_to hits_path data:{ turblinks: true} do %>
-              <button type="button" class="btn btn-default dont-hide btn-day-product btn-without-props-btn">Товары дня</button>
+            <%= link_to desires_path do %>
+              <button type="button" class="btn btn-default dont-hide btn-day-product btn-without-props-btn">Желания</button>
             <% end %>
           </div>
         </div>
@@ -88,6 +88,12 @@
                     <% end %>
                   </li>
                   <li>
+                    <%= link_to iwant_path do %>
+                      <img src='/images/magic-wand.png' />
+                      Мои желания
+                    <% end %>
+                  </li>
+                  <li>
                     <%= link_to following_user_path(current_user) do %>
                       <img src='/images/cupoftea.png' /> Я читаю
                     <% end %>
@@ -109,6 +115,11 @@
                     <% end %>
                   </li>
                 </ul>
+            <% end %>
+            <%= link_to hits_path data:{ turblinks: true} do %>
+              <div>
+                  <img title='Товары дня' data-toggle='tooltip' data-placement='bottom' class='menu-icon' src = '/images/gift_sale.png' />
+              </div>
             <% end %>
             <%= link_to notices_user_path(current_user) do %>
                 <div>
