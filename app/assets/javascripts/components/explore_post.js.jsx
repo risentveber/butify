@@ -6,6 +6,22 @@ const ExplorePost = React.createClass({
     //console.log('showClick')
     this.props.showClick(this.props.post.id);
   },
+  offer(){
+    var url = '/desires/' + this.props.desire_id + '/offers'
+    $.ajax({
+      url: url,
+      type: 'POST',
+      data: {
+        post_id: this.props.post.id
+      },
+      success: function(data) {
+        Turbolinks.visit('desires/');
+      },
+      error: function(xhr, status, err) {
+        console.error(status, err.toString());
+      }
+    });
+  },
   render(){
     post = this.props.post;
     var image, link_rendered;
@@ -64,6 +80,17 @@ const ExplorePost = React.createClass({
       );
       var post_id = post.id;
     }
+    if (this.props.desire_id && !this.props.desire_count){
+      var offer_block = (
+        <button onClick={this.offer} className='btn btn-xs btn-st'>Предложить</button>
+      );
+    }
+    else if(this.props.desire_id){
+      var offer_block = (
+        "Вы уже предложили товар на это желание"
+      );
+      var offer_hidden = "hidden-element"
+    }
     if(post.linkdata.description)
       var title_link = <h3 className='title'>{post.linkdata.description}</h3>
     if(tags.length)
@@ -75,10 +102,9 @@ const ExplorePost = React.createClass({
         <a href={post.sitelink} target='_blank'>{getLocation(post.sitelink).hostname}</a>
       );
     return(
-        <figure>
+        <figure className={offer_hidden}>
           <div className='wrap-figure-explore-post'>
             {image}
-
             <figcaption className='content-board border-b-radius'>
             <div className='main-contain'>
               {link_rendered}
@@ -86,6 +112,7 @@ const ExplorePost = React.createClass({
               <h4>{post.title}</h4>
             </div>
             {admin_block}
+            {offer_block}
             <div className='price-explore-post'>
               <DiscountBlock price={post.price} discount_price={post.discount_price}/>
             </div>

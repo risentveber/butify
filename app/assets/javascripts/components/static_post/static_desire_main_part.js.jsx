@@ -9,7 +9,8 @@ var StaticDesireMainPart = React.createClass({
               value={this.props.desire.title}
               onChange={this.props.onChangeTitle}
               className='input-new-desire form-text-title input-sp form-control'
-              placeholder = 'Напишите суть желания. Кому? Зачем? Куда?'/>
+              placeholder = 'Напишите суть желания. Кому? Зачем? Куда?'
+              autoFocus = 'true'/>
         </div>
 
         <div className='post-description desire-description'>
@@ -18,7 +19,7 @@ var StaticDesireMainPart = React.createClass({
               className='text-new-post text-new-desire'
               html={this.props.desire.text}
               onChange={this.props.onChangeText}
-              placeholder="Если хотите, можете написать о своем желании подробнее, указать детали и привести примеры"
+              placeholder="Если хотите, можете написать подробнее, указать детали, привести примеры и загрузить фото."
             />
           </div>
         </div>

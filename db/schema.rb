@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426210707) do
+ActiveRecord::Schema.define(version: 20160427120036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,16 @@ ActiveRecord::Schema.define(version: 20160426210707) do
 
   add_index "desires", ["user_id"], name: "index_desires_on_user_id", using: :btree
 
+  create_table "desires_posts", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "post_id"
+    t.integer  "desire_id"
+  end
+
+  add_index "desires_posts", ["desire_id"], name: "index_desires_posts_on_desire_id", using: :btree
+  add_index "desires_posts", ["post_id"], name: "index_desires_posts_on_post_id", using: :btree
+
   create_table "feedbacks", force: :cascade do |t|
     t.text     "message"
     t.integer  "user_id"
@@ -139,7 +149,7 @@ ActiveRecord::Schema.define(version: 20160426210707) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "photable_id"
-    t.integer  "photable_type"
+    t.string   "photable_type"
   end
 
   add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree

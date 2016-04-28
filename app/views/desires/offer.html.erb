@@ -1,0 +1,71 @@
+<div class='desire-content'>
+  <div class="post-autor">
+    <%= link_to @desire.user do %>
+      <div class="usual-avatar" style = 'background: url(<%= @desire.user.avatar.thumb %>) no-repeat; background-size: cover; background-color: white;'>
+      </div>
+      <div class="post-autor-info">
+        <h4 class="modal-title" id="myModalLabel"><%= @desire.user.name %></h4>
+        <div class='city-time'>
+          <%= @desire.user.city_name %>, <%= l(Time.now) %>
+        </div>
+      </div>
+    <% end %>
+    <% if current_user == @desire.user %>
+      <button class='btn-neutral btn btn-st'>
+        Удалить
+      </button>
+    <% end %>
+  </div>
+
+  <div class='post-title desire-title'>
+    <h1><%= @desire.title %></h1>
+  </div>
+
+  <div class='post-description desire-description'>
+    <div class="usual-desire-text-create action-create-element-desire">
+      <%= @desire.text %>
+    </div>
+  </div>
+
+  <div class='post-img desire-img'>
+    <img src = '<%= @desire.photos.first.try :url %>' />
+  </div>
+
+  <div class="post-footer desire-footer">
+    <% if current_user == @desire.user %>
+      <button type="button" class="btn btn-primary btn-st">
+        Спасибо, желание исполнено!
+      </button>
+    <% else %>
+      <%= link_to @desire do %>
+          Посмотреть все предложенные товары
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="desire-variants">
+    <% if !@desire.completed %>
+      <% if @desire.posts.where(user_id: current_user).count > 0 %>
+        <div class='tips-and-comments'>Вы уже предложили свой товар. Человек получил об этом уведомление.</div>
+      <% else %>
+        <% if Post.joins(:desires).where('posts.user_id = (?)', current_user.id).where('desires_posts.created_at > (?)', 1.day.ago).count > 10 %>
+          <div class='tips-and-comments'>Вы можете предлагать только свой товар только 3 людям в сутки, поэтому предлагайте не всем подряд, а только тем, кому Вы действительно можете помочь.</div>
+        <% else %>
+          <div class='tips-and-comments'>
+            Предложите человеку свой товар, если он соответствует его желанию! Вы можете предложить ему только один товар.
+          </div>
+          <div id="grid-gallery" class="grid-gallery">
+            <% if current_user.follow_count.zero? %>
+              <div class='align-c'>
+                <h1 class='impressed-text'>Вы ничего не можете предложить, у Вас нет публикаций</h1>
+              </div>
+            <% else %>
+              <%= react_component 'Gallery', posts_url: posts_path(current_user), desire_id: @desire.id, desire_count: @desire.posts.where(user_id: current_user).count, person_count: Post.joins(:desires).where('posts.user_id = (?)', current_user.id).where('desires_posts.created_at > (?)', 1.day.ago).count %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>

@@ -9,7 +9,7 @@ class CreateDesires < ActiveRecord::Migration
       t.timestamps null: false
     end
     add_column :photos, :photable_id, :integer
-    add_column :photos, :photable_type, :integer
+    add_column :photos, :photable_type, :string
   end
 
   def data

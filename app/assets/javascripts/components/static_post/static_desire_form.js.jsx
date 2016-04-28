@@ -23,7 +23,7 @@ var StaticDesireForm = React.createClass({
   submitForm(){
     var desire = this.state.desire;
     var url = this.props.desire ? this.props.url : '/desires'
-    var photo_ids = post.photos.map(function(p){ return p.id })
+    var photo_ids = desire.photos.map(function(p){ return p.id })
     var request_type = this.props.desire ? 'PATCH' : 'POST'
     this.setState({disabled: true});
     var self = this;
@@ -38,7 +38,7 @@ var StaticDesireForm = React.createClass({
         }
       },
       success: function(data) {
-        Turbolinks.visit('/');
+        Turbolinks.visit('/desires');
       },
       error: function(xhr, status, err) {
         self.setState({disabled: false});
@@ -89,7 +89,7 @@ var StaticDesireForm = React.createClass({
           removePhoto={this.removePhoto}
           desire={this.state.desire}/>
         <div className='clearboth' />
-        <div className="desire-footer">
+        <div className="desire-footer-create">
           <button
             type="button"
             disabled={this.contentIsInvalid() || this.state.disabled}

@@ -20,9 +20,13 @@
                       <div class="object-text">
                         <div class="object-maintext">
                           <% if n.recommendation? %>
-                            Поздравляем! Команда Trenly добавила Вас в список пользователей, рекомендованных к просмотру
+                            <span>Поздравляем! Команда Trenly добавила Вас в список пользователей, рекомендованных к просмотру</span>
+                          <% elsif n.offer? %>
+                            <%= link_to n.who.name, user_path(n.who), class: 'thin-text300' %>
+                            <span>предложил(а) Вам свой товар</span>
                           <% elsif n.post_recommendation? %>
-                            Команде Trenly понравилась Ваша <%= link_to 'публикация', post_path(n.post_id) %>, она добавлена в категорию <b><%= link_to 'Наш выбор', recommend_path %></b>
+                            <span>Команде Trenly понравилась Ваша <b><%= link_to 'публикация', post_path(n.post_id) %></b>, она добавлена в категорию <b><%= link_to 'Наш выбор', recommend_path %></b>
+                            </span>
                           <% elsif n.who %>
                             <%= link_to n.who.name, user_path(n.who), class: 'thin-text300' %>
                             <% if n.comment? %>

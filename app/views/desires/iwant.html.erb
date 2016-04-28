@@ -1,8 +1,8 @@
 <div class='iwant-content'>
 	<div class='wrap-desires-list'>
 		<div class='tips-and-comments title-under-hat'>
-		  <div>Читайте желания людей и исполняйте их</div>
-      <%= link_to desires_path do %><span class='active'>Все желания</span><% end %> <a>•</a> <%= link_to iwant_path do %><span>Мои желания</span><% end %>
+		  <div>Здесь находятся Ваши желания</div>
+      <%= link_to desires_path do %><span>Все желания</span><% end %> <a>•</a> <%= link_to iwant_path do %><span class='active'>Мои желания</span><% end %>
 		</div>
     <div class='desires-list'>
       <% @desires.each do |desire| %>
@@ -31,9 +31,7 @@
                 </div>
               </div>
               <div class='wrap-img'>
-                <% if desire.photos.first %>
-                  <img src='<%= desire.photos.first.try :url %>' />
-                <% end %>
+                <img src='<%= desire.photos.first.try :url %>' />
               </div>
               <div class='clearboth'>
               </div>

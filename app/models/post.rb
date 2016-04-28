@@ -16,6 +16,7 @@ class Post < ActiveRecord::Base
   has_many :text_elements, -> { order(:position) }, dependent: :destroy
   has_and_belongs_to_many :tags
   has_and_belongs_to_many :categories
+  has_and_belongs_to_many :desires
 
   scope :recommended, -> { where(recommended: true) }
   scope :moderated, -> { where(moderated: true) }

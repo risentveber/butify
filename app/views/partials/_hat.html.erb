@@ -57,8 +57,8 @@
                   <% end %>
                 </div>
             </div>
-            <%= link_to hits_path data:{ turblinks: true} do %>
-              <button type="button" class="btn btn-default dont-hide btn-day-product btn-without-props-btn">Товары дня</button>
+            <%= link_to desires_path do %>
+              <button type="button" class="btn btn-default dont-hide btn-day-product btn-without-props-btn">Желания</button>
             <% end %>
           </div>
         </div>
@@ -85,6 +85,12 @@
                       </span>
                       <img src='/images/like_active.png' />
                       Нравится
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to iwant_path do %>
+                      <img src='/images/magic-wand.png' />
+                      Мои желания
                     <% end %>
                   </li>
                   <li>
@@ -119,6 +125,11 @@
                   <%= notifications_count unless notifications_count.zero? %>
                 </div>
             <% end if current_user %>
+            <%= link_to hits_path data:{ turblinks: true} do %>
+              <div>
+                  <img title='Товары дня' data-toggle='tooltip' data-placement='bottom' class='menu-icon' src = '/images/gift_sale.png' />
+              </div>
+            <% end %>
             <% if current_user %>
               <%= link_to new_post_path do %>
                 <button class='get-publication-hat btn btn-st <%= insert_class_name(yield(:class_name)) %>'>Опубликовать</button>
