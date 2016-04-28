@@ -40,7 +40,16 @@
             <% end %>
           </div>
           <%= link_to desire do %>
-            <div class='post-footer'>
+            <div class='post-footer'> 
+              <% if current_user != desire.user && !desire.completed %>
+                <% if desire.posts.where(user_id: current_user).count < 1 && Post.joins(:desires).where('posts.user_id = (?)', current_user.id).where('desires_posts.created_at > (?)', 1.day.ago).count < 3 %>
+                  <%= link_to offer_desire_path(desire) do %>
+                    <button type="button" class="btn btn-xs btn-st">
+                      Предложить свой товар
+                    </button>
+                  <% end %>
+                <% end %>
+              <% end %>
               <span>Ответов: <%= desire.posts.count %></span>
               <% if desire.completed %>
                 <h4>Желание исполнено</h4>
