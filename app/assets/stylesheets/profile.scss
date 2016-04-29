@@ -131,11 +131,22 @@
     margin-bottom: 5px;
 	}
 	.instruction-block{
-		div{
+		.notification-block{
 			float: left;
 			max-width: 250px;
-			height: 124px;
+			height: 184px;
 			margin: 8px;
+			.text{
+				float: left;
+				width: 62%;
+			}
+			.img{
+				float: left;
+				width: 38%;
+				img{
+					width: 100%;
+				}
+			}
 		}
 	}
 }
