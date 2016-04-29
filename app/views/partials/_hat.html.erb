@@ -3,7 +3,7 @@
     <div class='inner-hat'>
       <div class='metabar-block metabar-block-left'>
         <% if current_user %>
-          <%= link_to root_path do %>
+          <%= link_to feed_path do %>
             <img src='/images/logo_trenly.png' />
           <% end %>
           <% if current_user.admin? %>
