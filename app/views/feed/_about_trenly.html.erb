@@ -1,6 +1,8 @@
 <% if !current_user %>
 	<div class = 'join-to-us-under-hat'>
 		<div>Здесь вы найдёте интересные вещи, эксклюзивные товары, креативные штучки, идеи для подарков</div>
-		<%= link_to "Присоединяйтесь!", new_user_path, class: 'btn btn-st'%>
+		<div class='join-desire'>В разделе <b><%= link_to 'желания', desires_path %></b> напишите 
+			то, что Вы хотите найти и купить, а товар найдет Вас сам. Его Вам предложат продавцы.</div>
+		<%= link_to "Присоединяйтесь!", new_user_path, class: 'btn btn-st join-to-us-btn'%>
 	</div>
 <% end %>

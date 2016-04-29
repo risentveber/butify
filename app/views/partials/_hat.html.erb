@@ -137,10 +137,10 @@
             <% end %>
             <% if !current_user %>
               <div class = 'entire-on-hat'>
-                <%= link_to "Вход", new_session_path, class: 'btn btn-primary btn-st welcom-main-page'%>
-                 •
+                <%= link_to "Регистрация", new_user_path, class: 'btn btn-st-contrast btn-st welcom-main-page'%>
+                •
                 <%= link_to '/auth/vkontakte', class: 'link-to-reg-vk btn btn-st btn-st-contrast' do%>
-                  <img src='/images/vk_link_reg1.png'/> Войти через ВК
+                  <img src='/images/vk_link_reg1.png'/> Через ВК
                 <% end %>
               </div>
             <% end %>

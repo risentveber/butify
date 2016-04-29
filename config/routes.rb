@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
-  root 'static_pages#main'
+  root 'feed#fresh'
   get 'profile' => 'users#profile'
   get 'admin/moderate' => 'feed#moderate'
   resources :password_resets, only: [:new, :create, :edit, :update] do
