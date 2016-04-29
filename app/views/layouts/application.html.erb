@@ -23,9 +23,6 @@
   <%= render "partials/current_user_info" %>
 </head>
 <body class = 'night'>
-  <div class = 'clouds'>
-    <%= render "partials/clouds" %>
-  </div>
   <%= render "partials/hat" %>
     <div class = 'notice'>
       <button type="button" id = 'close-notice' class="close" aria-hidden="true">&times;</button>
@@ -35,6 +32,5 @@
     </div>
 
 <%= yield %>
-
 </body>
 </html>
