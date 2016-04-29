@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       flash[:success] = 'Успешная регистрация'
       #UserMailer.welcome(@user).deliver_later
 
-      redirect_to root_path
+      redirect_to @user
     else
       @button_name = 'Создать'
       render 'new'

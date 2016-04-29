@@ -120,3 +120,22 @@
 	margin-top: 20px;
 	width: 203px;
 }
+.instruction-for-user{
+	max-width: 800px;
+	margin: 20px auto;
+	.about-instruction{
+		text-align: center;
+		font-size: 14px;
+		color: #747474;
+    text-shadow: 0 1px 0px white;
+    margin-bottom: 5px;
+	}
+	.instruction-block{
+		div{
+			float: left;
+			max-width: 250px;
+			height: 124px;
+			margin: 8px;
+		}
+	}
+}

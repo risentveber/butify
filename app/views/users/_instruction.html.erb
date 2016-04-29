@@ -1,0 +1,20 @@
+<% if current_user && current_user == @user && Time.now - current_user.created_at < 1.day%>
+
+	<div class='instruction-for-user'>
+		<div class='about-instruction'>Эти подсказки пропадут спустя после регистрации</div>
+		<div class='instruction-block'>
+			<div class='notification-block'>
+	      Попробуйте <b><%= link_to 'опубликовать', new_post_path %></b> свой товар, чтобы он появился на сайте, и его заметили Ваши потенциальные клиенты.
+	    </div>
+	    <div class='notification-block'>
+	      Посмотрете самые интересные товары мастеров. Для этого сверху выберите <b>категорию</b> и перейдите в интересующий Вас раздел.
+	    </div>
+	    <div class='notification-block'>
+	      Осуществляйте <b><%= link_to 'желания', desires_path %></b> других людей! Предложите им свой товар.</br>
+	      Или же <b><%= link_to 'напишите свое желание', new_desire_path %></b>, а товар найдет Вас сам.
+	    </div>
+	  </div>
+	</div>
+	<div class='clearboth'>
+   </div>
+<% end %>
