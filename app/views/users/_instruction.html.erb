@@ -1,7 +1,7 @@
 <% if current_user && current_user == @user && Time.now - current_user.created_at < 1.day%>
 
 	<div class='instruction-for-user'>
-		<div class='about-instruction'>Эти подсказки пропадут спустя после регистрации</div>
+		<div class='about-instruction'>Эти подсказки пропадут спустя сутки после регистрации</div>
 		<div class='instruction-block'>
 			<div class='notification-block'>
 				<div class='text'>
