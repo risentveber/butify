@@ -306,6 +306,11 @@ $(document).on("page:load ready", function main(){
     }
   });
 
+  //gallery as badoo
+  var width_galery_item = $('.gallery-items .wrap-img').width() + $('.gallery-items .wrap-info').width();
+  $('.gallery-item-on-center').width(width_galery_item);
+
+
 });
 
 

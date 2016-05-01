@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'popular' => 'feed#popular'
   get 'fresh' => 'feed#fresh'
   get 'hits' => 'feed#hits'
+  get 'gallery' => 'feed#gallery'
   get 'iwant' => 'desires#iwant'
 
   resources :posts do

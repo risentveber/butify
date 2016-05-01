@@ -76,4 +76,18 @@ class FeedController < ApplicationController
       f.html {}
     end
   end
+
+  def gallery
+    respond_to do |f|
+      f.json do
+        @posts = Post.default(current_user.try(:id))
+          .where('updated_at >= ?', 2.days.ago)
+          .limit(params[:count])
+        @posts = @posts.where('discount_price != 0 AND discount_price < price AND (100 - (100*discount_price/price)) > 10')
+        @posts = @posts.where(city_id: params[:city_id]) if params[:city_id]
+        render 'posts/index'
+      end
+      f.html {}
+    end
+  end
 end
