@@ -90,6 +90,8 @@
 		input{
 			margin-left: 7px;
 			font-size: 13px !important;
+			text-align: center;
+			outline: none;
 		}
 	}
 }
@@ -1003,10 +1005,15 @@
 		}
 	}
 	.active{
-		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#00AB69), to(#00AB69)) !important;
-    background-image: -webkit-linear-gradient(top, #00AB69, #00AB69) !important;
-    background-image: -o-linear-gradient(top, #00AB69, #00AB69) !important;
-    background-image: linear-gradient(top, #00AB69, #00AB69) !important;
+		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(transparent)) !important;
+    background-image: -webkit-linear-gradient(top, transparent, transparent) !important;
+    background-image: -o-linear-gradient(top, transparent, transparent) !important;
+    background-image: linear-gradient(top, transparent, transparent) !important;
+    color: #3E3E3E !important;
+    text-shadow: none !important;
+    &:hover{
+			background-color: #E4E4E4 !important;
+		}
 	}
 }
 .clockpicker-popover{
@@ -1014,3 +1021,31 @@
     color: #FF6E1B;
 	}
 }
+.datetimepicker table tr td.active.active, .datetimepicker table tr td span.active.active{
+	background-color: transparent !important;
+	&:hover{
+		background-color: #E4E4E4 !important;
+	}
+}
+.icon-arrow-left{
+    background-position: -240px -96px !important;
+}
+.icon-arrow-right{
+    background-position: -264px -96px !important;
+}
+[class^="icon-"], [class*=" icon-"] {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-image: url("http://www.malot.fr/bootstrap-datetimepicker/img/glyphicons-halflings.png");
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+}
+.datetimepicker-dropdown-bottom-right{
+	top: 190px !important;
+}
+
+

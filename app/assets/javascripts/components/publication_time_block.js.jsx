@@ -2,7 +2,6 @@ const PublicationTimeBlock = React.createClass({
   componentDidMount: function() {
     $(this.refs.publicated_at).datetimepicker({
         autoclose: true,
-        todayBtn: true,
         startDate: new Date(),
         format: 'yyyy-mm-dd hh:ii',
         language: 'ru'
