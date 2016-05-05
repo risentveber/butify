@@ -163,12 +163,6 @@ var StaticPostForm = React.createClass({
             type="button"
             disabled={this.contentIsInvalid() || this.state.disabled}
             onClick={this.submitForm}
-            data-container="body"
-            data-toggle="popover"
-            data-placement="bottom"
-            data-content="Vivamus
-sagittis lacus vel augue laoreet rutrum faucibus."
-            id='publish-item'
             className="btn btn-primary btn-st">
             Опубликовать
           </button>
