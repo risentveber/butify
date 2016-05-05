@@ -178,6 +178,8 @@ $(document).on("page:load ready", function main(){
     $(this).parent().fadeOut();
   });
 
+  $('#publish-item').popover();
+
   $('#classroom_name').change(function(){
     val = $(this).val();
     if(val){
