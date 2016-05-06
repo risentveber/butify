@@ -3,12 +3,12 @@
   box-shadow: 0 0 1px rgba(0,0,0,.15);
   width: 100%;
   z-index: 900;
-  position: fixed;
+  position: absolute;
   top: 0px;
   min-width: 620px;
   .inner-hat{
     max-width: 1190px;
-    height: 54px;
+    height: 64px;
     padding: 0 10px;
     position: relative;
     margin: 0 auto;
@@ -17,7 +17,7 @@
       height: 100%;
       img{
         height: 34px;
-        margin-top: 10px;
+        margin-top: 15px;
       }
     }
     .metabar-block-right{
@@ -25,20 +25,20 @@
       height: 100%;
       .profile{
         height: 100%;
-        padding: 10px 0;
+        padding: 17px 0;
         float: right;
         div{
           float: right;
           margin-left: 16px;
           cursor: pointer;
           .menu-icon{
-            width: 24px;
+            width: 22px;
             position: relative;
             top: 3px;
           }
           .profile-icon{
-            width: 34px;
-            height: 34px;
+            width: 30px;
+            height: 30px;
             border-radius: 200px;
             cursor: pointer;
           }
@@ -87,8 +87,8 @@
   }
   .search{
     width: 180px;
-    position: fixed;
-    top: 13px;
+    position: absolute;
+    top: 18px;
     left: 50%;
     margin-left: -90px;
     .input-group{
@@ -182,7 +182,7 @@
   /*background-color: #1FB6B5;*/
   background-color: rgba(3, 171, 108, 0.9);
   top: 15px;
-  left: 50px;
+  left: 47px;
 }
 
 .entire-on-hat{
@@ -261,7 +261,7 @@
   padding: 2px 5px !important;
 }
 .title-under-hat{
-  margin-top: 120px;
+  margin-top: 130px;
   margin-bottom: 10px;
 }
 .tips-and-comments{
@@ -274,10 +274,11 @@
   font-size: 12px !important;
   margin-right: -35px;
   margin-top: 1px;
+  padding: 4px 8px !important;
 }
 
 .hat-categories{
-  background: rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.98);
   border-top: 1px solid #EAEAEA;
   border-bottom: 1px solid #EAEAEA;
   .inner-hat-categories{
@@ -309,6 +310,7 @@
     .navbar-nav{
       float: none !important;
       margin: 0px !important;
+      font-weight: 400;
       li{
         margin-right: 18px !important;
         .fontw-500{
@@ -351,4 +353,9 @@
       }
     }
   }
+}
+.fixed-hat-categories{
+  position: fixed;
+  top: 0px;
+  width: 100%;
 }

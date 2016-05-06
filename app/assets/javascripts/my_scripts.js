@@ -122,6 +122,17 @@ $(document).on("page:load ready", function main(){
       placeholder: "Предмет"
     });*/
 
+    $(window).scroll(function(){
+        if($(this).scrollTop() >= 64){
+          $('.hat-categories').addClass('fixed-hat-categories');
+          $('.search').addClass('hidden');
+        }
+        if($(this).scrollTop() < 64){
+          $('.hat-categories').removeClass('fixed-hat-categories');
+          $('.search').removeClass('hidden');
+        }
+    });
+
 
     $(".choice-theme-material").next().children().children().addClass('my-setting-select2-selection');
 
