@@ -432,7 +432,7 @@ html.turbolinks-progress-bar::before {
     #main-container{
       margin: auto;
       width: 950px;
-      margin-top: 60px;
+      margin-top: 100px;
       position: relative;
       margin-bottom: 30px;
     }
@@ -807,10 +807,10 @@ html.turbolinks-progress-bar::before {
       padding: 2px 4px;
     }
     .dropdown-menu{
-      background-color: rgba(255, 255, 255, 0.95);
+      background-color: rgba(255, 255, 255, 1);
        -webkit-box-shadow: none;
       margin-left: -5px;
-      left: 50%;
+      left: 0%;
       border-radius: 2px;
       box-shadow: 0 1px 2px rgba(0,0,0,0.35);
       text-shadow: none;
@@ -2321,16 +2321,21 @@ iframe{
   }
 }
 .join-to-us-under-hat{
-  background-color: rgba(255, 255, 255, 0.92);
-  margin-top: 65px;
+  background-color: #009A61;
+  margin-top: 98px;
   text-align: center;
   padding: 20px;
   font-size: 20px;
   font-weight: 300;
+  color: white;
   .join-desire{
     margin-bottom: 10px;
-    color: #666666;
+    color: #EFEFEF;
     font-size: 16px;
+    a{
+      color: white !important;
+      text-decoration: underline !important;
+    }
   }
   .join-to-us-btn{
     display: inline-block;
@@ -2341,22 +2346,20 @@ iframe{
     touch-action: manipulation;
     cursor: pointer;
     background-image: none;
-    border: 1px solid transparent;
+    border: 1px solid rgb(0, 154, 97);
     white-space: nowrap;
     padding: 6px 12px;
     font-size: 16px;
     line-height: 1.5;
     border-radius: 4px;
-    color: #fff;
-    background-color: #00ab6b;
+    color: #525252;
+    background-color: white;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    text-shadow: 0 1px 0px rgba(0,0,0,0.15);
     &:hover{
-      background: #018C58;
-      color: #fff;
+      color: #383838 !important;
     }
   }
   a:focus{
@@ -2365,6 +2368,7 @@ iframe{
   a:active{
     -webkit-transform: translate(0, 1px);
     transform: translate(0, 1px);
+    color: #fff;
   }
 }
 .center-block602{

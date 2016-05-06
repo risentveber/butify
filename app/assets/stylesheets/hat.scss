@@ -1,6 +1,5 @@
 .hat-site{
   background: rgba(255, 255, 255, 0.98);
-  height: 65px;
   box-shadow: 0 0 1px rgba(0,0,0,.15);
   width: 100%;
   z-index: 900;
@@ -9,7 +8,7 @@
   min-width: 620px;
   .inner-hat{
     max-width: 1190px;
-    height: 100%;
+    height: 54px;
     padding: 0 10px;
     position: relative;
     margin: 0 auto;
@@ -17,8 +16,8 @@
       float: left;
       height: 100%;
       img{
-        height: 41px;
-        margin-top: 12px; 
+        height: 34px;
+        margin-top: 10px;
       }
     }
     .metabar-block-right{
@@ -26,7 +25,7 @@
       height: 100%;
       .profile{
         height: 100%;
-        padding: 15px 0;
+        padding: 10px 0;
         float: right;
         div{
           float: right;
@@ -87,12 +86,15 @@
     }
   }
   .search{
-    width: 220px;
+    width: 180px;
     position: fixed;
-    top: 15px;
+    top: 13px;
     left: 50%;
-    margin-left: -110px;
+    margin-left: -90px;
     .input-group{
+      .btn{
+        padding: 4px 12px !important;
+      }
       .dropdown-toggle{
         margin-left: 5px;
       }
@@ -102,8 +104,9 @@
       input{
         background-color: white;
         border-radius: 100px;
-        width: 220px;
+        width: 180px;
         text-align: center;
+        height: 28px !important;
       }
       .btn-without-props-btn{
         border: none !important;
@@ -183,7 +186,6 @@
 }
 
 .entire-on-hat{
-  margin-top: 6px;
   button, a{
     font-size: 11px !important;
     padding: 3px 6px;
@@ -259,7 +261,7 @@
   padding: 2px 5px !important;
 }
 .title-under-hat{
-  margin-top: 90px;
+  margin-top: 120px;
   margin-bottom: 10px;
 }
 .tips-and-comments{
@@ -272,4 +274,78 @@
   font-size: 12px !important;
   margin-right: -35px;
   margin-top: 1px;
+}
+
+.hat-categories{
+  background: rgba(255, 255, 255, 1);
+  border-top: 1px solid #EAEAEA;
+  border-bottom: 1px solid #EAEAEA;
+  .inner-hat-categories{
+    max-width: 1190px;
+    height: 100%;
+    padding: 12px 10px;
+    position: relative;
+    margin: 0 auto;
+    /*nav{
+      font-size: 13px;
+      a, span{
+        color: rgba(0, 0, 0, 0.4);
+        margin-right: 18px;
+        cursor: pointer;
+        &:hover{
+          color: rgba(0, 0, 0, 0.8);
+          span{
+            color: rgba(0, 0, 0, 0.8);
+          }
+        }
+      }
+      .caret{
+        margin-right: 0 !important;
+      }
+      .divider-hat-categories{
+
+      }
+    }*/
+    .navbar-nav{
+      float: none !important;
+      margin: 0px !important;
+      li{
+        margin-right: 18px !important;
+        .dropdown-menu{
+          top: 32px;
+          li{
+            a{
+              font-size: 12px !important;
+              color: rgba(0, 0, 0, 0.6) !important;
+              cursor: pointer;
+              &:hover{
+                color: rgba(0, 0, 0, 0.8) !important;
+              }
+            }
+          }
+        }
+        a, span{
+          padding: 0px;
+          color: rgba(0, 0, 0, 0.4);
+          cursor: pointer;
+          &:hover{
+            color: rgba(0, 0, 0, 0.8);
+            background-color: transparent !important;
+            outline: none !important;
+            span{
+              color: rgba(0, 0, 0, 0.8);
+            }
+          }
+          &:focus{
+            color: rgba(0, 0, 0, 0.8);
+            background-color: transparent !important;
+            outline: none !important;
+            span{
+              color: rgba(0, 0, 0, 0.8);
+            }
+          }
+        }
+      }
+    }
+  }
 }
