@@ -6,25 +6,19 @@
           <%= link_to feed_path do %>
             <img src='/images/logo_trenly.png' />
           <% end %>
-          <% if current_user.admin? %>
-            <a class='btn btn-sm btn-default mt-12' href='/admin'>Админка</a>
-            <%= link_to 'Модерация', admin_moderate_path, class: 'btn btn-sm btn-default mt-12' %>
-          <% end %>
         <% else %>
           <%= link_to main_path do %>
             <img src='/images/logo_trenly.png' />
           <% end %>
         <% end %>
-      </div>
-      <div class='metabar-block search'>
-        <div class="input-group">
-          <input id='hat-search' type="text" class="form-control" placeholder='Поиск...'>
-          <div class="input-group-btn">
-            <%= link_to desires_path do %>
-              <button type="button" class="btn btn-default dont-hide btn-day-product btn-without-props-btn">Желания</button>
-            <% end %>
-          </div>
-        </div>
+        <input id='hat-search' type="text" class="form-control" placeholder='Что-то ищете?'>
+        <%= link_to desires_path do %>
+          <button type="button" class="btn btn-default dont-hide btn-day-product btn-without-props-btn">Желания</button>
+        <% end %>
+        <% if current_user && current_user.admin? %>
+          <a class='btn btn-sm btn-default mt-12' href='/admin'>Админка</a>
+          <%= link_to 'Модерация', admin_moderate_path, class: 'btn btn-sm btn-default mt-12' %>
+        <% end %>
       </div>
       <div class='metabar-block metabar-block-right'>
         <div class='profile'>
@@ -99,20 +93,14 @@
               <%= link_to new_post_path do %>
                 <button class='get-publication-hat btn btn-st <%= insert_class_name(yield(:class_name)) %>'>Опубликовать</button>
               <% end %>
+            <% else %>
+              <%= link_to new_session_path do %>
+                <button class='get-publication-hat-welcome btn btn-st'>Опубликовать</button>
+              <% end %>
+              <%= link_to new_session_path, class: "welcome-nearly-publish" do %>
+                Вход / Регистрация
+              <% end %>
             <% end %>
-            <% if !current_user %>
-              <div class = 'entire-on-hat'>
-                <%= link_to "Вход", new_session_path, class: 'btn btn-primary btn-st welcom-main-page'%>
-                 •
-                <%= link_to '/auth/vkontakte', class: 'link-to-reg-vk btn btn-st btn-st-contrast' do%>
-                  <img src='/images/vk_link_reg1.png'/> Через ВК
-                <% end %>
-                •
-                <%= link_to "Регистрация", new_user_path, class: 'btn btn-st-contrast btn-st welcom-main-page'%>
-              </div>
-            <% end %>
-
-
           </div>
         </div>
       </div>
