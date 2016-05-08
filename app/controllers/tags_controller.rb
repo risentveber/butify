@@ -10,8 +10,7 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
-    @posts = Post.joins(:tags).where(posts_tags:{tag: @tag}).default(current_user.try(:id)).limit(params[:count])
-    @posts = @posts.where(city_id: params[:city_id]) if params[:city_id]
-    render 'posts/index', formats: :json
+    @posts = Post.tag_grid(@tag, current_user, @city).limit(params[:count])
+    render json(@posts)
   end
 end

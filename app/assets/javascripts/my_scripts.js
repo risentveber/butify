@@ -5,7 +5,7 @@ $(document).on("page:load ready", function main(){
       deferRequestBy: 200,
       dataType: 'JSON',
       transformResult: function(data){
-        CL(data);
+        console.info(data);
         var result = data.map(function(p){
           return {value: p.name, data: p.id};
         });
@@ -26,7 +26,7 @@ $(document).on("page:load ready", function main(){
       placeholder: "Укажите город",
       options: window.cities,
       load: function(query, callback) {
-        CL('selectize', query, callback);
+        console.info('selectize', query, callback);
         if (query.length == 0) return callback();
         $.ajax({
           url: '/ajax/get_cities?term=' + encodeURIComponent(query),
@@ -36,47 +36,12 @@ $(document).on("page:load ready", function main(){
           },
           success: function(data) {
             var result = data.map(function(e){return {value: e.id, text: e.name}});
-            CL(result);
+            console.info(result);
             callback(result);
           }
         });
       }
     })
-
-    $('#fresh_city_id').selectize({
-      options: window.cities,
-      load: function(query, callback) {
-        CL('selectize', query, callback);
-        if (query.length == 0 ) return callback();
-        $.ajax({
-          url: '/ajax/get_cities?term=' + encodeURIComponent(query),
-          type: 'GET',
-          error: function() {
-            callback();
-          },
-          success: function(data) {
-            var result = data.map(function(e){return {value: e.id, text: e.name}});
-            CL(result);
-            callback(result);
-          }
-        });
-      }
-    }).on("change", function (e) {
-      var q = queryString.parse(location.search);
-      q.city_id = e.target.value;
-      Turbolinks.visit(location.pathname + '?' + queryString.stringify(q));
-    })
-    $('#all_publications').click(function(){
-      var q = queryString.parse(location.search);
-      q.city_id = undefined;
-      Turbolinks.visit(location.pathname + '?' + queryString.stringify(q));
-    });
-
-    $('#my_city').click(function(){
-      var q = queryString.parse(location.search);
-      q.city_id = window.currentUser.city_id;
-      Turbolinks.visit(location.pathname + '?' + queryString.stringify(q));
-    });
 
     var selector = document.getElementById("user_phone");
 

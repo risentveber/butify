@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'hello_world', to: 'hello_world#index'
   ActiveAdmin.routes(self)
   root 'feed#fresh'
   get 'profile' => 'users#profile'

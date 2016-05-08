@@ -1,9 +1,9 @@
 class CategoriesController < ApplicationController
   skip_before_filter :require_login
   before_action :find_city_if_need
+
   def show
-    @posts = Category.find(params[:id]).posts.default(current_user.try(:id)).limit(params[:count])
-    @posts = @posts.where(city_id: params[:city_id]) if params[:city_id]
-    render 'posts/index', formats: :json
+    @posts = Post.category_grid(Category.find(params[:id]), current_user, @city).limit(params[:count])
+    render json: @posts
   end
 end

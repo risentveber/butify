@@ -21,9 +21,7 @@ class FeedController < ApplicationController
   def fresh
     respond_to do |f|
       f.json do
-        @posts = Post.default(current_user.try(:id)).visible.limit(params[:count])
-        @posts = @posts.where(city_id: params[:city_id]) if params[:city_id]
-        render 'posts/index'
+        render json: Post.fresh_grid(current_user, @city).limit(params[:count])
       end
       f.html {}
     end
@@ -32,8 +30,7 @@ class FeedController < ApplicationController
   def moderate
     respond_to do |f|
       f.json do
-        @posts = Post.time_order.limit(params[:count]).where("moderated IS NULL OR moderated = false")
-        render 'posts/index'
+        render json: Post.moderate_grid.limit(params[:count])
       end
       f.html {}
     end
@@ -42,9 +39,8 @@ class FeedController < ApplicationController
   def recommend
     respond_to do |f|
       f.json do
-        @posts = Post.default(current_user.try(:id)).recommended.limit(params[:count])
-        @posts = @posts.where(city_id: params[:city_id]) if params[:city_id]
-        render 'posts/index'
+        @posts = Post.recommended_grid(current_user, @city).limit(params[:count])
+        render json: @posts
       end
       f.html {}
     end

@@ -31,7 +31,8 @@ gem 'acts_as_follower'
 gem 'react-bootstrap-rails'
 gem 'destroyed_at'
 gem 'migration_data'
-gem 'browserify-rails'
+gem 'active_model_serializers'
+#gem 'browserify-rails'
 gem 'slim-rails'
 gem 'omniauth'
 gem 'omniauth-vkontakte'
@@ -56,3 +57,5 @@ group :development do
   gem 'capistrano-bundler'
   gem 'guard-rails'
 end
+
+gem 'therubyracer', platforms: :ruby

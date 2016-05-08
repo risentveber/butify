@@ -8,13 +8,13 @@ Bundler.require(*Rails.groups)
 
 module Studpad
   class Application < Rails::Application
-  #GENERATORS
+
   config.generators do |g|
     g.test_framework  nil
     g.assets false
     g.helper false
   end
-  config.browserify_rails.commandline_options = "-t reactify --extension=\".js.jsx\""
+  #config.browserify_rails.commandline_options = "-t reactify --extension=\".js.jsx\""
   #LOCALIZATION
   config.i18n.default_locale = :ru
   config.time_zone = 'Europe/Moscow'
