@@ -1,0 +1,8 @@
+= render 'about_trenly'
+  .title-explore
+    |Модерация
+= render 'partials/city_select'
+#grid-gallery.grid-gallery
+  #demo
+    = react_component 'ExploreGrid', props: { posts_url: admin_moderate_path}
+

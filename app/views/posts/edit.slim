@@ -2,7 +2,7 @@ div class="tips-and-comments title-under-hat"
   |
     
 = react_component 'StaticPostForm',
-  url: post_path(@post),
+  props: {  url: post_path(@post),
   post: { post_type: 'photo',
           author: {name: @post.user.name,
                     url: user_path(@post.user),
@@ -18,4 +18,4 @@ div class="tips-and-comments title-under-hat"
           tags: @post.tags.map(&:name),
           category_ids: @post.categories.map(&:id),
           photos: @post.photos.map() do |p| {id: p.id, url: p.url} end,
-  }
+  }}

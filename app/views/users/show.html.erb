@@ -39,6 +39,9 @@
 </div>
 <%= render "instruction" %>
 <div id="grid-gallery" class="grid-gallery">
-  <%= react_component 'Gallery', posts_url: posts_user_path(@user) %>
+  <%= react_component 'ExploreGrid', props: {
+  	posts_preloaded: scope_serializer(Post.profile_grid(@user).standart_limit),
+  	posts_url: posts_user_path(@user)
+  	}, prerender: true %>
 </div>
 <%= render "partials/contacts" %>
