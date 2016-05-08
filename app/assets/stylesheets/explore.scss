@@ -141,17 +141,23 @@
 		.explore-moderate-sign{
 			padding: 1px 5px;
 	    position: relative;
+	    opacity: 0;
 	    float: left;
 	    bottom: 24px;
 	    height: 0px;
 	    width: 0px;
 	    img{
-	    	width: 14px;
+	    	width: 16px;
 	    }
 		}
+		&:hover{
+			.explore-moderate-sign{
+				opacity: 1;
+			}
+		}
 	}
+	
 }
-
 .grid {
 	margin: 0 auto;
 }
