@@ -178,7 +178,6 @@ export default class ExploreGrid extends React.Component {
           like_post={self.like_post}
           desire_id={self.props.desire_id}
           desire_count={self.props.desire_count}
-          logged_in={self.props.logged_in}
           key={i}
           post={post}/>
       );
@@ -195,7 +194,6 @@ export default class ExploreGrid extends React.Component {
           createComment={this.createComment}
           updateComment={this.updateComment}
           removeComment={this.removeComment}
-          logged_in={this.props.logged_in}
           dialogClassName='modal-dialog-new-post my-setting-modal-dialog'
           post={currentPost}
           onHide={this.hide}
