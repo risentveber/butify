@@ -10,7 +10,7 @@ const PublicationTimeBlock = React.createClass({
   render: function() {
     return (
       <span>
-        <input className='input-sp' placeholder='Укажите дату' ref='publicated_at'
+        <input className='input-sp' placeholder='Укажите дату публикации' ref='publicated_at'
           value={this.props.publication_date}/>
       </span>
     );

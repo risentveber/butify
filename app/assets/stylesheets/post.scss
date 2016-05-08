@@ -92,6 +92,7 @@
 			font-size: 13px !important;
 			text-align: center;
 			outline: none;
+			width: 168px;
 		}
 	}
 }
@@ -1051,7 +1052,13 @@
     background-repeat: no-repeat;
 }
 .datetimepicker-dropdown-bottom-right{
-	top: 190px !important;
+	top: 182px !important;
+}
+[class*=" datetimepicker-dropdown"]:before{
+	border: none !important;
+}
+[class*=" datetimepicker-dropdown"]:after{
+	border: none !important;
 }
 
 
