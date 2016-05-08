@@ -149,9 +149,6 @@ export default class Post extends React.Component{
                   </div>
                   <span>
                     <a href={post.author.url}>{post.author.name}</a>
-                    <p>
-                      {sitelink_rendered}
-                    </p>
                   </span>
                 </div>
                 <div className='action-of-post'>
