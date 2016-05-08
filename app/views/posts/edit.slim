@@ -1,6 +1,6 @@
 div class="tips-and-comments title-under-hat"
   |
-    
+= render "partials/tips_create_post"
 = react_component 'StaticPostForm',
   props: {  url: post_path(@post),
   post: { post_type: 'photo',
@@ -19,3 +19,5 @@ div class="tips-and-comments title-under-hat"
           category_ids: @post.categories.map(&:id),
           photos: @post.photos.map() do |p| {id: p.id, url: p.url} end,
   }}
+= render "partials/moderation_rules"
+= render "partials/contacts"
