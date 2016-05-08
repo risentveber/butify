@@ -29,11 +29,13 @@ const ExplorePost = React.createClass({
     var photo_count = post.photos.length;
     if (photo_count > 1)
       var all_images_count = <span className="explore-num-photo">{photo_count}</span>
-
+    if (post.moderated)
+      var moderate_sign = <span className='explore-moderate-sign'><img src='/images/correct-signal_grey.png' /></span>
     image = (
       <div className='img-show-post-explore'>
         <img onClick={this.onShowClick} src={post.photos[0] && post.photos[0].url}/>
         {all_images_count}
+        {moderate_sign}
       </div>
     );
 
