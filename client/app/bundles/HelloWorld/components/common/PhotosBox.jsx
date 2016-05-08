@@ -54,7 +54,7 @@ export default class PhotosBox extends React.Component{
   onChange(e){
     var text = e.target.value;
     this.setState({url_text: text});
-    e_url = text.trim();
+    let e_url = text.trim();
     if (e_url.endsWith('.jpg')  ||
         e_url.endsWith('.jpeg') ||
         e_url.endsWith('.png')  ||
