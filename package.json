@@ -17,11 +17,9 @@
     "test": "rspec"
   },
   "dependencies": {
-<<<<<<< HEAD
     "json-loader": "^0.5.4",
     "react-bootstrap": "^0.29.3",
-=======
->>>>>>> b9270ad48969724928e177970f8fb34ad4904b8e
-    "react-dropzone-es6": "^1.0.2"
+    "react-dropzone-es6": "^1.0.2",
+    "webpack": "^1.13.0"
   }
 }
