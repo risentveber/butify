@@ -11,6 +11,6 @@ class TagsController < ApplicationController
   def show
     @tag = Tag.find(params[:id])
     @posts = Post.tag_grid(@tag, current_user, @city).limit(params[:count])
-    render json(@posts)
+    render json: @posts
   end
 end

@@ -45,8 +45,8 @@ class Post < ActiveRecord::Base
     category.posts.default(user.try(:id)).visible.unobtrusive_сity(city)
   end
 
-  scope :category_grid, -> (tag, user, city) do
-    joins(:tags).where(posts_tags:{tag: @tag}).default(user.try(:id)).unobtrusive_сity(city)
+  scope :tag_grid, -> (tag, user, city) do
+    joins(:tags).where(posts_tags:{tag: tag}).default(user.try(:id)).unobtrusive_сity(city)
   end
 
   scope :recommended_grid, -> (user, city) do

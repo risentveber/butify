@@ -10,12 +10,15 @@ class FeedController < ApplicationController
     if params[:category_name]
       @category = Category.find_by_name(params[:category_name])
       @tag_name = params[:category_name]
+      @posts = @category ? Post.category_grid(@category, current_user, @city) : Post.for_user(current_user)
       @posts_path = @category ? category_path(@category) : posts_path
     else
       @tag = Tag.find_by_name(params[:tag_name])
       @tag_name = params[:tag_name] ? ('#' + params[:tag_name]) : 'Популярное'
       @posts_path = @tag ? tag_path(@tag) : posts_path
+      @posts = @tag ? Post.tag_grid(@tag, current_user, @city) : Post.for_user(current_user)
     end
+    @posts = @posts.standart_limit
   end
 
   def fresh
