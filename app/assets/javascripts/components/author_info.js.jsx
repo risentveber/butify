@@ -15,13 +15,13 @@ var AuthorInfo = React.createClass({
       );
     if (u.facebook_id)
       var facebook_rendered = (
-        <a href={'https://facebook.com/' + u.vk_id} target='_blank'>
+        <a href={'https://facebook.com/' + u.facebook_id} target='_blank'>
           <img src= '/images/social_facebook.png' />
         </a>
       );
     if (u.instagram_id)
       var insta_rendered = (
-        <a href={'https://instagram.com/' + u.vk_id} target='_blank'>
+        <a href={'https://instagram.com/' + u.instagram_id} target='_blank'>
           <img src= '/images/social_insta.png' />
         </a>
       );
