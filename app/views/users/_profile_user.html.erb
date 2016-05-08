@@ -18,24 +18,30 @@
         Настройки профиля
       <% end %>
     <% end %>
-    <h5><%= @user.phone %></h5>
-    <p>
-      <% if @user.vk_id.present? %>
-          <%= link_to "https://vk.com/#{@user.vk_id}", target: :blank do %>
-            <img src= '/images/social_vk.png' />
-          <% end %>
-      <% end %>
-      <% if @user.facebook_id.present? %>
-          <%= link_to "https://facebook.com/#{@user.facebook_id}", target: :blank do %>
-            <img src= '/images/social_facebook.png' />
-          <% end %>
-      <% end %>
-      <% if @user.instagram_id.present? %>
-          <%= link_to "https://www.instagram.com/#{@user.instagram_id}", target: :blank do %>
-            <img src= '/images/social_insta.png' />
-          <% end %>
-      <% end %>
-    </p>
+    <% if current_user %>
+      <h5><%= @user.phone %></h5>
+      <p>
+        <% if @user.vk_id.present? %>
+            <%= link_to "https://vk.com/#{@user.vk_id}", target: :blank do %>
+              <img src= '/images/social_vk.png' />
+            <% end %>
+        <% end %>
+        <% if @user.facebook_id.present? %>
+            <%= link_to "https://facebook.com/#{@user.facebook_id}", target: :blank do %>
+              <img src= '/images/social_facebook.png' />
+            <% end %>
+        <% end %>
+        <% if @user.instagram_id.present? %>
+            <%= link_to "https://www.instagram.com/#{@user.instagram_id}", target: :blank do %>
+              <img src= '/images/social_insta.png' />
+            <% end %>
+        <% end %>
+      </p>
+    <% else %>
+      <div class='notification-block notification-more-contact'>
+        <%= link_to 'Войдите', welcome_path %> на Trenly, чтобы связаться с продавцом
+      </div>
+    <% end %>
     <% if current_user == @user && !halffull_contacts?(current_user)%>
       <div class='notification-block notification-more-contact'>
         <%= link_to profile_edit_path do %>Укажите<% end %> больше контактов, чтобы с Вами было легче связаться!

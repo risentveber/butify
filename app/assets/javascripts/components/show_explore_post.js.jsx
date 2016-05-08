@@ -168,7 +168,9 @@ var ShowExplorePost = React.createClass({
                 {rendered_categories}
               </div>
               {tags_block}
-              <AuthorInfo user={this.props.post.author}/>
+              <AuthorInfo 
+                user={this.props.post.author}
+                logged_in={this.props.logged_in}/>
             </div>
           </div>
           <div className="modal-footer">

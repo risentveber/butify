@@ -26,18 +26,25 @@ var AuthorInfo = React.createClass({
         </a>
       );
     if (this.state.visible) {
-      var author_info_rendered = (
-        <div className='contact-saler'>
-          <h4><span>{u.phone}</span></h4>
-          <div className='social-networks'>
-            <p>
-              {vk_rendered}
-              {facebook_rendered}
-              {insta_rendered}
-            </p>
+      if(this.props.logged_in)
+        var author_info_rendered = (
+          <div className='contact-saler'>
+            <h4><span>{u.phone}</span></h4>
+            <div className='social-networks'>
+              <p>
+                {vk_rendered}
+                {facebook_rendered}
+                {insta_rendered}
+              </p>
+            </div>
           </div>
-        </div>
-      );
+        );
+      else
+        var author_info_rendered = (
+          <div className='contact-saler'>
+            <a href='http://trenly.ru/welcome'>Войдите</a> на Trenly, чтобы связаться с продавцом
+          </div>
+        );
     }
     return (
       <div className='modal-contact-saler'>
