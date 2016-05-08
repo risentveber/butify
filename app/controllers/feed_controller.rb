@@ -19,57 +19,42 @@ class FeedController < ApplicationController
   end
 
   def fresh
+    @posts = Post.fresh_grid(current_user, @city)
     respond_to do |f|
-      f.json do
-        render json: Post.fresh_grid(current_user, @city).limit(params[:count])
-      end
-      f.html {}
+      f.json { render json: @posts.limit(params[:count]) }
+      f.html { @posts = @posts.standart_limit }
     end
   end
 
   def moderate
+    @posts = Post.moderate_grid
     respond_to do |f|
-      f.json do
-        render json: Post.moderate_grid.limit(params[:count])
-      end
-      f.html {}
+      f.json { render json: @posts.limit(params[:count]) }
+      f.html { @posts = @posts.standart_limit }
     end
   end
 
   def recommend
+    @posts = Post.recommended_grid(current_user, @city)
     respond_to do |f|
-      f.json do
-        @posts = Post.recommended_grid(current_user, @city).limit(params[:count])
-        render json: @posts
-      end
-      f.html {}
+      f.json { render json: @posts.limit(params[:count]) }
+      f.html { @posts.standart_limit }
     end
   end
 
   def popular
+    @posts = Post.popular_grid(current_user, @city)
     respond_to do |f|
-      f.json do
-        @posts = Post.order(cached_votes_total: :desc).moderated(current_user.try(:id)).published
-          .where('created_at >= ?', 2.weeks.ago)
-          .limit(params[:count])
-        @posts = @posts.where(city_id: params[:city_id]) if params[:city_id]
-        render 'posts/index'
-      end
-      f.html {}
+      f.json { render json: @posts.limit(params[:count]) }
+      f.html { @posts = @posts.standart_limit }
     end
   end
 
   def hits
+    @posts = Post.hits_grid(current_user, @city)
     respond_to do |f|
-      f.json do
-        @posts = Post.default(current_user.try(:id))
-          .where('updated_at >= ?', 2.days.ago)
-          .limit(params[:count])
-        @posts = @posts.where('discount_price != 0 AND discount_price < price AND (100 - (100*discount_price/price)) > 10')
-        @posts = @posts.where(city_id: params[:city_id]) if params[:city_id]
-        render 'posts/index'
-      end
-      f.html {}
+      f.json { render json: @posts.limit(params[:count]) }
+      f.html { @posts = @posts.standart_limit }
     end
   end
 end

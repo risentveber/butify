@@ -29,7 +29,7 @@ class DesiresController < ApplicationController
   end
 
   def iwant
-      @desires = current_user.desires.order(created_at: :desc)
+    @desires = current_user.desires.order(created_at: :desc)
   end
 
   def update
@@ -41,6 +41,7 @@ class DesiresController < ApplicationController
     @desire.update_attributes(completed: true)
     redirect_to @desire
   end
+
   def uncomplete
     @desire.update_attributes(completed: false)
     redirect_to @desire

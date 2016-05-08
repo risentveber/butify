@@ -6,6 +6,7 @@ import Post from '../components/ExploreGrid/Post';
 
 export default class ExploreGrid extends React.Component {
   constructor(props, context) {
+    console.log('CONSTRUCTOR', props.posts_preloaded);
     super(props, context);
     this.state = {
       limit_detected: false,
@@ -83,8 +84,10 @@ export default class ExploreGrid extends React.Component {
     });
   }
   componentDidMount() {
-    if (this.state.posts.length == 0)
+    if (this.state.posts.length == 0){
+      console.log('LOAD POST AFTER MOUNTING');
       this.loadPostsFromServer();
+    }
     $(window).scroll(function() {
       var scroll_part = $(window).scrollTop()/$(document).height();
       if (scroll_part > 0.8 && !this.state.limit_detected && !this.state.wait_posts ){

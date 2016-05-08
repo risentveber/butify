@@ -36,6 +36,11 @@ class Post < ActiveRecord::Base
     unobtrusive_сity(city).default(user.try(:id)).visible
   end
 
+  scope :hits_grid, -> (user, city) do
+    unobtrusive_сity(city).default(user.try(:id)).where('updated_at >= ?', 2.days.ago)
+    .where('discount_price != 0 AND discount_price < price AND (100 - (100*discount_price/price)) > 10')
+  end
+
   scope :category_grid, -> (category, user, city) do
     category.posts.default(user.try(:id)).visible.unobtrusive_сity(city)
   end
@@ -44,8 +49,13 @@ class Post < ActiveRecord::Base
     joins(:tags).where(posts_tags:{tag: @tag}).default(user.try(:id)).unobtrusive_сity(city)
   end
 
-  scope :recommended_grid, -> (city, user) do
+  scope :recommended_grid, -> (user, city) do
     unobtrusive_сity(city).default(user.try(:id)).recommended
+  end
+
+  scope :popular_grid, -> (user, city) do
+    order(cached_votes_total: :desc).moderated(user.try(:id)).published
+      .where('created_at >= ?', 2.weeks.ago).unobtrusive_сity(city)
   end
 
   scope :standart_limit, -> { limit(20) }

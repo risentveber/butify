@@ -4,5 +4,5 @@
 = render 'partials/city_select'
 #grid-gallery.grid-gallery
   #demo
-    = react_component 'ExploreGrid', props: { posts_url: admin_moderate_path}
+    = react_component 'ExploreGrid', props: { posts_url: admin_moderate_path, posts_preloaded: scope_serializer(@posts)}, prerender: true
 
