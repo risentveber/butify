@@ -17,6 +17,8 @@
     "test": "rspec"
   },
   "dependencies": {
+    "json-loader": "^0.5.4",
+    "react-bootstrap": "^0.29.3",
     "react-dropzone-es6": "^1.0.2"
   }
 }

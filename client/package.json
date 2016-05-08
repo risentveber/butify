@@ -36,6 +36,7 @@
     "loader-utils": "^0.2.13",
     "lodash": "^4.7.0",
     "react": "^0.14.8 || ^15.0.0",
+    "react-bootstrap": "^0.29.3",
     "react-contenteditable": "^1.1.0",
     "react-dom": "^0.14.8 || ^15.0.0",
     "react-dropzone-es6": "^1.0.2",
