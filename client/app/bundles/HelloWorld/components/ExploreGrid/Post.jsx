@@ -133,11 +133,11 @@ export default class Post extends React.Component{
             <div className='main-contain'>
               {link_rendered}
               {title_link}
-              <h4>{post.title}</h4>
+              <h4 onClick={this.onShowClick}>{post.title}</h4>
             </div>
             {admin_block}
             {offer_block}
-            <div className='price-explore-post'>
+            <div onClick={this.onShowClick} className='price-explore-post'>
               <DiscountBlock price={post.price} discount_price={post.discount_price}/>
             </div>
             <footer className='border-b-radius'>
@@ -157,7 +157,7 @@ export default class Post extends React.Component{
                 <div className='action-of-post'>
                   <div>
                     <span>
-                      <img
+                      <img onClick={this.onShowClick}
                         title='Комментарий'
                         data-toggle="tooltip"
                         data-placement="top"
