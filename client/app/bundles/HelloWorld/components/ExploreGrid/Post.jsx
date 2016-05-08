@@ -45,10 +45,14 @@ export default class Post extends React.Component{
     if (photo_count > 1)
       var all_images_count = <span className="explore-num-photo">{photo_count}</span>
 
+    if (post.moderated)
+      var moderate_sign = <span className='explore-moderate-sign'><img src='/images/correct-signal_grey.png' /></span>
+
     image = (
       <div className='img-show-post-explore'>
         <img onClick={this.onShowClick} src={post.photos[0] && post.photos[0].url}/>
         {all_images_count}
+        {moderate_sign}
       </div>
     );
 
@@ -119,6 +123,7 @@ export default class Post extends React.Component{
     if (post.published_at)
       var css_class = 'half-opacity';
     css_class = css_class + " " + offer_hidden
+
     return(
         <figure className={css_class}>
           <div className='wrap-figure-explore-post'>

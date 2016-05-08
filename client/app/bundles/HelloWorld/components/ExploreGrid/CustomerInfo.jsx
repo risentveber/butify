@@ -36,18 +36,26 @@ export default class AuthorInfo extends React.Component {
       );
     }
     if (this.state.visible) {
-      var author_info_rendered = (
-        <div className='contact-saler'>
-          <h4><span>{user.phone}</span></h4>
-          <div className='social-networks'>
-            <p>
-              {vk_rendered}
-              {facebook_rendered}
-              {insta_rendered}
-            </p>
+      if (currentUser) {
+        var author_info_rendered = (
+          <div className='contact-saler'>
+            <h4><span>{user.phone}</span></h4>
+            <div className='social-networks'>
+              <p>
+                {vk_rendered}
+                {facebook_rendered}
+                {insta_rendered}
+              </p>
+            </div>
           </div>
-        </div>
-      );
+        );
+      } else {
+        var author_info_rendered = (
+          <div className='contact-saler'>
+            <a href='http://trenly.ru/welcome'>Войдите</a> на Trenly, чтобы связаться с продавцом
+          </div>
+        );
+      }
     }
     return (
       <div className='modal-contact-saler'>

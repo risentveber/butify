@@ -72,7 +72,7 @@ export default class ShowPost extends React.Component{
     }
     if (post.sitelink)
       var sitelink_rendered = (
-        <a href={post.sitelink} target='_blank'>{getLocation(post.sitelink).hostname}</a>
+        <a href={post.sitelink} target='_blank'>{post.sitelink.split('/')[2]}</a>
       );
 
     if (post.can_edit)
