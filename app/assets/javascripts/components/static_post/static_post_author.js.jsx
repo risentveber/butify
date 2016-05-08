@@ -41,6 +41,13 @@ var StaticPostAuthor = React.createClass({
               </div>
             </div>
         </div>
+         <div className='notification-block-future-publication'>
+            <div className="notification-block">
+              <span>
+                Отсроченная публикация поможет сделать активность Вашей страницы постоянной!
+              </span>
+            </div>
+          </div>
       </div>
     );
   }

@@ -1061,6 +1061,9 @@
   margin: 40px auto;
   margin-bottom: 80px;
   text-align: left;
+  h1{
+  	margin-bottom: 22px;
+  }
   .advices-content{
   	text-align: justify;
   	.advices-content-introduction{
@@ -1084,4 +1087,12 @@
   		padding-left: 15px;
   	}
   }
+}
+.notification-block-future-publication{
+	  width: 155px;
+    position: relative;
+    top: -80px;
+    left: 103%;
+    height: 0px;
+    font-size: 12px;
 }
