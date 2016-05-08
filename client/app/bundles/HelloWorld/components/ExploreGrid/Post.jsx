@@ -114,7 +114,7 @@ export default class Post extends React.Component{
       var text_rendered = <p className='text' dangerouslySetInnerHTML={{__html: text}}></p>
     if (post.sitelink)
       var sitelink_rendered = (
-        <a href={post.sitelink} target='_blank'>{getLocation(post.sitelink).hostname}</a>
+        <a href={post.sitelink} target='_blank'>{post.sitelink.split('/')[2]}</a>
       );
     if (post.published_at)
       var css_class = 'half-opacity';

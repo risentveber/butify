@@ -1,7 +1,7 @@
 class PostSerializer < ActiveModel::Serializer
   delegate :l, :policy, :current_user, to: :scope #view context
   attributes :id,
-    :title, :edit_url,
+    :title, :edit_url, :likes,
     :text, :published_at, :tags, :categories, :category_names,
     :url, :time, :can_edit, :can_remove, :like_path, :current_like,
     :youtube_id, :city_id, :price, :discount_price,

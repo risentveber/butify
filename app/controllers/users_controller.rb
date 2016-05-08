@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   end
 
   def posts
-    render json: Post.profile_grid(@user).limit(params[:count]).to_json
+    render json: Post.profile_grid(@user).limit(params[:count])
   end
 
   def show
