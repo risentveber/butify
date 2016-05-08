@@ -10,7 +10,7 @@
         </div>
       </div>
     <% end %>
-  
+
     <div class="action-angle post-action">
       <div class="btn-group">
         <span class="sign-dots-menu-big" data-toggle="dropdown">•••</span>
@@ -82,7 +82,7 @@
   <div class="desire-variants">
     <div class='tips-and-comments'>Ответов (<%= @desire.posts.count %>)</div>
     <div id="grid-gallery" class="grid-gallery">
-      <%= react_component 'Gallery', posts_url: desire_offers_path(@desire) %>
+      <%= react_component 'ExploreGrid', props: {posts_url: desire_offers_path(@desire)} %>
     </div>
   </div>
 

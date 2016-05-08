@@ -1,3 +1,12 @@
+// DO NOT REQUIRE jQuery or jQuery-ujs in this file!
+// DO NOT REQUIRE TREE!
+
+// CRITICAL that vendor-bundle must be BEFORE bootstrap-sprockets and turbolinks
+// since it is exposing jQuery and jQuery-ujs
+
+//= require vendor-bundle
+//= require app-bundle
+
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -10,17 +19,17 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
+// require jquery
+// require jquery_ujs
 //= require turbolinks
-//= require react
-//= require react_ujs
-//= require react_bootstrap
-//= require react-dropzone
-//= require npm_packages
+// require react
+// require react_ujs
+// require react_bootstrap
+// require react-dropzone
+// require npm_packages
 //= require modernizr.custom
 //= require emotions
-//= require components
+// require components
 //= require bootstrap
 //= require jquery.Jcrop.min
 //= require jquery.form
@@ -49,7 +58,6 @@ function truncate(string, length){
   }
 }
 
-
 var intervalID;
 var currentUser;
 
@@ -68,19 +76,6 @@ function get_url_description(url, success_function){
       console.error("Can't resolve host", status);
     }
   });
-};
-
-function getLocation(href) {
-    var location = document.createElement("a");
-    location.href = href;
-    // IE doesn't populate all link properties when setting .href with a relative URL,
-    // however .href will return an absolute URL which then can be used on itself
-    // to populate these additional fields.
-    if (location.host == "") {
-      return 'Невалидный адрес'
-    }
-    console.log('сслыка', location);
-    return location;
 };
 
 function trim(str){

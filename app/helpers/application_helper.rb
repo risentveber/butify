@@ -24,6 +24,10 @@ module ApplicationHelper
     end
   end
 
+  def scope_serializer(array)
+    ActiveModel::ArraySerializer.new(array, {scope: self} )
+  end
+
   def insert_class_name(class_name)
     base_class = ""
     if class_name.empty?
@@ -32,5 +36,5 @@ module ApplicationHelper
       class_name
     end
   end
-  
+
 end

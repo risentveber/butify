@@ -22,7 +22,7 @@ gem 'unicorn'
 gem 'mailgun_rails'
 gem 'pundit'
 gem 'better_errors'
-gem 'react-rails'
+# gem 'react-rails'
 gem 'airbrake', '~> 4.3.4'
 gem 'nokogiri'
 gem 'activeadmin', github: 'activeadmin'
@@ -31,12 +31,13 @@ gem 'acts_as_follower'
 gem 'react-bootstrap-rails'
 gem 'destroyed_at'
 gem 'migration_data'
-gem 'browserify-rails'
+gem 'active_model_serializers'
+#gem 'browserify-rails'
 gem 'slim-rails'
 gem 'omniauth'
 gem 'omniauth-vkontakte'
 gem 'vkontakte_api', '~> 1.4'
-#gem 'carrierwave-imageoptimizer'
+gem 'react_on_rails'
 
 group :development, :test do
   gem 'awesome_print'
@@ -56,3 +57,5 @@ group :development do
   gem 'capistrano-bundler'
   gem 'guard-rails'
 end
+
+gem 'therubyracer', platforms: :ruby

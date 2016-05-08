@@ -1,18 +1,21 @@
-var Masonry = require('react-masonry-component')(React);
+import React from 'react'
+import Masonry from 'react-masonry-component';
+import ShowPost from '../components/ExploreGrid/ShowPost';
+import Post from '../components/ExploreGrid/Post';
 
-var masonryOptions = {
-  transitionDuration: 0
-};
-var Gallery = React.createClass({
-  getInitialState: function () {
-    return {
+
+export default class ExploreGrid extends React.Component {
+  constructor(props, context) {
+    console.log('CONSTRUCTOR', props.posts_preloaded);
+    super(props, context);
+    this.state = {
       limit_detected: false,
       wait_posts: false,
-      posts_count: 40,
-      posts: []
+      posts_count: 20,
+      posts: props.posts_preloaded || []
     };
-  },
-  loadPostsFromServer: function() {
+  }
+  loadPostsFromServer = () => {
     $.ajax({
       url: this.props.posts_url,
       dataType: 'json',
@@ -31,12 +34,12 @@ var Gallery = React.createClass({
         });
       }.bind(this),
       error: function(xhr, status, err) {
-        CE(this.props.url, status, err.toString());
+        console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
-  },
-  removeComment: function(post_id, comment_id){
-    CI('PostBox::removeComment', post_id, comment_id);
+  }
+  removeComment = (post_id, comment_id) => {
+    console.info('PostBox::removeComment', post_id, comment_id);
     var delete_url;
     var newPosts = this.state.posts.map(function (n) {
       if (n.id == post_id){
@@ -53,9 +56,9 @@ var Gallery = React.createClass({
       url: delete_url,
       type: 'DELETE'
     });
-  },
-  updateComment: function(post_id, comment_id, text){
-    CI('PostBox::removeComment', post_id, comment_id, text);
+  }
+  updateComment = (post_id, comment_id, text) => {
+    console.info('PostBox::removeComment', post_id, comment_id, text);
     var comment_url;
     var newPosts = this.state.posts.map(function (n) {
       if (n.id == post_id){
@@ -79,9 +82,12 @@ var Gallery = React.createClass({
         }
       },
     });
-  },
-  componentDidMount: function() {
-    this.loadPostsFromServer();
+  }
+  componentDidMount() {
+    if (this.state.posts.length == 0){
+      console.log('LOAD POST AFTER MOUNTING');
+      this.loadPostsFromServer();
+    }
     $(window).scroll(function() {
       var scroll_part = $(window).scrollTop()/$(document).height();
       if (scroll_part > 0.8 && !this.state.limit_detected && !this.state.wait_posts ){
@@ -94,16 +100,15 @@ var Gallery = React.createClass({
       }
     }.bind(this));
     //intervalID = setInterval(this.loadNewsItemsFromServer, this.props.pollInterval);
-  },
-  componentWillUnmount: function(){
+  }
+  componentWillUnmount(){
     $(window).unbind('scroll');
-    //clearInterval(intervalID)
-  },
-  showClick: function(id){
+  }
+  showClick = (id) => {
     console.log('showClick', id);
     this.setState({current_post_id: id});
-  },
-  like_post: function(id){
+  }
+  like_post = (id) => {
     var posts = this.state.posts;
     var likedPost = $.grep(posts, function(e){ return e.id == id; });
     likedPost = likedPost[0];
@@ -129,12 +134,12 @@ var Gallery = React.createClass({
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
-  },
-  hide: function(){
+  }
+  hide = () => {
     this.setState({current_post_id: undefined})
-  },
-  createComment: function(post_id, text){
-    CI('PostBox::createComment', post_id, text);
+  }
+  createComment = (post_id, text) => {
+    console.info('PostBox::createComment', post_id, text);
     var newPosts = this.state.posts.map(function (n) {
       if (n.id == post_id){
         n.comments.unshift({
@@ -163,12 +168,12 @@ var Gallery = React.createClass({
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
-  },
-  render: function () {
+  }
+  render() {
     var self = this;
     var childElements = this.state.posts.map(function(post, i){
       return (
-        <ExplorePost
+        <Post
           showClick={self.showClick}
           like_post={self.like_post}
           desire_id={self.props.desire_id}
@@ -185,7 +190,7 @@ var Gallery = React.createClass({
     }
     return (
       <div>
-        <ShowExplorePost
+        <ShowPost
           likePost={this.like_post}
           createComment={this.createComment}
           updateComment={this.updateComment}
@@ -198,7 +203,7 @@ var Gallery = React.createClass({
         <Masonry
           className={'grid-wrap'}
           elementType={'div'}
-          options={masonryOptions}
+          options={{transitionDuration: 0}}
           disableImagesLoaded={false}
         >
           {childElements}
@@ -206,6 +211,4 @@ var Gallery = React.createClass({
       </div>
     );
   }
-});
-
-module.exports = Gallery;
+}

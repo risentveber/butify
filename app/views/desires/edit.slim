@@ -1,6 +1,6 @@
 = react_component 'StaticDesireForm',
-  url: desire_path(@desire),
-  desire: {author: {name: @desire.user.name,
+  props: { url: desire_path(@desire),
+          desire: {author: {name: @desire.user.name,
                     url: user_path(@desire.user),
                     avatar: @desire.user.avatar.to_s},
           city_id: @desire.user.city_id,
@@ -10,4 +10,4 @@
           text: @desire.text,
           post_type: 'photo',
           photos: @desire.photos.map() do |p| {id: p.id, url: p.url} end,
-  }
+  }}

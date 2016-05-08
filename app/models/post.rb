@@ -22,6 +22,44 @@ class Post < ActiveRecord::Base
   scope :published, -> {where('posts.published_at IS NULL OR posts.published_at < (?)', Time.now)}
   scope :default, -> (user_id) {time_order.moderated(user_id).published}
 
+
+  scope :profile_grid, -> (user) { user.posts.order(created_at: :desc) }
+  scope :moderate_grid, -> { time_order.where("moderated IS NULL OR moderated = false") }
+  scope :unobtrusive_сity, -> (city) do
+    if city
+      where(city: city)
+    else
+      all
+    end
+  end
+  scope :fresh_grid, -> (user, city) do
+    unobtrusive_сity(city).default(user.try(:id)).visible
+  end
+
+  scope :hits_grid, -> (user, city) do
+    unobtrusive_сity(city).default(user.try(:id)).where('updated_at >= ?', 2.days.ago)
+    .where('discount_price != 0 AND discount_price < price AND (100 - (100*discount_price/price)) > 10')
+  end
+
+  scope :category_grid, -> (category, user, city) do
+    category.posts.default(user.try(:id)).visible.unobtrusive_сity(city)
+  end
+
+  scope :tag_grid, -> (tag, user, city) do
+    joins(:tags).where(posts_tags:{tag: tag}).default(user.try(:id)).unobtrusive_сity(city)
+  end
+
+  scope :recommended_grid, -> (user, city) do
+    unobtrusive_сity(city).default(user.try(:id)).recommended
+  end
+
+  scope :popular_grid, -> (user, city) do
+    order(cached_votes_total: :desc).moderated(user.try(:id)).published
+      .where('created_at >= ?', 2.weeks.ago).unobtrusive_сity(city)
+  end
+
+  scope :standart_limit, -> { limit(20) }
+
   delegate :name, to: :city, allow_nil: true, prefix: true
 
   serialize :linkdata
@@ -77,12 +115,15 @@ class Post < ActiveRecord::Base
   def link_description
     linkdata[:description]
   end
+
   def link_description=(v)
     linkdata[:description] = v
   end
+
   def link_title
     linkdata[:title]
   end
+
   def link_title=(v)
     linkdata[:title] = v
   end

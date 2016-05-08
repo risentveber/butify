@@ -1,0 +1,12 @@
+= render 'about_trenly'
+- if current_user
+	.title-explore
+	  |Популярное
+- else
+	.title-explore.title-explore_lmargin
+	  |Популярное
+= render 'partials/city_select'
+#grid-gallery.grid-gallery
+  #demo
+    = react_component 'ExploreGrid', prerender: true, props: {posts_url: popular_path + city_params(params[:city_id]), posts_preloaded: scope_serializer(@posts)}
+= render "partials/contacts"

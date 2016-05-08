@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :require_login
+  serialization_scope :view_context
 
   def default_url_options
     if Rails.env.production?
@@ -19,6 +20,10 @@ class ApplicationController < ActionController::Base
 
   def require_admin
     raise ActiveRecord::RecordNotFound unless current_user && current_user.admin?
+  end
+
+  def default_serializer_options
+    {root: false}
   end
 
   private

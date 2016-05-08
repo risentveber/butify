@@ -45,8 +45,7 @@ class UsersController < ApplicationController
   end
 
   def posts
-    @posts = @user.posts.order(created_at: :desc).limit(params[:count])
-    render 'posts/index', formats: :json
+    render json: Post.profile_grid(@user).limit(params[:count])
   end
 
   def show
