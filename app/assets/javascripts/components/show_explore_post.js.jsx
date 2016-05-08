@@ -151,12 +151,14 @@ var ShowExplorePost = React.createClass({
                 <ul>
                   <li className='likes'>
                     <img src={like_image_path} onClick={this.likeClick} className={classname_img}/> <span className='num-likes'>{post.likes || ''}</span>
-                    <span className='show-post-site-link'>
-                      {sitelink_rendered}
-                    </span>
                   </li>
                   <li>
                     <DiscountBlock price={post.price} discount_price={post.discount_price}/>
+                  </li>
+                  <li>
+                    <span className='show-post-site-link'>
+                      {sitelink_rendered}
+                    </span>
                   </li>
                 </ul>
               </div>

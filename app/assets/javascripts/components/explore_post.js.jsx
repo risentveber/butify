@@ -128,9 +128,6 @@ const ExplorePost = React.createClass({
                   </div>
                   <span>
                     <a href={post.author.url}>{post.author.name}</a>
-                    <p>
-                      {sitelink_rendered}
-                    </p>
                   </span>
                 </div>
                 <div className='action-of-post'>

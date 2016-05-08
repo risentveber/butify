@@ -16,8 +16,8 @@
           <button type="button" class="btn btn-default dont-hide btn-day-product btn-without-props-btn">Желания</button>
         <% end %>
         <% if current_user && current_user.admin? %>
-          <a class='btn btn-sm btn-default mt-12' href='/admin'>Админка</a>
-          <%= link_to 'Модерация', admin_moderate_path, class: 'btn btn-sm btn-default mt-12' %>
+          <a class='btn btn-sm mt-12' href='/admin'>Админка</a>
+          <%= link_to 'Модерация', admin_moderate_path, class: 'btn btn-sm mt-12' %>
         <% end %>
       </div>
       <div class='metabar-block metabar-block-right'>

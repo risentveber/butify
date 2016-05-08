@@ -940,6 +940,12 @@
 	.padding-usual-post-text-create{
 		padding: 0px;
 	}
+	.message-to-user{
+		margin: 0 20px;
+		a{
+			font-weight: 400;
+		}
+	}
 }
 .post-category{
 	font-weight: 500;
@@ -1049,3 +1055,33 @@
 }
 
 
+.advices-of-attract-clients{
+	width: 50% !important;
+  min-width: 600px;
+  margin: 40px auto;
+  margin-bottom: 80px;
+  text-align: left;
+  .advices-content{
+  	text-align: justify;
+  	.advices-content-introduction{
+  		
+  	}
+  	.advices-content-moderation{
+  		font-size: 16px;
+			.moderate-true{
+				b{
+					color: #00AB69;
+				}
+			}
+			.moderate-false{
+				b{
+					color: #FF6E1B;
+				}
+			}
+  	}
+  	.list-advices{
+  		margin-top: 20px;
+  		padding-left: 15px;
+  	}
+  }
+}

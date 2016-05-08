@@ -27,43 +27,47 @@ var StaticPostForm = React.createClass({
       };
   },
   submitForm(){
-    var post = this.state.post;
-    var photo_ids = post.photos.map(function(p){ return p.id })
-    var url = this.props.post ? this.props.url : '/posts'
-    var request_type = this.props.post ? 'PATCH' : 'POST'
-    var sitelink = post.sitelink;
-    if (sitelink)
-      sitelink = sitelink.trim();
-    if (sitelink && sitelink.slice(0, 4) != 'http')
-      sitelink = 'http://' + sitelink;
-    console.log(sitelink);
-    this.setState({disabled: true});
-    var self = this;
-    $.ajax({
-      url: url,
-      type: request_type,
-      data: {
-        post: {
-          city_id: post.city_id,
-          published_at: post.published_at,
-          sitelink: sitelink,
-          text: post.text,
-          title: post.title,
-          category_ids: post.category_ids,
-          tags: post.tags,
-          photo_ids: photo_ids,
-          price: post.price,
-          discount_price: post.discount_price,
+    if(this.contentIsInvalid()){
+      this.setState({disabled: true});
+    }
+    else{
+      var post = this.state.post;
+      var photo_ids = post.photos.map(function(p){ return p.id })
+      var url = this.props.post ? this.props.url : '/posts'
+      var request_type = this.props.post ? 'PATCH' : 'POST'
+      var sitelink = post.sitelink;
+      if (sitelink)
+        sitelink = sitelink.trim();
+      if (sitelink && sitelink.slice(0, 4) != 'http')
+        sitelink = 'http://' + sitelink;
+      console.log(sitelink);
+      var self = this;
+      $.ajax({
+        url: url,
+        type: request_type,
+        data: {
+          post: {
+            city_id: post.city_id,
+            published_at: post.published_at,
+            sitelink: sitelink,
+            text: post.text,
+            title: post.title,
+            category_ids: post.category_ids,
+            tags: post.tags,
+            photo_ids: photo_ids,
+            price: post.price,
+            discount_price: post.discount_price,
+          }
+        },
+        success: function(data) {
+          Turbolinks.visit(window.currentUser.url);
+        },
+        error: function(xhr, status, err) {
+          self.setState({disabled: false});
+          console.error(self.props.url, status, err.toString());
         }
-      },
-      success: function(data) {
-        Turbolinks.visit(window.currentUser.url);
-      },
-      error: function(xhr, status, err) {
-        self.setState({disabled: false});
-        console.error(self.props.url, status, err.toString());
-      }
-    });
+      });
+    }
   },
   mouseOverTips(){
     alert('sdf');
@@ -138,6 +142,16 @@ var StaticPostForm = React.createClass({
     });
   },
   render: function() {
+    if (this.state.disabled){
+      var message_to_user = (
+        <span className='message-to-user contrast-color-text'>Публикация обязательно должна содержать изображение, цену и категорию!</span>
+      );
+    }
+    else{
+      var message_to_user = (
+        <span className='message-to-user'>Ваш товар может привлечь больше клиентов. <a href='#advices-btn'>Прочтите!</a></span>
+      );
+    }
     return (
       <div className='card-butify creaet-new-post'>
         <StaticPostAuthor
@@ -159,10 +173,11 @@ var StaticPostForm = React.createClass({
           discountIsShown={this.state.discountIsShown || this.state.post.discount_price}/>
         <div className='clearboth' />
         <div className="modal-footer">
+          {message_to_user}
           <button
             type="button"
-            disabled={this.contentIsInvalid() || this.state.disabled}
             onClick={this.submitForm}
+            id='advices-btn'
             className="btn btn-primary btn-st">
             Опубликовать
           </button>
