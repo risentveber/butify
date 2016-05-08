@@ -149,7 +149,7 @@ var StaticPostForm = React.createClass({
     }
     else{
       var message_to_user = (
-        <span className='message-to-user'>Ваш товар может привлечь больше клиентов. <a href='#advices-btn'>Прочтите!</a></span>
+        <span className='message-to-user'></span>
       );
     }
     return (

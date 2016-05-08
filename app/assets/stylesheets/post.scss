@@ -1063,9 +1063,6 @@
 
 
 .advices-of-attract-clients{
-	width: 50% !important;
-  min-width: 600px;
-  margin: 40px auto;
   margin-bottom: 80px;
   text-align: left;
   h1{
@@ -1097,9 +1094,18 @@
 }
 .notification-block-future-publication{
 	  width: 155px;
-    position: relative;
-    top: -80px;
-    left: 103%;
+    position: absolute;
+    left: 84%;
+    top: 130px;
     height: 0px;
     font-size: 12px;
+    .notification-block{
+    	margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 961px) {
+	.notification-block-future-publication{
+		display: none;
+	}
 }
