@@ -9,7 +9,7 @@
       	<h1 class='impressed-text'>Вы пока еще никого не читаете</h1>
       </div>
     <% else %>
-	    <%= react_component 'Gallery', posts_url: posts_path(@user) %>
+	    <%= react_component 'ExploreGrid', props: { posts_url: posts_path(@user) } %>
     <% end %>
 	</div>
 	<div class='feed-right-column'>

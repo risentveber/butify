@@ -42,7 +42,7 @@
     "react-dropzone-es6": "^1.0.2",
     "react-masonry-component": "^4.0.4",
     "react-on-rails": "5.2.0",
-    "webpack": "^1.12.14"
+    "webpack": "^1.13.0"
   },
   "devDependencies": {}
 }
