@@ -1,7 +1,7 @@
 import React from 'react'
 import CommentList from './CommentList'
 
-export default class PostCommentBox extends React.Component {
+export default class CommentBox extends React.Component {
   //BEGIN***************************************************DECLARE
   // propTypes: {
   //   createComment: React.PropTypes.func.isRequired,
