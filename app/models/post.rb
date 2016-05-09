@@ -58,7 +58,7 @@ class Post < ActiveRecord::Base
       .where('created_at >= ?', 2.weeks.ago).unobtrusive_сity(city)
   end
 
-  scope :standart_limit, -> { limit(20) }
+  scope :standart_limit, -> { limit(40) }
 
   delegate :name, to: :city, allow_nil: true, prefix: true
 
