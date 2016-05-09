@@ -90,7 +90,7 @@ export default class ExploreGrid extends React.Component {
     }
     $(window).scroll(function() {
       var scroll_part = $(window).scrollTop()/$(document).height();
-      if (scroll_part > 0.6 && !this.state.limit_detected && !this.state.wait_posts ){
+      if (scroll_part > 0.5 && !this.state.limit_detected && !this.state.wait_posts ){
         this.setState({
           posts_count: this.state.posts_count + 20,
           wait_posts: true
