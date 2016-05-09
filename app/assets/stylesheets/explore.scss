@@ -845,3 +845,11 @@ span.nav-close:before {
 .explore-offer-block{
 	padding: 0 15px;
 }
+.close-explore-post{
+	position: absolute;
+	right: 14px;
+  top: 2px;
+  .close{
+  	font-size: 36px;
+  }
+}

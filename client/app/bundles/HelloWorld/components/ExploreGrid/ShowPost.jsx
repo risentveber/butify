@@ -99,6 +99,7 @@ export default class ShowPost extends React.Component{
         dialogClassName='modal-dialog modal-dialog-show-post'
         show={Boolean(this.props.post)}
         onHide={this.props.onHide}>
+          <div className='close-explore-post'><button type="button" className="close" onClick={this.props.onHide}>&times;</button></div>
           <div className="modal-header">
             <div className='post-autor'>
               <a href={author.url}>
