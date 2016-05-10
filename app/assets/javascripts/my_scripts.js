@@ -48,7 +48,7 @@ $(document).on("page:load ready", function main(){
     var im = new Inputmask("+7(999)-999-9999");
     if (selector) im.mask(selector);
 
-    $('.usual-post-text-expand-span').click(function(){
+    $('#hhhh').click(function(){
       alert('sf');
     });
 

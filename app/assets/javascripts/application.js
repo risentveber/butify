@@ -19,17 +19,10 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-// require jquery
-// require jquery_ujs
+//= require js-routes
 //= require turbolinks
-// require react
-// require react_ujs
-// require react_bootstrap
-// require react-dropzone
-// require npm_packages
 //= require modernizr.custom
 //= require emotions
-// require components
 //= require bootstrap
 //= require jquery.Jcrop.min
 //= require jquery.form

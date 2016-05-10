@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     post :change, on: :collection
   end
   get '/auth/:provider/callback', to: 'sessions#create_external'
-  #get '/auth/twitter', to: 'sessions#vkontakte'
 
   get 'profile/edit' => 'users#edit_profile'
 
@@ -30,6 +29,7 @@ Rails.application.routes.draw do
     resources :comments
   end
   resources :feedbacks, only: :create
+  resources :statistics#, only: :create
   resources :attachments, only: [:create, :destroy] do
     get :clean, on: :collection
   end

@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :feedbacks
   has_many :desires, dependent: :destroy
   has_one  :basket
+  has_many :statistics, dependent: :destroy
   belongs_to :city
 
   scope :recommended, -> { where(recommended: true) }

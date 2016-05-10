@@ -21,21 +21,7 @@
     <% if current_user %>
       <h5><%= @user.phone %></h5>
       <p>
-        <% if @user.vk_id.present? %>
-            <%= link_to "https://vk.com/#{@user.vk_id}", target: :blank do %>
-              <img src= '/images/social_vk.png' />
-            <% end %>
-        <% end %>
-        <% if @user.facebook_id.present? %>
-            <%= link_to "https://facebook.com/#{@user.facebook_id}", target: :blank do %>
-              <img src= '/images/social_facebook.png' />
-            <% end %>
-        <% end %>
-        <% if @user.instagram_id.present? %>
-            <%= link_to "https://www.instagram.com/#{@user.instagram_id}", target: :blank do %>
-              <img src= '/images/social_insta.png' />
-            <% end %>
-        <% end %>
+        <%= react_component 'SocialInfo', props:{ user: {id: @user.id, vk_id: @user.vk_id, facebook_id: @user.facebook_id, instagram_id: @user.instagram_id}}%>
       </p>
     <% else %>
       <div class='notification-block notification-more-contact'>
