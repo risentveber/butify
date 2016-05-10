@@ -111,6 +111,8 @@ export default class Post extends React.Component{
       );
       var offer_hidden = "hidden-element"
     }
+    if(post.title)
+      var item_title = <h5 onClick={this.onShowClick}>{post.title}</h5>
     if(post.linkdata.description)
       var title_link = <h3 className='title'>{post.linkdata.description}</h3>
     if(tags.length)
@@ -133,7 +135,7 @@ export default class Post extends React.Component{
             <div className='main-contain'>
               {link_rendered}
               {title_link}
-              <h4 onClick={this.onShowClick}>{post.title}</h4>
+              {item_title}
             </div>
             {admin_block}
             {offer_block}

@@ -223,7 +223,7 @@
 }
 .grid-gallery footer{
 	border-top: 1px solid #DAE1E8;
-	min-height: 63px;
+	min-height: 43px;
  	.delicious-like{
  		font-weight: 400;
  		.show-post{
@@ -805,8 +805,8 @@ span.nav-close:before {
 	}
 }
 .avatar-explore{
-	width: 35px !important;
-	height: 35px !important;
+	width: 22px !important;
+	height: 22px !important;
 	border-radius: 200px !important;
 	float: left;
 }
@@ -826,6 +826,18 @@ span.nav-close:before {
 .price-explore-post{
 	padding: 1px 15px;
 	cursor: pointer;
+	h6{
+		margin-top: 8px;
+    margin-bottom: 6px;
+	}
+	h6:last-child{
+		margin-top: 8px !important;
+    margin-bottom: 6px !important;
+	}
+	h6:last-child{
+		margin-top: 3px;
+		margin-bottom: 8px;
+	}
 }
 .title-under-title{
 	margin: 10px 0;
@@ -833,9 +845,10 @@ span.nav-close:before {
 .wrap-figure-explore-post{
 	background-color: rgb(255, 255, 255);
 	.main-contain{
-		h4{
-			font-weight: 400 !important;
-			cursor: pointer;
+		h5{
+			font-weight: 500 !important;
+	    cursor: pointer;
+	    margin-bottom: 6px !important;
 		}
 	}
 }

@@ -8,7 +8,7 @@ export default class DiscountBlock extends React.Component {
       var preliminary_calculation = Math.round(this.props.discount_price / this.props.price * 100)
       if(preliminary_calculation < 100){
         var procents = 100 - preliminary_calculation;
-        discount_rendered = <h5><span className='sale-value'>Скидка {procents}%</span></h5>
+        discount_rendered = <h6><span className='sale-value'>Скидка {procents}%</span></h6>
       }
 
       var price
@@ -25,11 +25,11 @@ export default class DiscountBlock extends React.Component {
     }
     return (
       <div>
-        <h5>
+        <h6>
           {price}
           &nbsp;&nbsp;
           {discount_price_rendered}
-        </h5>
+        </h6>
         {discount_rendered}
       </div>
     );
