@@ -23,7 +23,7 @@ class Post < ActiveRecord::Base
   scope :default, -> (user_id) {time_order.moderated(user_id).published}
 
 
-  scope :profile_grid, -> (user) { user.posts.order(created_at: :desc).published }
+  scope :profile_grid, -> (user) { user.posts.order(created_at: :desc)}
   scope :moderate_grid, -> { time_order.where("moderated IS NULL OR moderated = false") }
   scope :unobtrusive_сity, -> (city) do
     if city
@@ -105,7 +105,7 @@ class Post < ActiveRecord::Base
 
   def self.for_user(user)
     if user
-      where(user_id: [user.id] + user.all_follows.map(&:followable_id)).order(created_at: :desc)
+      where(user_id: [user.id] + user.all_follows.map(&:followable_id)).order(created_at: :desc).published
     else
       all.order(created_at: :desc)
     end
