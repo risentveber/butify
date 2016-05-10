@@ -166,7 +166,7 @@ export default class ShowPost extends React.Component{
                     <img src={like_image_path} onClick={this.likeClick} className={classname_img}/> <span className='num-likes'>{post.likes || ''}</span>
                   </li>
                   <li>
-                    <DiscountBlock price={post.price} discount_price={post.discount_price}/>
+                    <DiscountBlock price={post.price} discount_price={post.discount_price} showPost={true}/>
                   </li>
                   <li>
                     <span className='show-post-site-link'>
