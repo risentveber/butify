@@ -11,7 +11,7 @@ export default class ExploreGrid extends React.Component {
     this.state = {
       limit_detected: false,
       wait_posts: false,
-      posts_count: props.posts_preloaded && prosps.posts_preloaded.length || 40,
+      posts_count: props.posts_preloaded && props.posts_preloaded.length || 40,
       posts: props.posts_preloaded || []
     };
   }
