@@ -1,14 +1,21 @@
 <% if !current_user %>
 	<div class = 'join-to-us-under-hat'>
 		<div class='contetn-about-trenly'>
-			<div class='main-text'>
-				<h2>
-					<!--Дизайнеры, художники и мастера ручной работы на нашем сайте смогут вас удивить!-->
-					<!--Ищете дизайнерские вещи?</br>Тогда Вы по адресу!-->
-					Дизайнерские товары от молодых и талантливых мастеров
-				</h2>
-				<%= link_to "Присоединяйтесь!", new_session_path, class: 'btn btn-primary btn-st'%> 
+			<div class='main-text-profile-link'>
+				<div class='main-text'>
+					<h2>
+						<!--Дизайнеры, художники и мастера ручной работы на нашем сайте смогут вас удивить!-->
+						<!--Ищете дизайнерские вещи?</br>Тогда Вы по адресу!-->
+						Дизайнерские товары от молодых и талантливых мастеров
+					</h2>
+					<%= link_to "Присоединяйтесь!", new_session_path, class: 'btn btn-primary btn-st'%> 
+				</div>
+				<div class='clearboth'>
+				</div>
 			</div>
+		</div>
+		<div class='profile-link'>
+			<a href='http://trenly.ru/users/7'>Страница <b>Awesome Ties</b></a>
 		</div>
 		<!--<div class='join-desire'>В разделе <b><%= link_to 'желания', desires_path %></b> напишите 
 			то, что Вы хотите найти и купить, а товар найдет Вас сам. Его Вам предложат продавцы.</div>-->
