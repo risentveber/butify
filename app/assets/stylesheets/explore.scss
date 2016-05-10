@@ -188,6 +188,12 @@
 
 .grid-gallery figcaption {
 	background: white;
+	.author-post{
+		font-size: 12px;
+		span{
+			margin-left: 5px;
+		}
+	}
 	.link{
 		overflow-x: hidden;
 		font-size: 12px;
@@ -214,7 +220,7 @@
 		padding-bottom: 10px;
 	}
 	footer{
-		padding-top: 10px;
+		
 	}
 	.text{
 		padding-top: 7px;
@@ -224,72 +230,35 @@
 .grid-gallery footer{
 	border-top: 1px solid #DAE1E8;
 	min-height: 43px;
- 	.delicious-like{
- 		font-weight: 400;
- 		.show-post{
-			float: left;
-			width: 68%;
-			color: #23527c;
-			font-size: 12px;
-			cursor: pointer;
-			&:hover{
-				color: #3680be;
-			}
-			span{
-				position: relative;
-				left: 6px;
-				font-weight: 200;
-			}
-			p{
-				font-size: 12px;
-				font-weight: 400;
-				a{
-					color: #636363 !important;
-					&:hover{
-						color: #FF6E1B !important;
-					}
-				}
+	.action-of-post{
+		padding: 6px 0px;
+		.action-element{
+			font-size: 11px;
+			margin-right: 9px;
+			color: #516574;
+			img{
+				margin-right: 4px;
 			}
 		}
+		.action-element-like{
 
- 		.action-of-post{
-			float: right;
-			display: block;
-			div:first-child{
-				float: left;
-				color: #23527c;
-				font-size: 12px;
-				cursor: pointer;
-				&:hover{
-					color: #3680be;
-				}
-				span{
-					font-size: 11px;
-					color: #969DA2;
-				}
-			}
-			div:last-child{
-				float: right;
-				display: block;
-			}
-			span{
-				font-size: 11px;
-				margin-left: 3px;
-				float: left;
-				margin-right: 2px;
-				span{
-					position: relative;
-					top: 1px;
-					color: #516574;
-				}
+			margin-right: 0 !important;
+		}
+		.action-element-comment{
+
+		}
+		.action-element-view{
+
+			img{
+				width: 18px;
 			}
 		}
- 		img, .avatar-explore{
- 			width: 16px;
- 			float: left;
- 			cursor: pointer;
- 		}
- 	}
+	}
+	img, .avatar-explore{
+		width: 16px;
+		cursor: pointer;
+	}
+ 	
 }
 /*.comment-field-explore{
 	width: 400px;
@@ -619,6 +588,9 @@ span.nav-close:before {
 			img{
 				cursor: pointer;
 			}
+			.view{
+				margin-left: 20px;
+			}
 		}
 	.usual-post-text{
 		padding: 0px !important; 
@@ -734,7 +706,7 @@ span.nav-close:before {
 			}
 	    img{
 	    	width: 20px;
-	    	margin-right: 10px;
+	    	margin-right: 5px;
 	    }
 	    .num-likes{
 	    	font-weight: 400;
@@ -805,8 +777,8 @@ span.nav-close:before {
 	}
 }
 .avatar-explore{
-	width: 22px !important;
-	height: 22px !important;
+	width: 20px !important;
+	height: 20px !important;
 	border-radius: 200px !important;
 	float: left;
 }

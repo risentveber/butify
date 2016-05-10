@@ -57,10 +57,10 @@ export default class Post extends React.Component{
       </div>
     );
 
-    var rendered_likes;
+    var rendered_likes, rendered_comments;
     if (post.current_like) {
       rendered_likes = (
-        <span onClick={this.onLikeClick}>
+        <span className='action-element action-element-like' onClick={this.onLikeClick}>
           <img
             title='Лайк'
             data-toggle="tooltip"
@@ -73,7 +73,7 @@ export default class Post extends React.Component{
       );
     } else {
       rendered_likes = (
-        <span onClick={this.onLikeClick}>
+        <span className='action-element action-element-like' onClick={this.onLikeClick}>
           <img
             title='Лайк'
             data-toggle="tooltip"
@@ -81,6 +81,20 @@ export default class Post extends React.Component{
             src='/images/like_grey.png' />
           <span>
             {post.likes || ''}
+          </span>
+        </span>
+      );
+    }
+    if(post.comments.length){
+      rendered_comments = (
+        <span className='action-element action-element-comment'>
+          <img onClick={this.onShowClick}
+            title='Комментарий'
+            data-toggle="tooltip"
+            data-placement="top"
+            src='/images/comment3.png' />
+          <span>
+            {post.comments.length || ''}
           </span>
         </span>
       );
@@ -143,8 +157,22 @@ export default class Post extends React.Component{
               <DiscountBlock price={post.price} discount_price={post.discount_price}/>
             </div>
             <footer className='border-b-radius'>
-              <div className='delicious-like'>
-                <div className='show-post'>
+                <div className='action-of-post'>
+                  <span className='action-element action-element-view'>
+                    <img onClick={this.onShowClick}
+                      title='Просмотры'
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      src='/images/view2.png' />
+                    <span>
+                      745
+                    </span>
+                  </span>
+                  {rendered_comments}
+                  {rendered_likes}
+                </div>
+                <div className='clearboth'></div>
+                <div className='author-post'>
                   <div className="avatar-explore" style={{
                     background: 'url(' + post.author.avatar + ') no-repeat',
                     backgroundSize:'cover'}}>
@@ -153,24 +181,6 @@ export default class Post extends React.Component{
                     <a href={post.author.url}>{post.author.name}</a>
                   </span>
                 </div>
-                <div className='action-of-post'>
-                  <div>
-                    <span>
-                      <img onClick={this.onShowClick}
-                        title='Комментарий'
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        src='/images/comment3.png' />
-                      <span>
-                        {post.comments.length || ''}
-                      </span>
-                    </span>
-                  </div>
-                  <div>
-                    {rendered_likes}
-                  </div>
-                </div>
-              </div>
             </footer>
             <div className='clearboth'>
             </div>
