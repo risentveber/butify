@@ -23,7 +23,7 @@ class Post < ActiveRecord::Base
   scope :default, -> (user_id) {time_order.moderated(user_id).published}
 
 
-  scope :profile_grid, -> (user) { user.posts.order(created_at: :desc) }
+  scope :profile_grid, -> (user) { user.posts.order(created_at: :desc).published }
   scope :moderate_grid, -> { time_order.where("moderated IS NULL OR moderated = false") }
   scope :unobtrusive_сity, -> (city) do
     if city
