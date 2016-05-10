@@ -1,0 +1,48 @@
+.analytics-list{
+  min-width: 632px;
+  margin: auto;
+  max-width: 1190px;
+  padding: 12px 10px;
+  .categories-parametrs{
+  	border-bottom: 1px solid rgba(0,0,0,.15);
+  	color: rgba(0, 0, 0, 0.4);
+  	padding: 10px 0;
+  	.active{
+  		font-weight: 500;
+  	}
+  	span{
+  		margin-right: 18px;
+  		cursor: pointer;
+  	}
+  }
+  .data-analytics{
+  	text-align: left;
+  	.data-analytics-views{
+  		float: left;
+  		width: 38%;
+  		border-right: 1px solid rgba(0,0,0,.15);
+  		min-height: 170px;
+  		h1{
+  			font-size: 76px;
+  		}
+  	}
+  	.data-analytics-social{
+  		float: left;
+  		width: 62%;
+  		min-height: 170px;
+  		.vk, .facebook, .instagram{
+  			padding: 0 30px;
+  			float: left;
+  			width: 33%;
+  			img{
+  				width: 27px;
+  				margin-right: 5px;
+  			}
+  			h1{
+  				font-size: 76px;
+  			}
+  		}
+  		
+  	}
+  }
+}

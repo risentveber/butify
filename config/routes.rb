@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   end
   resources :users, except: :edit do
     get :followers, on: :member
+    get :analytics, on: :member
     get :following, on: :member
     get :notices, on: :member
 

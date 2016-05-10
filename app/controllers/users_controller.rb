@@ -116,6 +116,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def analytics
+  end
+
 
   private
     def find_user
