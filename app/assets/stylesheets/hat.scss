@@ -239,6 +239,15 @@
     padding: 12px 10px;
     position: relative;
     margin: 0 auto;
+    .wrap-vk{
+      float: right;
+      height: 0px !important;
+      .vk{
+        width: 28px;
+        position: relative;
+        top: -4px;
+      }
+    }
     /*nav{
       font-size: 13px;
       a, span{
@@ -260,7 +269,7 @@
       }
     }*/
     .navbar-nav{
-      float: none !important;
+      float: left !important;
       margin: 0px !important;
       font-weight: 400;
       li{
