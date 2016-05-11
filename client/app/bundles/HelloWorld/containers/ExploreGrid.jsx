@@ -3,7 +3,6 @@ import Masonry from 'react-masonry-component';
 import ShowPost from '../components/ExploreGrid/ShowPost';
 import Post from '../components/ExploreGrid/Post';
 
-
 export default class ExploreGrid extends React.Component {
   constructor(props, context) {
     super(props, context);

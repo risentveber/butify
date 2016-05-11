@@ -37,6 +37,7 @@ gem 'omniauth'
 gem 'omniauth-vkontakte'
 gem 'vkontakte_api', '~> 1.4'
 gem 'react_on_rails'
+gem 'rollbar'
 
 group :development, :test do
   gem 'awesome_print'
