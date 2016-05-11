@@ -2,7 +2,10 @@ class StatisticsController < ApplicationController
   #skip_before_action :require_login
 
   def create
-    Statistic.create(statistic_params)
+    @statistic = Statistic.new(statistic_params)
+    if current_user != @statistic.user && !current_user.admin?
+      @statistic.save
+    end
     render nothing: true
   end
 
