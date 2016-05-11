@@ -49,6 +49,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user.statistics.profile_show.create if @user != current_user
   end
 
   def basket_posts
@@ -114,6 +115,9 @@ class UsersController < ApplicationController
       end
       f.html {}
     end
+  end
+
+  def analytics
   end
 
 

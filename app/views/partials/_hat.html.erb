@@ -62,6 +62,11 @@
                   </li>
                   <li role="presentation" class="divider"></li>
                   <li>
+                    <%= link_to analytics_user_path(current_user) do %>
+                      <b>Статистика</b>
+                    <% end %>
+                  </li>
+                  <li>
                     <%= link_to profile_edit_path do %>
                       Настройки
                     <% end %>

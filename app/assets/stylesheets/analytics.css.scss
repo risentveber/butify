@@ -14,6 +14,21 @@
   		margin-right: 18px;
   		cursor: pointer;
   	}
+    li.active > a{
+      color: #383838 !important;
+      background-color: transparent !important;
+      border: none !important;
+    }
+    li{
+      a{
+        border: none !important;
+        color: rgba(0,0,0,0.4);
+        padding-left: 0px;
+        &:hover, &:focus, &:active{
+          background-color: transparent !important;
+        }
+      }
+    }
   }
   .data-analytics{
   	text-align: left;
@@ -42,7 +57,7 @@
   				font-size: 76px;
   			}
   		}
-  		
+
   	}
   }
 }
