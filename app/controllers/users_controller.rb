@@ -49,7 +49,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user.statistics.profile_show.create if @user != current_user
+    if !current_user || current_user != @user && !current_user.admin?
+      @user.statistics.profile_show.create
+    end
   end
 
   def basket_posts
