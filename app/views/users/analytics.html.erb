@@ -1,5 +1,5 @@
 <div class="tips-and-comments title-under-hat"></div>
-<% if current_user == @user %>
+<% if current_user == @user || current_user.admin? %>
   <div class='analytics-list'>
     <h2>Ваша статистика</h2>
     <!-- <div class='categories-parametrs'>
@@ -160,3 +160,4 @@
   <h1 class="impressed-text">Нельзя просматривать статистику других пользователей</h1>
 </div>
 <% end %>
+<%= render "partials/contacts" %>
