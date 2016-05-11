@@ -62,7 +62,7 @@ export default class SocialInfo extends React.Component {
       );
     }
     return (
-      <p>
+      <p className='profile-these-social-networks'>
         {vk_rendered}
         {facebook_rendered}
         {insta_rendered}
