@@ -21,6 +21,7 @@
 //
 //= require js-routes
 //= require turbolinks
+//= require rollbar
 //= require modernizr.custom
 //= require emotions
 //= require bootstrap

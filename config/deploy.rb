@@ -20,6 +20,9 @@ set :linked_files, %w{config/database.yml config/secrets.yml}
 # dirs we want symlinking to shared
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
 
+set :rollbar_token, '4e016daa44bb44e38d2612f5fd1948ec'
+set :rollbar_env, Proc.new { fetch :stage }
+set :rollbar_role, Proc.new { :app }
 # what specs should be run before deployment is allowed to
 # continue, see lib/capistrano/tasks/run_tests.cap
 set :tests, []
