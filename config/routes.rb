@@ -63,7 +63,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :sessions
+  resources :sessions, only: [:new, :create, :destroy]
   namespace :ajax do
     get 'page_description'
     get 'get_cities'

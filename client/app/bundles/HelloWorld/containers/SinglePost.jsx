@@ -15,80 +15,57 @@ export default class SinglePost extends React.Component {
     super(props, context);
 
     this.state = {post: props.post};
-
-    console.log("Props for single post", props);
-  }
-  componentDidMount = ()=>{
-    console.log('Post Info', this.props.post);
   }
   createComment = (text) => {
-    CI('PostBox::createComment', post_id, text);
-    var newPosts = this.state.posts.map(function (n) {
-      if (n.id == post_id){
-        n.comments.unshift({
-          id: Date.now(),
-          text: text,
-          author: currentUser
-        })
-      }
-      return n;
+    let post = this.state.post;
+    post.comments.unshift({
+      id: Date.now(),
+      text: text,
+      author: currentUser
     });
-    this.setState({posts: newPosts});
+
+    this.setState({post: post});
     $.ajax({
       url: '/comments',
       type: 'POST',
       data: {
         comment: {
           text: text,
-          commentable_id: post_id,
+          commentable_id: post.id,
           commentable_type: 'Post'
         }
       },
-      success: function(data) {
-        this.loadPostsFromServer();
-      }.bind(this),
-      error: function(xhr, status, err) {
+      success: (data) => {
+      },
+      error: (xhr, status, err) => {
         console.error(this.props.url, status, err.toString());
-      }.bind(this)
+      }
     });
   }
   removeComment = (comment_id) => {
-    CI('PostBox::removeComment', post_id, comment_id);
-    var delete_url;
-    var newPosts = this.state.posts.map(function (n) {
-      if (n.id == post_id){
-        n.comments = n.comments.filter(function(c){
-          if (c.id == comment_id)
-            delete_url = c.url;
-          return c.id != comment_id;
-        });
-      }
-      return n;
-    });
-    this.setState({posts: newPosts});
+    let post = this.state.post;
+
+    post.comments = post.comments.filter(c => c.id != comment_id);
+
+    this.setState({post: post});
     $.ajax({
-      url: delete_url,
+      url: Routes.comment_path(comment_id),
       type: 'DELETE'
     });
   }
   updateComment = (comment_id, text) => {
-    CI('PostBox::removeComment', post_id, comment_id, text);
-    var comment_url;
-    var newPosts = this.state.posts.map(function (n) {
-      if (n.id == post_id){
-        n.comments = n.comments.map(function(c){
-          if (c.id == comment_id){
-            comment_url = c.url;
-            c.text = text;
-          }
-          return c;
-        });
+    let post = this.state.post;
+
+    post.comments = post.comments.map((c) =>{
+      if (c.id == comment_id){
+        c.text = text;
       }
-      return n;
+      return c;
     });
-    this.setState({posts: newPosts});
+
+    this.setState({post: post});
     $.ajax({
-      url: comment_url,
+      url: Routes.comment_path(comment_id),
       type: 'PATCH',
       data: {
         comment : {
@@ -112,7 +89,7 @@ export default class SinglePost extends React.Component {
 
     this.setState({post: post});
     $.ajax({
-      url: likedPost.like_path,
+      url: Routes.like_post_path(post.id),
       type: 'PUT',
       error: (xhr, status, err) => {
         console.error(this.props.url, status, err.toString());
