@@ -22,10 +22,7 @@ class PostsController < ApplicationController
   def show
     respond_to do |format|
       format.html { }
-      format.json {
-        @posts = [@post]
-        render 'posts/index'
-      }
+      format.json { render json: @post }
     end
   end
 

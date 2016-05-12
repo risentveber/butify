@@ -38,12 +38,12 @@ export default class PhotosBox extends React.Component{
       processData: false,
       contentType: false,
       dataType: 'json',
-      success: function(data) {
+      success: (data) => {
         this.setState({url_text: '', show_input: false});
         this.props.addPhoto(data);
         console.log(data);
-      }.bind(this),
-      error: function (data) {
+      },
+      error: (data) => {
         console.error("PostModalContent::onDrop Can't create attachment", data);
       }
     });
@@ -68,7 +68,7 @@ export default class PhotosBox extends React.Component{
         success: (data) => {
           this.props.addPhoto(data);
           this.setState({show_input: false, url_text: ''});
-        }.bind(this),
+        },
         error: (data) => {
           Rolbar.debug(data)
         }
