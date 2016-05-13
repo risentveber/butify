@@ -18,7 +18,7 @@ class Post < ActiveRecord::Base
   scope :recommended, -> { where(recommended: true) }
   scope :moderated, -> (user_id) { where('posts.moderated = true OR posts.user_id = (?)', user_id) }
   scope :visible, -> { where(visible: true) }
-  scope :time_order, -> { order( 'CASE WHEN published_at IS NULL THEN created_at else published_at END DESC') }
+  scope :time_order, -> { order( 'CASE WHEN posts.published_at IS NULL THEN posts.created_at else published_at END DESC') }
   scope :published, -> {where('posts.published_at IS NULL OR posts.published_at < (?)', Time.now)}
   scope :default, -> (user_id) {time_order.moderated(user_id).published}
 
