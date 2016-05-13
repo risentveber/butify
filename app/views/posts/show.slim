@@ -1,7 +1,4 @@
-.container#main-container
-  .main-wall-wide
-    .row[style = 'z-index: 150;']
-      .col-xs-12
-        .one-post
-          = react_component("SinglePost",
-          props: {post: PostSerializer.new(@post, {scope: self, root: false})})
+.tips-and-comments.title-under-hat
+  |
+= react_component("SinglePost",
+props: {post: PostSerializer.new(@post, {scope: self, root: false})})

@@ -25,12 +25,14 @@ export default class AuthorView extends React.Component{
       </li>;
     }
     let manage_block = (
-      <div className = 'btn-group'>
-        <span className = 'sign-dots-menu' data-toggle="dropdown">•••</span>
+      <div className="btn-group">
+        <span className="sign-dots-menu" data-toggle="dropdown">•••</span>
         <ul className="dropdown-menu blue-background-dropdown-menu" role="menu">
           {edit_button}
           {remove_button}
-          <li><a>Пожаловаться</a></li>
+          <li>
+            <a>Пожаловаться</a>
+          </li>
         </ul>
       </div>
     );
@@ -38,16 +40,15 @@ export default class AuthorView extends React.Component{
       <div className='post-autor'>
         <a href={this.props.author.url}>
           <div className='usual-avatar'
-          style={{background: 'url(' + this.props.author.avatar + ') no-repeat',
-          backgroundSize: 'cover'}}>
+            style={{background: 'url(' + this.props.author.avatar + ') no-repeat',
+            backgroundSize: 'cover'}}>
           </div>
           <div className='post-autor-info'>
-            <div className='post-autor-name'>
-              {this.props.author.name}<span className='post-autor-data'> • {this.props.city_name} • {this.props.time}</span>
-            </div>
+            <h4 className="modal-title" id="myModalLabel">{this.props.author.name}</h4>
+            <div>{this.props.city_name}, {this.props.time}</div>
           </div>
         </a>
-        <div className = 'action-angle post-action'>
+        <div className="action-angle post-action">
           {manage_block}
         </div>
       </div>

@@ -48,7 +48,7 @@ export default class ShowPost extends React.Component{
     });
 
     var tags = this.props.post.tags.map((name, i) => {
-      <a key={i} href={'/explore?tag_name=' + name}>{'#'+name}</a>
+      return (<a key={i} href={'/explore?tag_name=' + name}>{'#'+name}</a>);
     });
     if (tags.length > 0)
       var tags_block = (
