@@ -165,7 +165,7 @@ export default class Post extends React.Component{
                       data-placement="top"
                       src='/images/view2.png' />
                     <span>
-                      {post.view_counter}
+                      {post.view_counter || ''}
                     </span>
                   </span>
                   {rendered_comments}
