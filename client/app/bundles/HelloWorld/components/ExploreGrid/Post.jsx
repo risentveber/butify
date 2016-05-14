@@ -141,6 +141,21 @@ export default class Post extends React.Component{
       var css_class = 'half-opacity';
     css_class = css_class + " " + offer_hidden
 
+
+      var view_counter_rendered = (
+        <span className='action-element action-element-view'>
+          <img onClick={this.onShowClick}
+            title='Просмотры'
+            data-toggle="tooltip"
+            data-placement="top"
+            src='/images/view2.png' />
+          <span>
+            {post.view_counter}
+          </span>
+        </span>
+      );
+
+
     return(
         <figure className={css_class}>
           <div className='wrap-figure-explore-post'>
@@ -158,16 +173,7 @@ export default class Post extends React.Component{
             </div>
             <footer className='border-b-radius'>
                 <div className='action-of-post'>
-                  <span className='action-element action-element-view'>
-                    <img onClick={this.onShowClick}
-                      title='Просмотры'
-                      data-toggle="tooltip"
-                      data-placement="top"
-                      src='/images/view2.png' />
-                    <span>
-                      {post.view_counter || ''}
-                    </span>
-                  </span>
+                  {view_counter_rendered}
                   {rendered_comments}
                   {rendered_likes}
                 </div>
