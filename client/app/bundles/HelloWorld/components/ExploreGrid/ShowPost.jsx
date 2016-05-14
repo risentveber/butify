@@ -47,8 +47,8 @@ export default class ShowPost extends React.Component{
       return (<h5 key={i}><a key={i} href={'/explore?category_name=' + name}>{name}</a></h5>);
     });
 
-    var tags = this.props.post.tags.map(function(name, i){
-      return <a key={i} href={'/explore?tag_name=' + name}>{'#'+name}</a>
+    var tags = this.props.post.tags.map((name, i) => {
+      return (<a key={i} href={'/explore?tag_name=' + name}>{'#'+name}</a>);
     });
     if (tags.length > 0)
       var tags_block = (
@@ -164,7 +164,7 @@ export default class ShowPost extends React.Component{
                 <ul>
                   <li className='likes'>
                     <img src={like_image_path} onClick={this.likeClick} className={classname_img}/> <span className='num-likes'>{post.likes || ''}</span>
-                    <img src='/images/views.png' className='view'/> <span className='num-likes'>746</span>
+                    <img src='/images/views.png' className='view'/> <span className='num-likes'>{post.view_counter}</span>
                   </li>
                   <li>
                     <DiscountBlock price={post.price} discount_price={post.discount_price} showPost={true}/>

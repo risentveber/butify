@@ -3,10 +3,8 @@ import Masonry from 'react-masonry-component';
 import ShowPost from '../components/ExploreGrid/ShowPost';
 import Post from '../components/ExploreGrid/Post';
 
-
 export default class ExploreGrid extends React.Component {
   constructor(props, context) {
-    console.log('CONSTRUCTOR', props.posts_preloaded);
     super(props, context);
     this.state = {
       limit_detected: false,
@@ -23,7 +21,7 @@ export default class ExploreGrid extends React.Component {
         count: this.state.posts_count
       },
       cache: false,
-      success: function(data) {
+      success: (data) => {
         var limit_detected = (data.length < this.state.posts_count);
         this.setState({
           posts: data,
@@ -32,28 +30,22 @@ export default class ExploreGrid extends React.Component {
         this.setState({
           wait_posts: false
         });
-      }.bind(this),
-      error: function(xhr, status, err) {
+      },
+      error: (xhr, status, err) => {
         console.error(this.props.url, status, err.toString());
-      }.bind(this)
+      }
     });
   }
   removeComment = (post_id, comment_id) => {
-    console.info('PostBox::removeComment', post_id, comment_id);
-    var delete_url;
-    var newPosts = this.state.posts.map(function (n) {
+    var newPosts = this.state.posts.map((n) => {
       if (n.id == post_id){
-        n.comments = n.comments.filter(function(c){
-          if (c.id == comment_id)
-            delete_url = c.url;
-          return c.id != comment_id;
-        });
+        n.comments = n.comments.filter((c) => c.id != comment_id );
       }
       return n;
     });
     this.setState({posts: newPosts});
     $.ajax({
-      url: delete_url,
+      url: Routes.post_comment_path(post_id, comment_id),
       type: 'DELETE'
     });
   }
@@ -64,7 +56,6 @@ export default class ExploreGrid extends React.Component {
       if (n.id == post_id){
         n.comments = n.comments.map(function(c){
           if (c.id == comment_id){
-            comment_url = c.url;
             c.text = text;
           }
           return c;
@@ -74,7 +65,7 @@ export default class ExploreGrid extends React.Component {
     });
     this.setState({posts: newPosts});
     $.ajax({
-      url: comment_url,
+      url: Routes.post_comment_path(post_id, comment_id),
       type: 'PATCH',
       data: {
         comment : {
@@ -88,7 +79,7 @@ export default class ExploreGrid extends React.Component {
       console.log('LOAD POST AFTER MOUNTING');
       this.loadPostsFromServer();
     }
-    $(window).scroll(function() {
+    $(window).scroll(() => {
       var scroll_part = $(window).scrollTop()/$(document).height();
       if (scroll_part > 0.8 && !this.state.limit_detected && !this.state.wait_posts ){
         this.setState({
@@ -96,23 +87,22 @@ export default class ExploreGrid extends React.Component {
           wait_posts: true
         });
         this.loadPostsFromServer();
-        CI("scrolling", scroll_part);
       }
-    }.bind(this));
-    //intervalID = setInterval(this.loadNewsItemsFromServer, this.props.pollInterval);
+    });
   }
   componentWillUnmount(){
     $(window).unbind('scroll');
   }
   showClick = (id) => {
-    console.log('showClick', id);
+    $.ajax({
+      url: Routes.update_view_counter_post_path(id),
+      type: 'PUT'
+    });
     this.setState({current_post_id: id});
   }
   like_post = (id) => {
     var posts = this.state.posts;
-    var likedPost = $.grep(posts, function(e){ return e.id == id; });
-    likedPost = likedPost[0];
-    posts = posts.map(function(p){
+    posts = posts.map((p) => {
       if (p.id == id){
         if (p.current_like){
           p.likes -= 1;
@@ -128,11 +118,11 @@ export default class ExploreGrid extends React.Component {
     })
     this.setState({posts: posts});
     $.ajax({
-      url: likedPost.like_path,
+      url: Routes.like_post_path(id),
       type: 'PUT',
-      error: function(xhr, status, err) {
+      error: (xhr, status, err) => {
         console.error(this.props.url, status, err.toString());
-      }.bind(this)
+      }
     });
   }
   hide = () => {
@@ -161,12 +151,12 @@ export default class ExploreGrid extends React.Component {
           commentable_type: 'Post'
         }
       },
-      success: function(data) {
+      success: (data) => {
         this.loadPostsFromServer();
-      }.bind(this),
-      error: function(xhr, status, err) {
+      },
+      error: (xhr, status, err) => {
         console.error(this.props.url, status, err.toString());
-      }.bind(this)
+      }
     });
   }
   render() {

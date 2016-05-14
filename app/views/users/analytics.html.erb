@@ -1,0 +1,163 @@
+<div class="tips-and-comments title-under-hat"></div>
+<% if current_user == @user || current_user.admin? %>
+  <div class='analytics-list'>
+    <h2>Ваша статистика</h2>
+    <!-- <div class='categories-parametrs'>
+      <span class='active'>Сегодня</span>
+      <span>Неделя</span>
+      <span>Месяц</span>
+      <span>Всё время</span>
+    </div> -->
+    <ul class="nav nav-tabs categories-parametrs" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#today" aria-controls="home" role="tab" data-toggle="tab">Сегодня</a>
+      </li>
+      <li role="presentation">
+        <a href="#week" aria-controls="profile" role="tab" data-toggle="tab">Неделя</a>
+      </li>
+      <li role="presentation">
+        <a href="#month" aria-controls="messages" role="tab" data-toggle="tab">Mecяц</a>
+      </li>
+      <li role="presentation">
+        <a href="#all-time" aria-controls="settings" role="tab" data-toggle="tab">Все время</a>
+      </li>
+    </ul>
+    <div class='data-analytics'>
+      <div class='tab-content'>
+        <div role="tabpanel" class="tab-pane active" id="today">
+          <div class='data-analytics-views'>
+            <h1>
+              <%= @user.statistics.day.profile_show.count %>
+            </h1>
+            <h5>Просмотров Вашей страницы</h5>
+          </div>
+          <div class='data-analytics-social'>
+            <div class='vk'>
+              <h1>
+                <%= @user.statistics.day.vk_click.count %>
+              </h1>
+              <h5><img src='/images/social_vk.png' /> переходы</h5>
+            </div>
+            <div class='instagram'>
+              <h1>
+                <%= @user.statistics.day.instagram_click.count %>
+              </h1>
+              <h5><img src='/images/social_insta.png' /> переходы</h5>
+            </div>
+            <div class='facebook'>
+              <h1>
+                <%= @user.statistics.day.facebook_click.count %>
+              </h1>
+              <h5><img src='/images/social_facebook.png' /> переходы</h5>
+            </div>
+            <div class='clearboth'>
+            </div>
+          </div>
+          <div class='clearboth'>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="week">
+          <div class='data-analytics-views'>
+            <h1>
+              <%= @user.statistics.week.profile_show.count %>
+            </h1>
+            <h5>Просмотров Вашей страницы</h5>
+          </div>
+          <div class='data-analytics-social'>
+            <div class='vk'>
+              <h1>
+                <%= @user.statistics.week.vk_click.count %>
+              </h1>
+              <h5><img src='/images/social_vk.png' /> переходы</h5>
+            </div>
+            <div class='instagram'>
+              <h1>
+                <%= @user.statistics.week.instagram_click.count %>
+              </h1>
+              <h5><img src='/images/social_insta.png' /> переходы</h5>
+            </div>
+            <div class='facebook'>
+              <h1>
+                <%= @user.statistics.week.facebook_click.count %>
+              </h1>
+              <h5><img src='/images/social_facebook.png' /> переходы</h5>
+            </div>
+            <div class='clearboth'>
+            </div>
+          </div>
+          <div class='clearboth'>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="month">
+          <div class='data-analytics-views'>
+            <h1>
+              <%= @user.statistics.month.profile_show.count %>
+            </h1>
+            <h5>Просмотров Вашей страницы</h5>
+          </div>
+          <div class='data-analytics-social'>
+            <div class='vk'>
+              <h1>
+                <%= @user.statistics.month.vk_click.count %>
+              </h1>
+              <h5><img src='/images/social_vk.png' /> переходы</h5>
+            </div>
+            <div class='instagram'>
+              <h1>
+                <%= @user.statistics.month.instagram_click.count %>
+              </h1>
+              <h5><img src='/images/social_insta.png' /> переходы</h5>
+            </div>
+            <div class='facebook'>
+              <h1>
+                <%= @user.statistics.month.facebook_click.count %>
+              </h1>
+              <h5><img src='/images/social_facebook.png' /> переходы</h5>
+            </div>
+            <div class='clearboth'>
+            </div>
+          </div>
+          <div class='clearboth'>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="all-time">
+          <div class='data-analytics-views'>
+            <h1>
+              <%= @user.statistics.profile_show.count %>
+            </h1>
+            <h5>Просмотров Вашей страницы</h5>
+          </div>
+          <div class='data-analytics-social'>
+            <div class='vk'>
+              <h1>
+                <%= @user.statistics.vk_click.count %>
+              </h1>
+              <h5><img src='/images/social_vk.png' /> переходы</h5>
+            </div>
+            <div class='instagram'>
+              <h1>
+                <%= @user.statistics.instagram_click.count %>
+              </h1>
+              <h5><img src='/images/social_insta.png' /> переходы</h5>
+            </div>
+            <div class='facebook'>
+              <h1>
+                <%= @user.statistics.facebook_click.count %>
+              </h1>
+              <h5><img src='/images/social_facebook.png' /> переходы</h5>
+            </div>
+            <div class='clearboth'>
+            </div>
+          </div>
+          <div class='clearboth'>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+<div class="align-c">
+  <h1 class="impressed-text">Нельзя просматривать статистику других пользователей</h1>
+</div>
+<% end %>
+<%= render "partials/contacts" %>

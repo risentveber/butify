@@ -27,6 +27,10 @@ class PostPolicy < Struct.new(:user, :post)
     true
   end
 
+  def update_view_counter?
+    true
+  end
+
   def basket?
     true
   end

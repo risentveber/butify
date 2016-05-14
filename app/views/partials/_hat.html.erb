@@ -62,6 +62,11 @@
                   </li>
                   <li role="presentation" class="divider"></li>
                   <li>
+                    <%= link_to analytics_user_path(current_user) do %>
+                      <b>Статистика</b>
+                    <% end %>
+                  </li>
+                  <li>
                     <%= link_to profile_edit_path do %>
                       Настройки
                     <% end %>
@@ -139,6 +144,8 @@
               </ul>
             </li>
           </ul>
+          <!--<div class='wrap-vk'><a href='https://vk.com/trenly' target='_blank'><img class='vk' src='/images/social_vk.png' /></a></div>-->
+          <div class='clearboth'></div>
           <!--<nav>
             <%= link_to 'Новое', fresh_path %>
             <%= link_to 'Наш выбор', recommend_path %>

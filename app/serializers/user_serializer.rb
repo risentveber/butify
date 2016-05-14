@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :name,
+  attributes :name, :id,
     :phone, :facebook_id,
     :vk_id, :instagram_id,
     :url, :avatar

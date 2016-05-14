@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class AuthorInfo extends React.Component {
+export default class SocialInfo extends React.Component {
   constructor(props, context){
     super(props, context);
 
@@ -61,37 +61,12 @@ export default class AuthorInfo extends React.Component {
         </a>
       );
     }
-    if (this.state.visible) {
-      if (currentUser) {
-        var author_info_rendered = (
-          <div className='contact-saler'>
-            <h4><span>{user.phone}</span></h4>
-            <div className='social-networks'>
-              <p>
-                {vk_rendered}
-                {facebook_rendered}
-                {insta_rendered}
-              </p>
-            </div>
-          </div>
-        );
-      } else {
-        var author_info_rendered = (
-          <div className='contact-saler'>
-            <a href='http://trenly.ru/welcome'>Войдите</a> на Trenly, чтобы связаться с продавцом
-          </div>
-        );
-      }
-    }
     return (
-      <div className='modal-contact-saler'>
-        <button
-          onClick={this.toggleClick}
-          className='btn btn-st show-contact-saler'>
-          Связаться с продавцом
-        </button>
-        {author_info_rendered}
-      </div>
+      <p className='profile-these-social-networks'>
+        {vk_rendered}
+        {facebook_rendered}
+        {insta_rendered}
+      </p>
     );
   }
 }

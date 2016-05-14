@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :find_post, except: [:new, :create, :index]
-  skip_before_filter :require_login, :index
+  skip_before_filter :require_login, only: :index
 
   def new
     @post = Post.new
@@ -21,17 +21,20 @@ class PostsController < ApplicationController
 
   def show
     respond_to do |format|
-      format.html { }
-      format.json {
-        @posts = [@post]
-        render 'posts/index'
-      }
+      format.json { render json: @post }
+      format.html {Post.update_view_counter @post}
     end
   end
 
   def destroy
     @post.destroy
     render nothing: true
+  end
+
+  def update_view_counter
+    unless current_user.try(:admin?)
+      Post.update_view_counter(@post)
+    end
   end
 
   def like

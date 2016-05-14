@@ -18,7 +18,7 @@ class Post < ActiveRecord::Base
   scope :recommended, -> { where(recommended: true) }
   scope :moderated, -> (user_id) { where('posts.moderated = true OR posts.user_id = (?)', user_id) }
   scope :visible, -> { where(visible: true) }
-  scope :time_order, -> { order(created_at: :desc) }
+  scope :time_order, -> { order( 'CASE WHEN posts.published_at IS NULL THEN posts.created_at else published_at END DESC') }
   scope :published, -> {where('posts.published_at IS NULL OR posts.published_at < (?)', Time.now)}
   scope :default, -> (user_id) {time_order.moderated(user_id).published}
 
@@ -32,6 +32,7 @@ class Post < ActiveRecord::Base
       all
     end
   end
+
   scope :fresh_grid, -> (user, city) do
     unobtrusive_сity(city).default(user.try(:id)).visible
   end
@@ -109,6 +110,11 @@ class Post < ActiveRecord::Base
     else
       all.order(created_at: :desc)
     end
+  end
+
+  def self.update_view_counter(post)
+    post_id = post.try(:id) || post
+    where(id: post_id).update_all('view_counter = view_counter + 1')
   end
 
   #for admin edit

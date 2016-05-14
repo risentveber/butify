@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     post :change, on: :collection
   end
   get '/auth/:provider/callback', to: 'sessions#create_external'
-  #get '/auth/twitter', to: 'sessions#vkontakte'
 
   get 'profile/edit' => 'users#edit_profile'
 
@@ -26,10 +25,12 @@ Rails.application.routes.draw do
       put :like
       put :basket
       put :change_categories
+      put :update_view_counter
     end
     resources :comments
   end
   resources :feedbacks, only: :create
+  resources :statistics#, only: :create
   resources :attachments, only: [:create, :destroy] do
     get :clean, on: :collection
   end
@@ -46,6 +47,7 @@ Rails.application.routes.draw do
   end
   resources :users, except: :edit do
     get :followers, on: :member
+    get :analytics, on: :member
     get :following, on: :member
     get :notices, on: :member
 
@@ -62,7 +64,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :sessions
+  resources :sessions, only: [:new, :create, :destroy]
   namespace :ajax do
     get 'page_description'
     get 'get_cities'

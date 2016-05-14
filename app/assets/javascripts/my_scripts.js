@@ -48,7 +48,7 @@ $(document).on("page:load ready", function main(){
     var im = new Inputmask("+7(999)-999-9999");
     if (selector) im.mask(selector);
 
-    $('.usual-post-text-expand-span').click(function(){
+    $('#hhhh').click(function(){
       alert('sf');
     });
 
@@ -101,6 +101,7 @@ $(document).on("page:load ready", function main(){
     var min_num_back = 0;
     var max_num_back = 4;
     var rand_maxmin_back = (Math.floor(Math.random() * (max_num_back - min_num_back + 1)) + min_num_back);
+
     if(rand_maxmin_back == 3 || rand_maxmin_back == 4)
       $('.join-to-us-under-hat .main-text').css('color', 'white');
     if(rand_maxmin_back == 4){

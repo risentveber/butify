@@ -38,12 +38,12 @@ export default class PhotosBox extends React.Component{
       processData: false,
       contentType: false,
       dataType: 'json',
-      success: function(data) {
+      success: (data) => {
         this.setState({url_text: '', show_input: false});
         this.props.addPhoto(data);
         console.log(data);
-      }.bind(this),
-      error: function (data) {
+      },
+      error: (data) => {
         console.error("PostModalContent::onDrop Can't create attachment", data);
       }
     });
@@ -65,13 +65,12 @@ export default class PhotosBox extends React.Component{
         type: 'POST',
         data: {link: e_url},
         dataType: 'json',
-        success: function(data) {
+        success: (data) => {
           this.props.addPhoto(data);
           this.setState({show_input: false, url_text: ''});
-          CI('PhotosBox::Uploaded', data);
-        }.bind(this),
-        error: function (data) {
-          CE("PostModalContent::onDrop Can't create attachment", data);
+        },
+        error: (data) => {
+          Rolbar.debug(data)
         }
       });
 
@@ -83,7 +82,7 @@ export default class PhotosBox extends React.Component{
   }
   render(){
     let photos = this.props.photos || [];
-    photos = photos.map(function (p, index) {
+    photos = photos.map((p, index) => {
       return (
         <div key={index} className="usual-post-photo action-create-element-post">
           <img
@@ -93,7 +92,7 @@ export default class PhotosBox extends React.Component{
           <img className='img-usual-post-photo' src={p.url} />
         </div>
       );
-    }.bind(this));
+    });
 
     if (photos.length > 0 && !this.state.show_input){
       var bottom_button_group = (

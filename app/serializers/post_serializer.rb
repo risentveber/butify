@@ -4,7 +4,7 @@ class PostSerializer < ActiveModel::Serializer
     :title, :edit_url, :likes,
     :text, :published_at, :tags, :categories, :category_names,
     :url, :time, :can_edit, :can_remove, :like_path, :current_like,
-    :youtube_id, :city_id, :price, :discount_price,
+    :youtube_id, :city_id, :price, :discount_price, :view_counter,
     :visible, :recommended, :id, :linkdata, :sitelink, :city_name, :moderated
 
   has_one :author
