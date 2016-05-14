@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   end
 
   def update_view_counter
-    unless current_user.try(:admin?)
+    if current_user != @post.user && !current_user.admin?
       Post.update_view_counter(@post)
     end
   end
