@@ -3,7 +3,7 @@ class OffersController < ApplicationController
 
 	def index
     @posts = @desire.posts.order(created_at: :desc).limit(params[:count])
-    render 'posts/index', formats: :json
+    render json: @posts
   end
 
   def create

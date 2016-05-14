@@ -113,7 +113,7 @@ class UsersController < ApplicationController
     respond_to do |f|
       f.json do
         @posts = @user.get_voted(Post).order(created_at: :desc).limit(params[:count])
-        render 'posts/index'
+        render json: @posts
       end
       f.html {}
     end
