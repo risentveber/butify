@@ -21,14 +21,20 @@ class PostsController < ApplicationController
 
   def show
     respond_to do |format|
-      format.html { }
       format.json { render json: @post }
+      format.html {Post.update_view_counter @post}
     end
   end
 
   def destroy
     @post.destroy
     render nothing: true
+  end
+
+  def update_view_counter
+    unless current_user.try(:admin?)
+      Post.update_view_counter(@post)
+    end
   end
 
   def like

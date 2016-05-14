@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       put :like
       put :basket
       put :change_categories
+      put :update_view_counter
     end
     resources :comments
   end

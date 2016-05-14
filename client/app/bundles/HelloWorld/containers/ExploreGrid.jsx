@@ -94,6 +94,10 @@ export default class ExploreGrid extends React.Component {
     $(window).unbind('scroll');
   }
   showClick = (id) => {
+    $.ajax({
+      url: Routes.update_view_counter_post_path(id),
+      type: 'PUT'
+    });
     this.setState({current_post_id: id});
   }
   like_post = (id) => {

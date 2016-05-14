@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510192719) do
+ActiveRecord::Schema.define(version: 20160514081700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -174,6 +174,7 @@ ActiveRecord::Schema.define(version: 20160510192719) do
     t.integer  "discount_price"
     t.boolean  "moderated"
     t.datetime "published_at"
+    t.integer  "view_counter",       default: 0
   end
 
   add_index "posts", ["cached_votes_total"], name: "index_posts_on_cached_votes_total", using: :btree

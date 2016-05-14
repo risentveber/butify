@@ -112,6 +112,11 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def self.update_view_counter(post)
+    post_id = post.try(:id) || post
+    where(id: post_id).update_all('view_counter = view_counter + 1')
+  end
+
   #for admin edit
   def link_description
     linkdata[:description]
