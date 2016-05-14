@@ -22,7 +22,11 @@ class PostsController < ApplicationController
   def show
     respond_to do |format|
       format.json { render json: @post }
-      format.html {Post.update_view_counter @post}
+      format.html do
+        if current_user != @post.user && !current_user.admin?
+          Post.update_view_counter(@post)
+        end
+      end
     end
   end
 
