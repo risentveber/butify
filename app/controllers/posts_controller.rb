@@ -35,6 +35,7 @@ class PostsController < ApplicationController
     if current_user != @post.user && !current_user.admin?
       Post.update_view_counter(@post)
     end
+    render nothing: true
   end
 
   def like
