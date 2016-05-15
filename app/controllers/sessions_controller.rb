@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
     email = result['info']['email']
     avatar_url = result['info']['image']
 
-    u = User.find_or_create_by!(email: email) do |user|
+    u = User.find_or_initialize_by(email: email) do |user|
 
       tmp_file = Tempfile.new(['avatar', '.jpg'])
       tmp_file.binmode
@@ -47,8 +47,14 @@ class SessionsController < ApplicationController
       user.password = tmp_password
       user.password_confirmation = tmp_password
     end
-    auto_login(u)
-    redirect_to root_path
+
+    if u.save
+      auto_login(u)
+      redirect_to root_path
+    else
+      @user = u
+      render 'users/new'
+    end
   end
 
   private
