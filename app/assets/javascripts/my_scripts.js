@@ -96,6 +96,12 @@ $(document).on("page:load ready", function main(){
           $('.hat-categories').removeClass('fixed-hat-categories');
           $('.search').removeClass('hidden');
         }
+
+        if($(this).scrollTop() >= 1100)
+          $('.road-block-wrapper').addClass('road-block-wrapper-transform');
+        else
+          $('.road-block-wrapper').removeClass('road-block-wrapper-transform');
+        
     });
 
     var min_num_back = 0;

@@ -1,0 +1,8 @@
+<% if !current_user %>
+	<div class='road-block-wrapper'>
+		<div class='road-block'>
+				<h4>Уже спешу!</h4>
+				<%= link_to "Зарегистрироваться в Trenly", new_user_path, class: 'btn btn-primary btn-st-contrast'%>
+		</div>
+	</div>
+<% end %>

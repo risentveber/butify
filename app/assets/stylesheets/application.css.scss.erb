@@ -1798,12 +1798,9 @@ textarea.form-control{
   background-color: white;
   border-radius: 3px;
   padding: 20px;
+  margin: 130px auto;
+  margin-bottom: 0px;
   width: 650px;
-  position: relative;
-  left: 50%;
-  top: 130px;
-  margin-left: -325px;
-  margin-bottom: 30px;
   font-size: 13px;
  }
 .input-sp{
@@ -2541,6 +2538,12 @@ iframe{
 
 
 .loading-content{
+  text-align: center;
+  padding: 30px;
+  padding-bottom: 0px;
+  display: none;
+  img{
+    width: 50px;
     z-index: 100;
     -webkit-animation-name: spin;
     -webkit-animation-duration: 600ms;
@@ -2556,9 +2559,10 @@ iframe{
     -ms-animation-timing-function: linear;
 
     animation-name: spin;
-    animation-duration: 600ms;
+    animation-duration: 1400ms;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+  }
 }
 @-ms-keyframes spin {
     from { -ms-transform: rotate(0deg); }
