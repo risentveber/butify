@@ -177,6 +177,13 @@ export default class ExploreGrid extends React.Component {
       var currentPost = $.grep(this.state.posts, function(e){ return e.id == current_post_id; });
       currentPost = currentPost[0];
     }
+    if (this.state.wait_posts){
+      var loadCircle = (
+        <div className='loading-content'>
+          <img src='/images/spinner.png' />
+        </div>
+      );
+    }
     return (
       <div>
         <ShowPost
@@ -196,6 +203,7 @@ export default class ExploreGrid extends React.Component {
         >
           {childElements}
         </Masonry>
+        {loadCircle}
       </div>
     );
   }
