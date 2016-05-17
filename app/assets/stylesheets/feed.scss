@@ -283,3 +283,17 @@
 .road-block-wrapper-transform{
   transform: translate3d(0px, 0px, 0px)
 }
+.wrap-feed-citizen-list{ 
+  .trenly-contact{
+    text-align: left !important;
+    margin: 50px 0px !important;
+    .social-trenly-contact{
+      margin: 10px 0px !important;
+    }
+  }
+}
+.fixed-feed-citizen-list{
+  position: fixed;
+  top: 55px;
+}
+

@@ -102,6 +102,12 @@ $(document).on("page:load ready", function main(){
         else
           $('.road-block-wrapper').removeClass('road-block-wrapper-transform');
         
+
+        if($(this).scrollTop() >= 444){
+          $('.wrap-feed-citizen-list').addClass('fixed-feed-citizen-list');
+        }else{
+          $('.wrap-feed-citizen-list').removeClass('fixed-feed-citizen-list');
+        }
     });
 
     var min_num_back = 0;
