@@ -48,7 +48,8 @@ export default class StaticPostMainPart extends React.Component {
               value={this.props.post.title}
               onChange={this.props.onChangeTitle}
               className='input-new-post form-text-title input-sp form-control'
-              placeholder = 'Название товара'/>
+              maxLength='50'
+              placeholder = 'Название товара (50)'/>
           </div>
           <div className="padding-usual-post-text-create">
             <div className="usual-post-text-create action-create-element-post">
