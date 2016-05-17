@@ -111,15 +111,21 @@ $(document).on("page:load ready", function main(){
     });
 
     var min_num_back = 0;
-    var max_num_back = 4;
+    var max_num_back = 5;
     var rand_maxmin_back = (Math.floor(Math.random() * (max_num_back - min_num_back + 1)) + min_num_back);
 
-    if(rand_maxmin_back == 3 || rand_maxmin_back == 4)
+    if(rand_maxmin_back == 3 || rand_maxmin_back == 4 || rand_maxmin_back == 5)
       $('.join-to-us-under-hat .main-text').css('color', 'white');
-    if(rand_maxmin_back == 4){
+    if(rand_maxmin_back == 4 || rand_maxmin_back == 5){
       $('.join-to-us-under-hat').css('background-size', 'cover');
-      $('.join-to-us-under-hat .profile-link').css('display', 'inline-block');
     }
+    if(rand_maxmin_back == 4){
+      $('.join-to-us-under-hat .profile-link4').css('display', 'inline-block');
+    }
+    if(rand_maxmin_back == 5){
+      $('.join-to-us-under-hat .profile-link5').css('display', 'inline-block');
+    }
+
     $('.join-to-us-under-hat').css('background-image', 'url(/images/reg_background_trenly'+rand_maxmin_back+'.png)')
 
     $(".choice-theme-material").next().children().children().addClass('my-setting-select2-selection');
