@@ -1,5 +1,5 @@
 class FeedController < ApplicationController
-  skip_before_filter :require_login
+  skip_before_filter :require_login, except: :show
   before_action :find_city_if_need
   before_action :require_admin, only: :moderate
 

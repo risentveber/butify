@@ -101,6 +101,10 @@ export default class ExploreGrid extends React.Component {
     this.setState({current_post_id: id});
   }
   like_post = (id) => {
+    if (!window.currentUser){
+      Turbolinks.visit(Routes.welcome_path());
+      return;
+    }
     var posts = this.state.posts;
     posts = posts.map((p) => {
       if (p.id == id){
