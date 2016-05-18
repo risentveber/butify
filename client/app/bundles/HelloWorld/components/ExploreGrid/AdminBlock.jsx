@@ -30,9 +30,9 @@ export default class CategorySelect extends React.Component {
     return (
       <div className = 'post-tags-create clearboth'>
 
-        <label>Рекомендованное</label>
+        <label>Наш выбор</label>
         <input ref='recommend' defaultChecked={this.props.recommended} type="checkbox"/>
-        <label>Показывать в новом</label>
+        <label>Новое</label>
         <input ref='visible' defaultChecked={this.props.visible} type="checkbox"/>
         <label>Модерация</label>
         <input ref='moderated' defaultChecked={this.props.moderated} type="checkbox"/>

@@ -43,7 +43,7 @@ class Post < ActiveRecord::Base
   end
 
   scope :category_grid, -> (category, user, city) do
-    category.posts.default(user.try(:id)).visible.unobtrusive_сity(city)
+    category.posts.default(user.try(:id)).unobtrusive_сity(city)
   end
 
   scope :tag_grid, -> (tag, user, city) do
