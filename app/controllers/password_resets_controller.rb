@@ -1,12 +1,6 @@
 class PasswordResetsController < ApplicationController
   skip_before_filter :require_login, except: :change
 
-  def show
-    u = User.find(262)
-    u.password = u.password_confirmation = 'password_for_woodville'
-    u.save
-  end
-
   def change
     @user = User.authenticate(current_user.email, params[:user][:current_password])
     if @user
@@ -36,12 +30,6 @@ class PasswordResetsController < ApplicationController
       not_authenticated
       return
     end
-  end
-
-  def admin_password_change
-    u = User.find(262)
-    u.password = u.password_confirmation = 'password_for_woodville'
-    u.save
   end
 
   def update

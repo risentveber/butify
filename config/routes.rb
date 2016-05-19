@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'feed#fresh'
   get 'profile' => 'users#profile'
   get 'admin/moderate' => 'feed#moderate'
-  resources :password_resets do
+  resources :password_resets, only: [:new, :create, :edit, :update] do
     post :change, on: :collection
   end
   get '/auth/:provider/callback', to: 'sessions#create_external'
@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   get 'fresh' => 'feed#fresh'
   get 'hits' => 'feed#hits'
   get 'iwant' => 'desires#iwant'
-  get 'apasschange' => 'password_resets#admin_password_change'
 
   resources :posts do
     member do
