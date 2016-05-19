@@ -5,9 +5,6 @@
       <%= f.input :email, label: false,  input_html: { placeholder: 'Ваша почта' } %>
       <%= f.button :submit, "Сбросить пароль!"%>
     <% end %>
-    <% if current_user && current_user.admin? %>
-    	<%= link_to 'sdfsd', admin_password_change_password_reset_path %>
-    <% end %>
     </div>
   </div>
 </div>
