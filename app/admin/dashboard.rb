@@ -19,7 +19,10 @@ style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" tit
 
       column do
         panel "Пользователи" do
-          h1 "#{User.count}/#{User.unscoped.count}"
+          h4 "Активные #{User.count}"
+          h4 "Удаленые #{User.unscoped.where.not(destroyed_at: nil).count}"
+          h4 "Публиковали #{User.having_posts.count}"
+          h4 "Не Публиковали #{User.count - User.having_posts.count}"
         end
       end
 
