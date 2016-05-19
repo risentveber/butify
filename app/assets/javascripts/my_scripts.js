@@ -110,16 +110,15 @@ $(document).on("page:load ready", function main(){
         }
     });
 
-    var min_num_back = 0;
-    var max_num_back = 6;
+    var min_num_back = 1;
+    var max_num_back = 3;
     var rand_maxmin_back = (Math.floor(Math.random() * (max_num_back - min_num_back + 1)) + min_num_back);
 
-    if(rand_maxmin_back == 3 || rand_maxmin_back == 4 || rand_maxmin_back == 5) // белый цвет
-      $('.join-to-us-under-hat .main-text').css('color', 'white');    
-    if(rand_maxmin_back == 4 || rand_maxmin_back == 5 || rand_maxmin_back == 6){
-      $('.join-to-us-under-hat').css('background-size', 'cover');
-      $('.join-to-us-under-hat .profile-link'+rand_maxmin_back).css('display', 'inline-block');
-    }
+    if(rand_maxmin_back == 1 || rand_maxmin_back == 2) // белый цвет
+      $('.join-to-us-under-hat .main-text').css('color', 'white'); 
+
+    $('.join-to-us-under-hat').css('background-size', 'cover');
+    $('.join-to-us-under-hat .profile-link'+rand_maxmin_back).css('display', 'inline-block');
 
     $('.join-to-us-under-hat').css('background-image', 'url(/images/reg_background_trenly'+rand_maxmin_back+'.png)')
 
