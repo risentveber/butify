@@ -2,10 +2,11 @@
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
     <%= simple_form_for :user, url: password_resets_path do |f| %>
-
-        <%= f.input :email, label: false,  input_html: { placeholder: 'Ваша почта' } %>
-
-        <%= f.button :submit, "Сбросить пароль!"%>
+      <%= f.input :email, label: false,  input_html: { placeholder: 'Ваша почта' } %>
+      <%= f.button :submit, "Сбросить пароль!"%>
+    <% end %>
+    <% if current_user && current_user.admin? %>
+    	<%= link_to 'sdfsd', admin_password_change_password_reset_path %>
     <% end %>
     </div>
   </div>
