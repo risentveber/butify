@@ -70,7 +70,7 @@ class SessionsController < ApplicationController
     def login_from_params
       sign_in_params = params[:user_sign_in]
       if sign_in_params
-        login(sign_in_params[:email], sign_in_params[:password])
+        login(sign_in_params[:email].downcase, sign_in_params[:password])
       end
     end
 

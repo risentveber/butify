@@ -15,7 +15,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    @user = User.find_by_email(params[:user][:email])
+    @user = User.find_by_email(user_email)
 
     @user.deliver_reset_password_instructions! if @user
 
@@ -48,4 +48,9 @@ class PasswordResetsController < ApplicationController
       render :action => "edit"
     end
   end
+
+  private
+    def user_email
+      params[:user][:email].to_s.downcase.squish
+    end
 end

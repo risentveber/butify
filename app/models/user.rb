@@ -105,7 +105,7 @@ class User < ActiveRecord::Base
     end
 
     def remove_whitespaces
-      self.email = email.to_s.squish
+      self.email = email.to_s.downcase.squish
       self.type = 'teacher'
     end
 

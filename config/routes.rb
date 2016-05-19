@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     post :change, on: :collection
   end
   get '/auth/:provider/callback', to: 'sessions#create_external'
+  get '/auth/failure', to: 'users#new'
 
   get 'profile/edit' => 'users#edit_profile'
 
