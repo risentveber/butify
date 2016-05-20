@@ -111,7 +111,7 @@ $(document).on("page:load ready", function main(){
     });
 
     var min_num_back = 1;
-    var max_num_back = 3;
+    var max_num_back = 4;
     var rand_maxmin_back = (Math.floor(Math.random() * (max_num_back - min_num_back + 1)) + min_num_back);
 
     if(rand_maxmin_back == 1 || rand_maxmin_back == 2) // белый цвет
