@@ -34,7 +34,7 @@
 			</div>
       <div class='wrap-feed-citizen-list'>
       <% if current_user.city_name %>
-  			<h4 class='on-grey'>Мастера из вашего города</h4>
+  			<h4 class='on-grey'>Бутики и мастера из вашего города</h4>
   			<div class='feed-citizen-list'>
           <% User.having_posts.where.not(id: current_user).where(city: current_user.city).random_order.limit(6).each do |u| %>
     				<div class='person'>
