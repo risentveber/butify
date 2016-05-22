@@ -7,10 +7,10 @@
     </p>
 
     <%= simple_form_for(@user, url: users_path, html: { class: 'form-vertical' }) do |f| %>
-      <%= f.input :name, label: false, input_html: { class: 'input-sp', placeholder: 'Название магазина или Ваше имя' } %>
+      <%= f.input :name, label: false, input_html: { class: 'input-sp', placeholder: 'Представьтесь, пожалуйста' } %>
       <%= f.input :email, label: false, input_html: { class: 'input-sp',  placeholder: 'Электронный адрес' } %>
       <%= f.select :city_id, [], { include_blank: true }, {id: 'user_city_id'} %>
-      <%= f.input :password, label: false, input_html: { class: 'input-sp',  placeholder: 'Пароль' } %>
+      <%= f.input :password, label: false, input_html: { class: 'input-sp',  placeholder: 'Придумайте пароль' } %>
       <%= f.input :password_confirmation, label: false,  input_html: { class: 'input-sp',  placeholder: 'Повторите пароль' } %>
       <div class = 'reg-licence'>
         <%= f.input :terms_of_service, as: :boolean,
