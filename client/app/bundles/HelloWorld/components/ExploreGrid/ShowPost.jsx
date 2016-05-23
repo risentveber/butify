@@ -11,7 +11,8 @@ export default class ShowPost extends React.Component{
     super(props, context);
 
     this.state = {
-      show_author_info:false
+      show_author_info:false,
+      show_share_block:false
     }
   }
   removeComment = (comment_id) => {
@@ -28,6 +29,9 @@ export default class ShowPost extends React.Component{
   }
   showAuthorInfoClick = () => {
     this.setState({show_author_info: true});
+  }
+  showShareBlockClick = () => {
+    this.setState({show_share_block: true});
   }
   removeClick = () => {
     $.ajax({
@@ -92,6 +96,20 @@ export default class ShowPost extends React.Component{
       time_rendered = "будет опубликовано " + post.published_at;
     } else {
       time_rendered = post.time;
+    }
+    var block_share, classname_share_active
+    if(this.state.show_share_block){
+      block_share = (
+        <div className='share-btns'>
+          <div className="share-sheet">
+            <a href="#" class="share-VK" title="Share on VK"><img src='/images/share-vk.png' /></a>
+            <a href="#" class="share-facebook" title="Share on Facebook"><img src='/images/share-facebook.png' /></a> 
+            <a href="#" class="share-twitter" title="Share on Twitter"><img src='/images/share-twitter.png' /></a> 
+            <a href="#" class="share-pinterest" title="Share on Pinterest"><img src='/images/share-pinterest.png' /></a> 
+          </div>
+        </div>
+      );
+      classname_share_active = "active-share";
     }
 
     return (
@@ -165,6 +183,10 @@ export default class ShowPost extends React.Component{
                   <li className='likes'>
                     <img src={like_image_path} onClick={this.likeClick} className={classname_img}/> <span className='num-likes'>{post.likes || ''}</span>
                     <img src='/images/views.png' className='view'/> <span className='num-likes'>{post.view_counter || ''}</span>
+                  </li>
+                  <li className='share' onClick={this.showShareBlockClick}>
+                    <img src='/images/icon-share.png' className={classname_share_active}/> <span>Поделиться</span>
+                    {block_share}
                   </li>
                   <li>
                     <DiscountBlock price={post.price} discount_price={post.discount_price} showPost={true}/>
