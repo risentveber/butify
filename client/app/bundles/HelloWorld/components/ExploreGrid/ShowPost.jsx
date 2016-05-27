@@ -44,6 +44,10 @@ export default class ShowPost extends React.Component{
       }
     });
   }
+  onClose = () => {
+    this.props.onHide();
+    this.setState({show_share_block: false});
+  }
   render(){
     if (!this.props.post) return null;
     var post = this.props.post;
@@ -158,7 +162,7 @@ export default class ShowPost extends React.Component{
       <Modal
         dialogClassName='modal-dialog modal-dialog-show-post'
         show={Boolean(this.props.post)}
-        onHide={this.props.onHide}>
+        onHide={this.onClose}>
           <div className='close-explore-post'><button type="button" className="close" onClick={this.props.onHide}>&times;</button></div>
           <div className="modal-header">
             <div className='post-autor'>
