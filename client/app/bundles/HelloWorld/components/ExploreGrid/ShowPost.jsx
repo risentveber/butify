@@ -10,7 +10,8 @@ import {
   FacebookButton,
   TwitterButton,
   PinterestButton
-} from "react-social";
+} from 'react-social';
+import queryString from 'query-string'
 
 export default class ShowPost extends React.Component{
   constructor(props, context){
@@ -106,12 +107,24 @@ export default class ShowPost extends React.Component{
     var block_share, classname_share_active
     if(this.state.show_share_block){
       let url = "http://trenly.ru" + Routes.post_path(post.id);
+      let imageUrl = post.photos[0].url;
+      if (imageUrl.slice(0, 4) != 'http'){
+        imageUrl = 'http://trenly.ru' + imageUrl;
+      }
+
+      let vkUrl = "http://vkontakte.ru/share.php?" + queryString.stringify({
+          url: url,
+          title: post.title,
+          description: post.text,
+          noparse: true,
+          image: imageUrl
+        });
       block_share = (
         <div className='share-btns'>
           <div className="share-sheet">
-            <VKontakteButton url={url} element="a" className="share-VK">
+            <a href={vkUrl} className="share-VK" target="_blank">
               <img src='/images/share-vk.png' />
-            </VKontakteButton>
+            </a>
             <FacebookButton url={url} element="a" className="share-facebook">
               <img src='/images/share-facebook.png' />
             </FacebookButton>
