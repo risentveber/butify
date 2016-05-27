@@ -66,8 +66,8 @@ export default class CommentBox extends React.Component {
       like_image_path = '/images/like.png';
       classname = 'post-like';
     }
-
-    if (window.currentUser)
+    console.log(CLIENTSIDE);
+    if (CLIENTSIDE && window.currentUser)
     var comment_form =  (
       <textarea
         ref='ceditable'

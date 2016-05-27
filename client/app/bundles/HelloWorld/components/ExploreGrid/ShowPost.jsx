@@ -51,7 +51,6 @@ export default class ShowPost extends React.Component{
   }
   render(){
     if (!this.props.post) return null;
-    console.log(this.props.post)
     var post = this.props.post;
     var author = post.author;
     var rendered_categories = this.props.post.category_names.map(function(name, i){
@@ -119,15 +118,22 @@ export default class ShowPost extends React.Component{
           noparse: true,
           image: imageUrl
         });
+
+      let facebookUrl = "http://www.facebook.com/sharer.php?s=100&" + queryString.stringify({
+        'p[url]': url,
+        'p[title]': post.title,
+        'p[summary]': post.text,
+        'p[images][0]': imageUrl
+      });
       block_share = (
         <div className='share-btns'>
           <div className="share-sheet">
             <a href={vkUrl} className="share-VK" target="_blank">
               <img src='/images/share-vk.png' />
             </a>
-            <FacebookButton url={url} element="a" className="share-facebook">
+            <a href={facebookUrl} className="share-facebook" target="_blank">
               <img src='/images/share-facebook.png' />
-            </FacebookButton>
+            </a>
             <TwitterButton url={url} element="a" className="share-twitter">
               <img src='/images/share-twitter.png' />
             </TwitterButton>

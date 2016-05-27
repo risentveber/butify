@@ -38,7 +38,9 @@ module.exports = {
       'process.env': {
         NODE_ENV: JSON.stringify(nodeEnv),
       },
+      CLIENTSIDE: true
     }),
+    
 
     new webpack.NoErrorsPlugin({}),
     //new webpack.HotModuleReplacementPlugin(),

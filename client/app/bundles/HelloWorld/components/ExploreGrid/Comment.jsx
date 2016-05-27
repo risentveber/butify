@@ -54,7 +54,7 @@ export default class Comment extends React.Component {
     };
   }
   componentDidMount() {
-    if (this.refs.ceditable) {
+    if (CLIENTSIDE && this.refs.ceditable) {
       var node = this.refs.ceditable;
       $(node).emojiarea({
         button: false,
@@ -122,11 +122,13 @@ export default class Comment extends React.Component {
           </span>
         );
       }
-      var emojis = $.emojiarea.icons;
       var final_text = this.props.comment.text;
-      for (var key in emojis) {
-        if (emojis.hasOwnProperty(key)) {
-          final_text = final_text.replace(new RegExp(key, 'g'), createIcon(key));
+      if (CLIENTSIDE){
+        var emojis = $.emojiarea.icons;
+        for (var key in emojis) {
+          if (emojis.hasOwnProperty(key)) {
+            final_text = final_text.replace(new RegExp(key, 'g'), createIcon(key));
+          }
         }
       }
       main_part = (
