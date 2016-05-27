@@ -5,12 +5,7 @@ import PostPhotosView from '../common/PostPhotosView';
 import CommentBox from './CommentBox';
 import DiscountBlock from './DiscountBlock';
 import CustomerInfo from './CustomerInfo';
-import {
-  VKontakteButton,
-  FacebookButton,
-  TwitterButton,
-  PinterestButton
-} from 'react-social';
+
 import queryString from 'query-string'
 
 export default class ShowPost extends React.Component{
@@ -51,7 +46,6 @@ export default class ShowPost extends React.Component{
   }
   render(){
     if (!this.props.post) return null;
-    console.log(this.props.post)
     var post = this.props.post;
     var author = post.author;
     var rendered_categories = this.props.post.category_names.map(function(name, i){
@@ -119,21 +113,41 @@ export default class ShowPost extends React.Component{
           noparse: true,
           image: imageUrl
         });
+
+      let facebookUrl = "http://www.facebook.com/sharer.php?s=100&" + queryString.stringify({
+        'p[url]': url,
+        'p[title]': post.title,
+        'p[summary]': post.text,
+        'p[images][0]': imageUrl
+      });
+
+      let pinterestUrl = "https://pinterest.com/pin/create/bookmarklet/?" + queryString.stringify({
+        'url': url,
+        'is_video': false,
+        'description': post.title,
+        'media': imageUrl
+      });
+
+      let twitterUrl = 'https://twitter.com/intent/tweet?'+ queryString.stringify({
+        'url': url,
+        'text': post.title
+      });
+
       block_share = (
         <div className='share-btns'>
           <div className="share-sheet">
             <a href={vkUrl} className="share-VK" target="_blank">
               <img src='/images/share-vk.png' />
             </a>
-            <FacebookButton url={url} element="a" className="share-facebook">
+            <a href={facebookUrl} className="share-facebook" target="_blank">
               <img src='/images/share-facebook.png' />
-            </FacebookButton>
-            <TwitterButton url={url} element="a" className="share-twitter">
+            </a>
+            <a href={twitterUrl} className="share-twitter">
               <img src='/images/share-twitter.png' />
-            </TwitterButton>
-            <PinterestButton url={url} element="a" className="share-pinterest">
+            </a>
+            <a href={pinterestUrl} className="share-pinterest" target="_blank">
               <img src='/images/share-pinterest.png' />
-            </PinterestButton>
+            </a>
           </div>
         </div>
       );
