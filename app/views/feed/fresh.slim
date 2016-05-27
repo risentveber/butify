@@ -1,10 +1,10 @@
 = render 'about_trenly'
 - if current_user
-	.title-explore
-	  |Новое
+  .title-explore
+    |Новое
 - else
   .title-explore.title-explore_lmargin
-	  |Новое
+	|Новое
 
 = render 'partials/city_select'
 #grid-gallery.grid-gallery
@@ -14,4 +14,5 @@
       posts_url: fresh_path + city_params(params[:city_id])}, prerender: true
 = render "partials/hurry_sing_up"
 = render "partials/contacts"
+
 

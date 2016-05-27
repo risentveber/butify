@@ -5,6 +5,12 @@ import PostPhotosView from '../common/PostPhotosView';
 import CommentBox from './CommentBox';
 import DiscountBlock from './DiscountBlock';
 import CustomerInfo from './CustomerInfo';
+import {
+  VKontakteButton,
+  FacebookButton,
+  TwitterButton,
+  PinterestButton
+} from "react-social";
 
 export default class ShowPost extends React.Component{
   constructor(props, context){
@@ -99,13 +105,22 @@ export default class ShowPost extends React.Component{
     }
     var block_share, classname_share_active
     if(this.state.show_share_block){
+      let url = "http://trenly.ru" + Routes.post_path(post.id);
       block_share = (
         <div className='share-btns'>
           <div className="share-sheet">
-            <a href="#" class="share-VK" title="Share on VK"><img src='/images/share-vk.png' /></a>
-            <a href="#" class="share-facebook" title="Share on Facebook"><img src='/images/share-facebook.png' /></a> 
-            <a href="#" class="share-twitter" title="Share on Twitter"><img src='/images/share-twitter.png' /></a> 
-            <a href="#" class="share-pinterest" title="Share on Pinterest"><img src='/images/share-pinterest.png' /></a> 
+            <VKontakteButton url={url} element="a" className="share-VK">
+              <img src='/images/share-vk.png' />
+            </VKontakteButton>
+            <FacebookButton url={url} element="a" className="share-facebook">
+              <img src='/images/share-facebook.png' />
+            </FacebookButton>
+            <TwitterButton url={url} element="a" className="share-twitter">
+              <img src='/images/share-twitter.png' />
+            </TwitterButton>
+            <PinterestButton url={url} element="a" className="share-pinterest">
+              <img src='/images/share-pinterest.png' />
+            </PinterestButton>
           </div>
         </div>
       );

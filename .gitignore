@@ -7,7 +7,7 @@
 # Ignore bundler config.
 /.bundle
 /.byebug_history
-
+/.idea
 database.yml
 mailer.yml
 secrets.yml.erb
