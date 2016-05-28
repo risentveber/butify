@@ -5,12 +5,7 @@ import PostPhotosView from '../common/PostPhotosView';
 import CommentBox from './CommentBox';
 import DiscountBlock from './DiscountBlock';
 import CustomerInfo from './CustomerInfo';
-import {
-  VKontakteButton,
-  FacebookButton,
-  TwitterButton,
-  PinterestButton
-} from 'react-social';
+
 import queryString from 'query-string'
 
 export default class ShowPost extends React.Component{
@@ -48,6 +43,10 @@ export default class ShowPost extends React.Component{
         Turbolinks.visit(window.location)
       }
     });
+  }
+  onClose = () => {
+    this.props.onHide();
+    this.setState({show_share_block: false});
   }
   render(){
     if (!this.props.post) return null;
@@ -125,6 +124,19 @@ export default class ShowPost extends React.Component{
         'p[summary]': post.text,
         'p[images][0]': imageUrl
       });
+
+      let pinterestUrl = "https://pinterest.com/pin/create/bookmarklet/?" + queryString.stringify({
+        'url': url,
+        'is_video': false,
+        'description': post.title,
+        'media': imageUrl
+      });
+
+      let twitterUrl = 'https://twitter.com/intent/tweet?'+ queryString.stringify({
+        'url': url,
+        'text': post.title
+      });
+
       block_share = (
         <div className='share-btns'>
           <div className="share-sheet">
@@ -134,12 +146,12 @@ export default class ShowPost extends React.Component{
             <a href={facebookUrl} className="share-facebook" target="_blank">
               <img src='/images/share-facebook.png' />
             </a>
-            <TwitterButton url={url} element="a" className="share-twitter">
+            <a href={twitterUrl} className="share-twitter">
               <img src='/images/share-twitter.png' />
-            </TwitterButton>
-            <PinterestButton url={url} element="a" className="share-pinterest">
+            </a>
+            <a href={pinterestUrl} className="share-pinterest" target="_blank">
               <img src='/images/share-pinterest.png' />
-            </PinterestButton>
+            </a>
           </div>
         </div>
       );
@@ -150,7 +162,7 @@ export default class ShowPost extends React.Component{
       <Modal
         dialogClassName='modal-dialog modal-dialog-show-post'
         show={Boolean(this.props.post)}
-        onHide={this.props.onHide}>
+        onHide={this.onClose}>
           <div className='close-explore-post'><button type="button" className="close" onClick={this.props.onHide}>&times;</button></div>
           <div className="modal-header">
             <div className='post-autor'>
