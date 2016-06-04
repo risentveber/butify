@@ -13,6 +13,7 @@ mailer.yml
 secrets.yml.erb
 secrets.yml
 database.yml.erb
+npm-debug.log*
 
 # Ignore all logfiles and tempfiles.
 /log/*
